@@ -4,9 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alfie · HubSpot upkeep, run on rules you approve</title>
-<meta name="description" content="Alfie gets the HubSpot basics running for growing SaaS teams, on standard rules you approve. Every change is checked against your rules, and you sign off on what matters.">
-<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Alfie checks the HubSpot basics for growing SaaS teams against rules you approve, proposes the fixes, and you keep sign-off on what matters.">
 <link rel="canonical" href="https://workwithalfie.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://workwithalfie.com/#organization",
+      "name": "Alfie",
+      "url": "https://workwithalfie.com/",
+      "logo": "https://workwithalfie.com/apple-touch-icon.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://workwithalfie.com/#website",
+      "name": "Alfie",
+      "url": "https://workwithalfie.com/",
+      "publisher": { "@id": "https://workwithalfie.com/#organization" }
+    }
+  ]
+}
+</script>
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/icons/icon-32.png" type="image/png" sizes="32x32">
@@ -480,7 +500,7 @@
       busy = true;
       btn.disabled = true;
       btn.textContent = MSG.sending;
-      setStatus(MSG.sending, 'sending');
+      setStatus(MSG.sending); statusEl.classList.add('sr-only'); // screen readers only; button shows Sending…
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
