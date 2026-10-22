@@ -16,15 +16,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://workwithalfie.com/">
 <meta property="og:site_name" content="Alfie">
-<meta property="og:title" content="You shouldn't still be your company's HubSpot admin.">
-<meta property="og:description" content="Alfie starts on the basics, using standard rules you approve, and from day one checks your HubSpot and proposes fixes. Every change is checked.">
+<meta property="og:title" content="Your HubSpot setup should keep up with your business.">
+<meta property="og:description" content="Alfie checks the HubSpot basics against rules you approve from day one, proposes the fixes, and you keep sign-off on what matters.">
 <meta property="og:image" content="https://workwithalfie.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Alfie. You shouldn't still be your company's HubSpot admin.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="You shouldn't still be your company's HubSpot admin.">
-<meta name="twitter:description" content="Alfie starts on the basics, using standard rules you approve, and from day one checks your HubSpot and proposes fixes. Every change is checked.">
+<meta name="twitter:title" content="Your HubSpot setup should keep up with your business.">
+<meta name="twitter:description" content="Alfie checks the HubSpot basics against rules you approve from day one, proposes the fixes, and you keep sign-off on what matters.">
 <meta name="twitter:image" content="https://workwithalfie.com/og-image.png">
 <meta name="twitter:image:alt" content="Alfie. You shouldn't still be your company's HubSpot admin.">
 <link rel="preconnect" href="https://challenges.cloudflare.com">
@@ -71,8 +71,8 @@
   .hero{padding:40px 0 56px}
   .hero .grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center}
   .label{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
-  h1{font-size:clamp(38px,5.4vw,62px);line-height:1.04;letter-spacing:-0.035em;font-weight:700;margin:0 0 24px}
-  .pains{font-size:19px;margin:0 0 16px;max-width:36em}
+  h1{font-size:clamp(38px,5.4vw,62px);line-height:1.04;letter-spacing:-0.035em;font-weight:700;margin:0 0 24px;text-wrap:balance}
+  .pains{font-size:19px;margin:0 0 30px;max-width:36em}
   .pains strong{font-weight:600}
   .lede{font-size:17px;color:var(--muted);margin:0 0 30px;max-width:36em}
   .actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -109,6 +109,7 @@
   .more-box p{margin:0;color:var(--muted);font-size:16px;max-width:44em}
 
   section.cta{padding:0 0 80px}
+  .origin{margin:0 0 16px;font-size:15px;color:var(--muted);max-width:44em}
   .cta-box{background:var(--ink);color:var(--bg);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1.05fr;gap:32px;align-items:start}
   .cta-box>*{min-width:0}
   .cta-box h2{color:#fff;margin:0 0 12px}
@@ -165,6 +166,7 @@
     .actions .btn{width:100%}
     .form .btn{width:100%;align-self:stretch}
     section.cta .wrap{padding:0 12px}
+    .origin{padding:0 8px}
     .cta-box{padding:28px 16px}
     .form-card{padding:16px}
     .field textarea{min-height:150px}
@@ -258,9 +260,8 @@
     <div class="wrap grid">
       <div>
         <p class="label">For SaaS teams running on HubSpot</p>
-        <h1 id="hero-title">You shouldn't still be your company's HubSpot admin.</h1>
-        <p class="pains">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business: <strong>duplicate accounts, ownership fights, a forecast nobody trusted.</strong></p>
-        <p class="lede">Alfie starts on the basics: clean data and required fields first, then routing and account ownership. You approve a set of standard rules, and from day one Alfie checks your HubSpot against them and proposes fixes. Every change is checked against your rules, and you sign off on what matters.</p>
+        <h1 id="hero-title">Your HubSpot setup should keep up with your business.</h1>
+        <p class="pains">When the team grows faster than its HubSpot setup, you get <strong>duplicates, ownership fights and a forecast nobody trusts.</strong> Alfie checks the basics against rules you approve from day one, proposes the fixes, and you keep sign-off on what matters.</p>
         <div class="actions">
           <a class="btn btn-primary" href="#contact">Tell us what's breaking</a>
           <a class="btn btn-ghost" href="#who">Who it's for</a>
@@ -323,6 +324,7 @@
 
   <section class="cta" id="contact" aria-labelledby="cta-title">
     <div class="wrap">
+      <p class="origin">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business.</p>
       <div class="cta-box">
         <div class="intro">
           <h2 id="cta-title">Tell us what's breaking in your HubSpot setup.</h2>
