@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alfie · HubSpot rules, written with you and run for you</title>
-<meta name="description" content="Alfie helps growing SaaS teams on HubSpot write their CRM rules, then runs the repeatable upkeep. Every change is checked against your rules, and you sign off on what matters.">
+<title>Alfie · HubSpot upkeep, run on rules you approve</title>
+<meta name="description" content="Alfie gets the HubSpot basics running for growing SaaS teams, on standard rules you approve. Every change is checked against your rules, and you sign off on what matters.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://workwithalfie.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -14,14 +14,14 @@
 <meta property="og:url" content="https://workwithalfie.com/">
 <meta property="og:site_name" content="Alfie">
 <meta property="og:title" content="You shouldn't still be your company's HubSpot admin.">
-<meta property="og:description" content="We write your CRM rules with you. Alfie runs the repeatable upkeep in HubSpot, with every change checked against your rules.">
+<meta property="og:description" content="Alfie starts on the basics, using standard rules you approve, and from day one checks your HubSpot and proposes fixes. Every change is checked.">
 <meta property="og:image" content="https://workwithalfie.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="alfie. You shouldn't still be your company's HubSpot admin.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="You shouldn't still be your company's HubSpot admin.">
-<meta name="twitter:description" content="We write your CRM rules with you. Alfie runs the repeatable upkeep in HubSpot, with every change checked against your rules.">
+<meta name="twitter:description" content="Alfie starts on the basics, using standard rules you approve, and from day one checks your HubSpot and proposes fixes. Every change is checked.">
 <meta name="twitter:image" content="https://workwithalfie.com/og-image.png">
 <meta name="twitter:image:alt" content="alfie. You shouldn't still be your company's HubSpot admin.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +98,11 @@
   .card h3{font-size:18px;margin:0 0 8px;letter-spacing:-0.01em}
   .card p{margin:0;color:var(--muted);font-size:16px}
 
+  section.more{padding:0 0 72px}
+  .more-box{border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:var(--radius);background:var(--soft);padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:baseline}
+  .more-box h2{font-size:20px;letter-spacing:-0.01em;margin:0}
+  .more-box p{margin:0;color:var(--muted);font-size:16px;max-width:44em}
+
   section.cta{padding:0 0 80px}
   .cta-box{background:var(--ink);color:var(--bg);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1.05fr;gap:32px;align-items:start}
   .cta-box>*{min-width:0}
@@ -145,6 +150,7 @@
     .cards{grid-template-columns:1fr}
     .cta-box{grid-template-columns:1fr;padding:32px 24px}
     .flow ol{justify-content:flex-start;flex-direction:column}
+    .more-box{grid-template-columns:1fr}
   }
   @media (max-width:480px){
     body{font-size:16px}
@@ -158,6 +164,8 @@
     .form-card{padding:16px}
     .field textarea{min-height:150px}
     section.who{padding:56px 0}
+    section.more{padding:0 0 56px}
+    .more-box{padding:20px}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -179,7 +187,7 @@
         <p class="label">For SaaS teams running on HubSpot</p>
         <h1 id="hero-title">You shouldn't still be your company's HubSpot admin.</h1>
         <p class="pains">We built Alfie after watching a fast-growing SaaS team outgrow HubSpot: <strong>duplicate accounts, ownership fights, a forecast nobody trusted.</strong></p>
-        <p class="lede">We write your CRM rules with you: who owns which accounts, what a deal needs before it moves, how duplicates get handled. Then Alfie runs the repeatable upkeep in HubSpot. Every change is checked against your rules, and you sign off on what matters.</p>
+        <p class="lede">Alfie starts on the basics: clean data and required fields first, then routing and account ownership. You approve a set of standard rules, and from day one Alfie checks your HubSpot against them and proposes fixes. Every change is checked against your rules, and you sign off on what matters.</p>
         <div class="actions">
           <a class="btn btn-primary" href="#contact">Tell us what's breaking</a>
           <a class="btn btn-ghost" href="#who">Who it's for</a>
@@ -227,6 +235,15 @@
           <h3>An early RevOps hire</h3>
           <p>Alfie is your second pair of hands. You set the rules and Alfie runs them, instead of you making a second hire.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="more" id="complex" aria-labelledby="complex-title">
+    <div class="wrap">
+      <div class="more-box">
+        <h2 id="complex-title">More complicated processes?</h2>
+        <p>Some processes are custom or were never written down. We'll assess how they really run, design and document the fix with you, then Alfie runs it.</p>
       </div>
     </div>
   </section>
