@@ -51,6 +51,9 @@
   header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .wordmark{font-weight:700;font-size:28px;letter-spacing:-0.04em;text-decoration:none;color:var(--ink);line-height:1}
   .navlink{font-weight:500;font-size:15px;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:1px}
+  /* Enlarge the tap area of small links to 44px tall without changing how they look */
+  a.wordmark,.navlink,footer a{position:relative}
+  a.wordmark::after,.navlink::after,footer a::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;
     border-radius:999px;font-family:inherit;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;transition:background .15s}
@@ -119,6 +122,8 @@
   .cf-turnstile{position:relative;z-index:0;width:300px;max-width:100%;min-height:65px;line-height:0}
   .cf-turnstile::before{content:"Verification check loads here";position:absolute;top:0;left:0;right:0;height:65px;z-index:-1;line-height:1.4;display:grid;place-items:center;
     border:1.5px dashed var(--input-border);border-radius:6px;background:var(--soft);font-size:13px;color:var(--muted)}
+  .cf-turnstile[data-size="compact"]{width:150px;min-height:140px}
+  .cf-turnstile[data-size="compact"]::before{height:140px;padding:0 10px;text-align:center}
 
   .form .btn{align-self:flex-start;cursor:pointer;min-width:140px}
   .small{margin:0;font-size:13px;color:var(--muted)}
@@ -151,6 +156,7 @@
     section.cta .wrap{padding:0 12px}
     .cta-box{padding:28px 16px}
     .form-card{padding:16px}
+    .field textarea{min-height:150px}
     section.who{padding:56px 0}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -317,7 +323,7 @@
     tsEl.setAttribute('data-expired-callback', 'alfieTurnstileExpired');
     tsEl.setAttribute('data-error-callback', 'alfieTurnstileError');
     tsEl.setAttribute('data-action', 'contact');
-    if (tsEl.parentNode.clientWidth < 300) tsEl.setAttribute('data-size', 'flexible');
+    if (tsEl.parentNode.clientWidth < 300) tsEl.setAttribute('data-size', 'compact');
     var s = document.createElement('script');
     s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
     s.async = true;

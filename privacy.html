@@ -28,6 +28,9 @@
   header{padding:22px 0}
   .wordmark{font-weight:700;font-size:28px;letter-spacing:-0.04em;text-decoration:none;color:var(--ink);line-height:1}
   main{padding:32px 0 72px}
+  /* Enlarge the tap area of small links to 44px tall without changing how they look */
+  a.wordmark,footer a{position:relative}
+  a.wordmark::after,footer a::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
   h1{font-size:clamp(32px,4.4vw,44px);line-height:1.1;letter-spacing:-0.03em;margin:0 0 12px}
   h2{font-size:20px;letter-spacing:-0.01em;margin:36px 0 8px}
   p,ul{margin:0 0 14px}
