@@ -77,8 +77,8 @@
   .wordmark{font-weight:700;font-size:28px;letter-spacing:-0.04em;text-decoration:none;color:var(--ink);line-height:1}
   .navlink{font-weight:500;font-size:15px;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:1px}
   /* Enlarge the tap area of small links to 44px tall without changing how they look */
-  a.wordmark,.navlink,footer a{position:relative}
-  a.wordmark::after,.navlink::after,footer a::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
+  .navlink,footer a{position:relative}
+  .navlink::after,footer a::after{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;
     border-radius:999px;font-family:inherit;font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;transition:background .15s}
@@ -158,6 +158,8 @@
 
   .form .btn{align-self:flex-start;cursor:pointer;min-width:140px}
   .small{margin:0;font-size:13px;color:var(--muted)}
+  .noscript-line{margin:0;font-size:14px;color:var(--body)}
+  .noscript-line a{color:var(--ink);font-weight:500}
   .small a{color:var(--muted)}
   .form-status{margin:0;font-size:14px}
   .form-status:empty{display:none}
@@ -196,7 +198,6 @@
   }
   /* Motion: gated on .motion (JS on, no reduced-motion); content stays visible without it */
   .motion .queue li{position:relative;transition:opacity .45s ease,transform .45s ease}
-  .motion .queue.run li:not(.in){opacity:0;transform:translateY(8px)}
   .motion .queue li::after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:2px;background:var(--ink);opacity:.35;transform:scaleX(0);transform-origin:left}
   .motion .queue li.scan::after{transform:scaleX(1);transition:transform var(--d,1.1s) linear}
   .motion .queue li.ok::after{opacity:0;transform:scaleX(1);transition:opacity .4s}
@@ -208,8 +209,11 @@
   @keyframes pulse{50%{opacity:.25}}
   .motion .flow .n{position:relative}
   .motion .flow .n::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ink);opacity:.14;transform:scale(0);transition:transform .4s,opacity .4s}
-  .motion .flow li{opacity:.45;transition:opacity .4s}
-  .motion .flow li.lit{opacity:1}
+  /* Unlit steps stay readable (muted #5B6E6F on white = 5.4:1); lighting up switches text to ink and the number to accent weight */
+  .motion .flow li{color:var(--muted);transition:color .4s}
+  .motion .flow li .n{color:var(--muted);transition:color .4s,font-weight .4s}
+  .motion .flow li.lit{color:var(--ink)}
+  .motion .flow li.lit .n{color:var(--accent-text);font-weight:600}
   .motion .flow li.lit .n::before{transform:scale(1)}
   .motion .flow li.now .n::before{opacity:.32}
   .motion .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
@@ -259,6 +263,15 @@
   /* 44px tap area for the inline privacy link, without changing how it looks */
   .small a{position:relative;white-space:nowrap}
   .small a::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:44px;transform:translateY(-50%)}
+  /* Pause/play for the hero animation (only shown when motion runs) */
+  .q-toggle{display:inline-grid;place-items:center;width:28px;height:28px;margin:-6px -6px -6px 10px;padding:0;border:1px solid var(--input-border);border-radius:6px;background:#fff;color:var(--ink);cursor:pointer}
+  .q-toggle:hover{background:var(--soft)}
+  /* Home link: 44x44 minimum tap target via padding; negative margins cancel it so nothing moves */
+  header a.wordmark{padding:10.75px 0;margin:-10.75px 0;min-width:44px}
+  /* Mobile polish: status chips at least 12px; placeholders read as example text (lighter, italic, still 4.57:1 on white) */
+  .status{font-size:12px}
+  :root{--placeholder:#687979}
+  .field input::placeholder,.field textarea::placeholder{color:var(--placeholder);font-style:italic;opacity:1}
 </style>
 </head>
 <body>
@@ -352,7 +365,7 @@
           <p class="new">We're new, so we're working with a small first group of teams.</p>
         </div>
         <div class="form-card">
-          <form class="form" id="contact-form" novalidate aria-labelledby="cta-title" aria-describedby="privacy-line">
+          <form class="form" id="contact-form" method="post" novalidate aria-labelledby="cta-title" aria-describedby="privacy-line">
             <div class="field">
               <label for="f-name">Name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jordan Lee" maxlength="200" required aria-describedby="e-name">
@@ -381,6 +394,7 @@
               <div class="cf-turnstile" id="turnstile"></div>
               <p class="ts-error" id="e-turnstile" aria-live="polite"></p>
             </div>
+            <noscript><p class="noscript-line">This form needs JavaScript. You can email <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> instead.</p></noscript>
             <button class="btn btn-primary" type="submit" id="submit-btn">Send</button>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             <p class="small" id="privacy-line">We only use your details to reply to you. <a href="/privacy.html">Privacy notice</a></p>
@@ -429,22 +443,59 @@
     var fields = ['name', 'email', 'company', 'message'];
     var token = '';
     var busy = false;
+    // A submit made before the check has finished is held here and sent from
+    // the success callback, so the visitor only has to click Send once.
+    var pending = false, pendingTimer = null;
+    var tsFailed = false; // the check's script could not load (e.g. blocked)
 
-    window.alfieTurnstileOk = function (t) { token = t; tsErr.textContent = ''; };
+    window.alfieTurnstileOk = function (t) {
+      token = t;
+      tsErr.textContent = '';
+      if (pending) { pending = false; clearTimeout(pendingTimer); send(t); }
+    };
     window.alfieTurnstileExpired = function () { token = ''; };
-    window.alfieTurnstileError = function () { token = ''; };
+    window.alfieTurnstileError = function () { token = ''; cancelPending(MSG.turnstile); };
+    window.alfieTurnstileTimeout = function () {
+      token = '';
+      try { if (window.turnstile) window.turnstile.reset(tsEl); } catch (e) { /* widget not ready */ }
+      cancelPending(MSG.turnstile);
+    };
 
     tsEl.setAttribute('data-sitekey', TURNSTILE_SITE_KEY);
     tsEl.setAttribute('data-callback', 'alfieTurnstileOk');
     tsEl.setAttribute('data-expired-callback', 'alfieTurnstileExpired');
     tsEl.setAttribute('data-error-callback', 'alfieTurnstileError');
+    tsEl.setAttribute('data-timeout-callback', 'alfieTurnstileTimeout');
     tsEl.setAttribute('data-action', 'contact');
     if (tsEl.parentNode.clientWidth < 300) tsEl.setAttribute('data-size', 'compact');
-    var s = document.createElement('script');
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-    s.async = true;
-    s.defer = true;
-    document.head.appendChild(s);
+    // Load Turnstile only when the contact section nears the viewport, or on the
+    // first interaction with the form, whichever comes first. No idle/timer fallback.
+    var tsLoaded = false, tsIO = null;
+    function loadTurnstile() {
+      if (tsLoaded) return;
+      tsLoaded = true;
+      if (tsIO) { tsIO.disconnect(); tsIO = null; }
+      ['focusin', 'pointerdown', 'touchstart', 'keydown', 'input'].forEach(function (t) { form.removeEventListener(t, loadTurnstile, true); });
+      var s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      s.async = true;
+      s.defer = true;
+      s.onerror = function () {
+        tsFailed = true;
+        if (pending) cancelPending(); // nothing was sent
+        setStatus(MSG.error, 'error'); // shows the ben@workwithalfie.com fallback
+      };
+      document.head.appendChild(s);
+    }
+    ['focusin', 'pointerdown', 'touchstart', 'keydown', 'input'].forEach(function (t) { form.addEventListener(t, loadTurnstile, { capture: true, passive: true }); });
+    if ('IntersectionObserver' in window) {
+      tsIO = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) loadTurnstile();
+      }, { rootMargin: '200px 0px' });
+      tsIO.observe(document.getElementById('contact'));
+    } else {
+      loadTurnstile();
+    }
 
     function resetTurnstile() {
       token = '';
@@ -458,6 +509,20 @@
     function setStatus(text, kind) {
       statusEl.textContent = text || '';
       statusEl.className = 'form-status' + (kind ? ' is-' + kind : '');
+    }
+    function setSending(on) {
+      busy = on;
+      btn.disabled = on;
+      btn.textContent = on ? MSG.sending : 'Send';
+      if (on) { setStatus(MSG.sending); statusEl.classList.add('sr-only'); } // screen readers only; button shows Sending…
+    }
+    function cancelPending(msg) {
+      if (!pending) return;
+      pending = false;
+      clearTimeout(pendingTimer);
+      setStatus('');
+      setSending(false);
+      if (msg) tsErr.textContent = msg;
     }
     function values() {
       var v = {};
@@ -491,16 +556,23 @@
       if (busy) return;
       setStatus('');
       tsErr.textContent = '';
+      var bad = validate(values());
+      if (bad.length) { form.elements[bad[0]].focus(); return; }
+      if (tsFailed) { setStatus(MSG.error, 'error'); return; }
+      var t = currentToken();
+      if (t) { send(t); return; }
+      // Check not finished yet: hold the submit and send it from the success callback.
+      pending = true;
+      setSending(true);
+      loadTurnstile();
+      pendingTimer = setTimeout(function () { cancelPending(MSG.turnstile); }, 30000);
+    });
+
+    function send(t) {
       var v = values();
       var bad = validate(v);
-      if (bad.length) { form.elements[bad[0]].focus(); return; }
-      var t = currentToken();
-      if (!t) { tsErr.textContent = MSG.turnstile; return; }
-
-      busy = true;
-      btn.disabled = true;
-      btn.textContent = MSG.sending;
-      setStatus(MSG.sending); statusEl.classList.add('sr-only'); // screen readers only; button shows Sending…
+      if (bad.length) { setStatus(''); setSending(false); form.elements[bad[0]].focus(); return; }
+      setSending(true);
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -536,11 +608,9 @@
         setStatus(MSG.error, 'error');
         resetTurnstile();
       }).then(function () {
-        busy = false;
-        btn.disabled = false;
-        btn.textContent = 'Send';
+        setSending(false);
       });
-    });
+    }
   })();
 </script>
 <script>
@@ -557,34 +627,38 @@
   // Flow strip
   var steps=[].slice.call(d.querySelectorAll('.flow li'));
   once([d.querySelector('.flow')],function(){steps.forEach(function(li,i){setTimeout(function(){steps.forEach(function(x){x.classList.remove('now');});li.classList.add('lit','now');if(i===steps.length-1)setTimeout(function(){li.classList.remove('now');},700);},250+i*450);});},{threshold:.6});
-  // Hero work queue loop
+  // Hero work queue: two passes, then it stops on the full state. Rows never empty out.
   var q=d.querySelector('.queue');if(!q)return;
-  var L={CHECKING:'s-check',DONE:'s-done','NEEDS APPROVAL':'s-approve',APPROVED:'s-done'};
-  var plan=[['DONE'],['NEEDS APPROVAL','APPROVED'],['DONE'],['DONE']];
-  var rows=[].slice.call(q.querySelectorAll('li')).map(function(li,i){
-    var w=d.createElement('span'),orig=li.querySelector('.status'),p={};w.className='pills';w.setAttribute('aria-hidden','true');
-    ['CHECKING'].concat(plan[i]||[]).forEach(function(t){var s=d.createElement('span');s.className='status '+L[t];s.textContent=t;w.appendChild(s);p[t]=s;});
-    orig.className+=' sr-only';li.appendChild(w);return{li:li,p:p};});
+  var L={CHECKING:'s-check',DONE:'s-done','NEEDS APPROVAL':'s-approve'};
+  var rows=[].slice.call(q.querySelectorAll('li')).map(function(li){
+    var orig=li.querySelector('.status'),fin=orig.textContent.trim(),w=d.createElement('span'),p={};
+    w.className='pills';w.setAttribute('aria-hidden','true');
+    (fin==='CHECKING'?['CHECKING']:['CHECKING',fin]).forEach(function(t){var s=d.createElement('span');s.className='status '+L[t];s.textContent=t;w.appendChild(s);p[t]=s;});
+    orig.className+=' sr-only';li.appendChild(w);return{li:li,p:p,fin:fin};});
   function pill(r,t){for(var k in r.p)r.p[k].classList.toggle('on',k===t);}
-  var T=[],on=false;
+  function full(){rows.forEach(function(r){r.li.classList.remove('scan','ok');pill(r,r.fin);});}
+  var T=[],running=false,userPaused=false,passes=2,vis=false;
+  var ICON_PAUSE='<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><rect x="2" y="1.5" width="2.6" height="9" rx=".6" fill="currentColor"/><rect x="7.4" y="1.5" width="2.6" height="9" rx=".6" fill="currentColor"/></svg>';
+  var ICON_PLAY='<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M3 1.6v8.8a.6.6 0 0 0 .9.5l7-4.4a.6.6 0 0 0 0-1L3.9 1.1a.6.6 0 0 0-.9.5z" fill="currentColor"/></svg>';
+  var tg=d.createElement('button');tg.type='button';tg.className='q-toggle';
+  q.querySelector('.queue-head').appendChild(tg);
+  function label(){var t=running?'Pause animation':'Play animation';tg.setAttribute('aria-label',t);tg.title=t;tg.innerHTML=running?ICON_PAUSE:ICON_PLAY;}
   function at(ms,f){T.push(setTimeout(f,ms));}
-  function arrive(r,ms,dur,t){at(ms,function(){r.li.className='in';r.li.style.setProperty('--d',dur+'ms');pill(r,'CHECKING');requestAnimationFrame(function(){r.li.classList.add('scan');});});
-    at(ms+dur+100,function(){r.li.classList.add('ok');pill(r,t);});}
-  function loop(){
-    rows.forEach(function(r){r.li.className='';pill(r,'CHECKING');});
-    arrive(rows[0],300,1100,'DONE');arrive(rows[1],1800,1100,'NEEDS APPROVAL');
-    arrive(rows[2],3300,4100,'DONE');arrive(rows[3],4800,1100,'DONE');
-    at(8300,function(){pill(rows[1],'APPROVED');});
-    at(10500,function(){rows.forEach(function(r){r.li.classList.remove('in');});});
-    at(11100,loop);
-  }
-  function stop(){T.forEach(clearTimeout);T=[];on=false;q.classList.remove('run');q.classList.add('paused');rows.forEach(function(r,i){r.li.className='';pill(r,i===1?'NEEDS APPROVAL':i===2?'CHECKING':'DONE');});}
-  function start(){if(on)return;on=true;q.classList.remove('paused');q.classList.add('run');loop();}
-  var vis=false;
-  function sync(){vis&&!d.hidden?start():stop();}
+  function step(r,ms,dur){
+    at(ms,function(){r.li.classList.remove('ok','scan');r.li.style.setProperty('--d',dur+'ms');pill(r,'CHECKING');void r.li.offsetWidth;r.li.classList.add('scan');});
+    at(ms+dur+100,function(){r.li.classList.add('ok');pill(r,r.fin);});}
+  function pass(){
+    step(rows[0],300,1100);step(rows[1],1800,1100);step(rows[2],3300,2200);step(rows[3],4800,1100);
+    at(7400,function(){passes--;if(passes>0)pass();else stop();});}
+  function start(){if(running||passes<=0)return;running=true;q.classList.remove('paused');label();pass();}
+  function stop(){T.forEach(clearTimeout);T=[];running=false;q.classList.add('paused');full();label();}
+  tg.addEventListener('click',function(){
+    if(running){userPaused=true;stop();}
+    else{userPaused=false;if(passes<=0)passes=2;start();}});
+  function sync(){if(vis&&!d.hidden){if(!userPaused)start();}else if(running)stop();}
+  q.classList.add('paused');full();label();
   new IntersectionObserver(function(es){vis=es[0].isIntersecting;sync();},{threshold:.2}).observe(q);
   d.addEventListener('visibilitychange',sync);
-  q.classList.add('run');
 })();
 </script>
 </body>
