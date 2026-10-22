@@ -158,6 +158,8 @@
 
   .form .btn{align-self:flex-start;cursor:pointer;min-width:140px}
   .small{margin:0;font-size:13px;color:var(--muted)}
+  .noscript-line{margin:0;font-size:14px;color:var(--body)}
+  .noscript-line a{color:var(--ink);font-weight:500}
   .small a{color:var(--muted)}
   .form-status{margin:0;font-size:14px}
   .form-status:empty{display:none}
@@ -363,7 +365,7 @@
           <p class="new">We're new, so we're working with a small first group of teams.</p>
         </div>
         <div class="form-card">
-          <form class="form" id="contact-form" novalidate aria-labelledby="cta-title" aria-describedby="privacy-line">
+          <form class="form" id="contact-form" method="post" novalidate aria-labelledby="cta-title" aria-describedby="privacy-line">
             <div class="field">
               <label for="f-name">Name</label>
               <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jordan Lee" maxlength="200" required aria-describedby="e-name">
@@ -392,6 +394,7 @@
               <div class="cf-turnstile" id="turnstile"></div>
               <p class="ts-error" id="e-turnstile" aria-live="polite"></p>
             </div>
+            <noscript><p class="noscript-line">This form needs JavaScript. You can email <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> instead.</p></noscript>
             <button class="btn btn-primary" type="submit" id="submit-btn">Send</button>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             <p class="small" id="privacy-line">We only use your details to reply to you. <a href="/privacy.html">Privacy notice</a></p>
@@ -440,15 +443,29 @@
     var fields = ['name', 'email', 'company', 'message'];
     var token = '';
     var busy = false;
+    // A submit made before the check has finished is held here and sent from
+    // the success callback, so the visitor only has to click Send once.
+    var pending = false, pendingTimer = null;
+    var tsFailed = false; // the check's script could not load (e.g. blocked)
 
-    window.alfieTurnstileOk = function (t) { token = t; tsErr.textContent = ''; };
+    window.alfieTurnstileOk = function (t) {
+      token = t;
+      tsErr.textContent = '';
+      if (pending) { pending = false; clearTimeout(pendingTimer); send(t); }
+    };
     window.alfieTurnstileExpired = function () { token = ''; };
-    window.alfieTurnstileError = function () { token = ''; };
+    window.alfieTurnstileError = function () { token = ''; cancelPending(MSG.turnstile); };
+    window.alfieTurnstileTimeout = function () {
+      token = '';
+      try { if (window.turnstile) window.turnstile.reset(tsEl); } catch (e) { /* widget not ready */ }
+      cancelPending(MSG.turnstile);
+    };
 
     tsEl.setAttribute('data-sitekey', TURNSTILE_SITE_KEY);
     tsEl.setAttribute('data-callback', 'alfieTurnstileOk');
     tsEl.setAttribute('data-expired-callback', 'alfieTurnstileExpired');
     tsEl.setAttribute('data-error-callback', 'alfieTurnstileError');
+    tsEl.setAttribute('data-timeout-callback', 'alfieTurnstileTimeout');
     tsEl.setAttribute('data-action', 'contact');
     if (tsEl.parentNode.clientWidth < 300) tsEl.setAttribute('data-size', 'compact');
     // Load Turnstile only when the contact section nears the viewport, or on the
@@ -463,13 +480,18 @@
       s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       s.async = true;
       s.defer = true;
+      s.onerror = function () {
+        tsFailed = true;
+        if (pending) cancelPending(); // nothing was sent
+        setStatus(MSG.error, 'error'); // shows the ben@workwithalfie.com fallback
+      };
       document.head.appendChild(s);
     }
     ['focusin', 'pointerdown', 'touchstart', 'keydown', 'input'].forEach(function (t) { form.addEventListener(t, loadTurnstile, { capture: true, passive: true }); });
     if ('IntersectionObserver' in window) {
       tsIO = new IntersectionObserver(function (es) {
         if (es.some(function (e) { return e.isIntersecting; })) loadTurnstile();
-      }, { rootMargin: '600px 0px' });
+      }, { rootMargin: '200px 0px' });
       tsIO.observe(document.getElementById('contact'));
     } else {
       loadTurnstile();
@@ -487,6 +509,20 @@
     function setStatus(text, kind) {
       statusEl.textContent = text || '';
       statusEl.className = 'form-status' + (kind ? ' is-' + kind : '');
+    }
+    function setSending(on) {
+      busy = on;
+      btn.disabled = on;
+      btn.textContent = on ? MSG.sending : 'Send';
+      if (on) { setStatus(MSG.sending); statusEl.classList.add('sr-only'); } // screen readers only; button shows Sending…
+    }
+    function cancelPending(msg) {
+      if (!pending) return;
+      pending = false;
+      clearTimeout(pendingTimer);
+      setStatus('');
+      setSending(false);
+      if (msg) tsErr.textContent = msg;
     }
     function values() {
       var v = {};
@@ -520,16 +556,23 @@
       if (busy) return;
       setStatus('');
       tsErr.textContent = '';
+      var bad = validate(values());
+      if (bad.length) { form.elements[bad[0]].focus(); return; }
+      if (tsFailed) { setStatus(MSG.error, 'error'); return; }
+      var t = currentToken();
+      if (t) { send(t); return; }
+      // Check not finished yet: hold the submit and send it from the success callback.
+      pending = true;
+      setSending(true);
+      loadTurnstile();
+      pendingTimer = setTimeout(function () { cancelPending(MSG.turnstile); }, 30000);
+    });
+
+    function send(t) {
       var v = values();
       var bad = validate(v);
-      if (bad.length) { form.elements[bad[0]].focus(); return; }
-      var t = currentToken();
-      if (!t) { loadTurnstile(); tsErr.textContent = MSG.turnstile; return; }
-
-      busy = true;
-      btn.disabled = true;
-      btn.textContent = MSG.sending;
-      setStatus(MSG.sending); statusEl.classList.add('sr-only'); // screen readers only; button shows Sending…
+      if (bad.length) { setStatus(''); setSending(false); form.elements[bad[0]].focus(); return; }
+      setSending(true);
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -565,11 +608,9 @@
         setStatus(MSG.error, 'error');
         resetTurnstile();
       }).then(function () {
-        busy = false;
-        btn.disabled = false;
-        btn.textContent = 'Send';
+        setSending(false);
       });
-    });
+    }
   })();
 </script>
 <script>
