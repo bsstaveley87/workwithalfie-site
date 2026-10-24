@@ -7,7 +7,9 @@
 {%- assign ogd = page.og_description | default: page.description %}
 <title>{{ t }}</title>
 <meta name="description" content="{{ page.description }}">
-{%- if site.noindex_all or page.noindex %}
+{%- assign cat_empty = false %}
+{%- if page.category_slug %}{% assign cat_posts = site.posts | where: "category", page.category_slug %}{% if cat_posts.size == 0 %}{% assign cat_empty = true %}{% endif %}{% endif %}
+{%- if site.noindex_all or page.noindex or cat_empty %}
 <meta name="robots" content="noindex">
 {%- endif %}
 <link rel="canonical" href="{{ canon }}">
@@ -44,6 +46,7 @@
 {% include jsonld.html %}
 <script src="/assets/config.js?v={{ site.asset_version }}" defer></script>
 <script src="/assets/site.js?v={{ site.asset_version }}" defer></script>
+<script src="/assets/motion.js?v={{ site.asset_version }}" defer></script>
 {%- for s in page.scripts %}
 <script src="/assets/{{ s }}?v={{ site.asset_version }}" defer></script>
 {%- endfor %}

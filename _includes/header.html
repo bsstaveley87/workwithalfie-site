@@ -9,9 +9,9 @@
         {%- for l in site.data.nav.main_before %}
         <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
         {%- endfor %}
-        <li class="dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-addons">Add-ons {{ chev }}</button><span class="dd-label" aria-hidden="true">Add-ons</span>
-          <ul class="dd-menu" id="dd-addons" aria-label="Add-ons">
-            {%- for l in site.data.nav.addons %}
+        <li class="dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-product">Product {{ chev }}</button><span class="dd-label" aria-hidden="true">Product</span>
+          <ul class="dd-menu" id="dd-product" aria-label="Product">
+            {%- for l in site.data.nav.product %}
             <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}><span class="dd-t">{{ l.title }}</span><span class="dd-d">{{ l.desc }}</span></a></li>
             {%- endfor %}
           </ul></li>
