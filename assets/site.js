@@ -21,34 +21,35 @@
     if (external) a.setAttribute('rel', 'noopener');
   });
 
-  // Mobile menu
-  var toggle = d.querySelector('.nav-toggle');
-  var nav = d.getElementById('site-nav');
-  function setMenu(open) {
-    if (!toggle) return;
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    nav.classList.toggle('open', open);
-  }
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
-    d.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
+  // Header menus are <details> elements, so they open and close without JS. This adds:
+  // Escape to close (focus back on the summary), outside click and focus-out closing,
+  // one dropdown at a time, scroll lock while the mobile menu is open, and closing the mobile
+  // menu when the window grows past the mobile breakpoint.
+  var menus = [].slice.call(d.querySelectorAll('header .dd-details, header .menu'));
+  var menu = d.getElementById('menu');
+  function close(m, focus) { if (!m.open) return; m.open = false; if (focus) m.querySelector('summary').focus(); }
+  menus.forEach(function (m) {
+    m.addEventListener('toggle', function () {
+      if (m.open) menus.forEach(function (o) { if (o !== m && !o.contains(m)) close(o); });
+      if (m === menu) d.documentElement.classList.toggle('menu-open', m.open);
     });
-    var mq = window.matchMedia('(min-width: 1101px)');
-    var onMq = function () { if (mq.matches) setMenu(false); };
-    if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
-  }
-
-  // Product dropdown (desktop). On mobile the same list shows as a group.
-  [].forEach.call(d.querySelectorAll('.dd'), function (dd) {
-    var btn = dd.querySelector('.dd-btn');
-    if (!btn) return;
-    function setDD(open) { btn.setAttribute('aria-expanded', open ? 'true' : 'false'); dd.classList.toggle('open', open); }
-    btn.addEventListener('click', function () { setDD(btn.getAttribute('aria-expanded') !== 'true'); });
-    dd.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { e.stopPropagation(); setDD(false); btn.focus(); }
+    m.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !m.open) return;
+      e.stopPropagation(); close(m, true);
     });
-    dd.addEventListener('focusout', function (e) { if (!dd.contains(e.relatedTarget)) setDD(false); });
-    d.addEventListener('click', function (e) { if (!dd.contains(e.target)) setDD(false); });
+    if (m.classList.contains('dd-details')) m.addEventListener('focusout', function (e) { if (e.relatedTarget && !m.contains(e.relatedTarget)) close(m); });
   });
+  // FAQ contents links: open the targeted question (the link still jumps to it without JS).
+  var openHash = function () {
+    var id = location.hash ? decodeURIComponent(location.hash.slice(1)) : '';
+    var t = id && d.getElementById(id);
+    if (t && t.tagName === 'DETAILS') t.open = true;
+  };
+  openHash();
+  window.addEventListener('hashchange', openHash);
+
+  d.addEventListener('click', function (e) { menus.forEach(function (m) { if (!m.contains(e.target)) close(m); }); });
+  var mq = window.matchMedia('(min-width: 1081px)');
+  var onMq = function () { if (mq.matches && menu) close(menu); };
+  if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
 })();

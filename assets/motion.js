@@ -16,11 +16,11 @@ function count(el){var to=+el.textContent,n=el.textContent.length,from=Math.pow(
  if(to>from){el.textContent=from;requestAnimationFrame(f);}}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in','play');
  [].forEach.call(el.querySelectorAll('[data-count]'),count);
- setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay='';},1200);});},{rootMargin:'0px 0px -6% 0px'});
+ setTimeout(function(){el.classList.remove('rv','in');},1200);});},{rootMargin:'0px 0px -6% 0px'});
 var vh=w.innerHeight;
 [].forEach.call(d.querySelectorAll('.sec .label,.sec h2,.sec .intro-text,.card,.post-card,.steps>li,.final,.slack,.doc,.digest'),function(el){
  if(el.closest('.hero')||el.getBoundingClientRect().top<vh)return;
  var p=el.parentNode,i=[].indexOf.call(p.children,el);
- if(/card/.test(el.className)||el.parentNode.classList.contains('steps'))el.style.transitionDelay=Math.min(i,4)*70+'ms';
+ if(/card/.test(el.className)||p.classList.contains('steps'))el.classList.add('d'+Math.min(i,4));
  el.classList.add('rv');io.observe(el);});
 })();
