@@ -64,6 +64,7 @@ So you can edit `book_call.url` and rebuild. For an emergency swap without a reb
 ## Blog posts and drafts
 
 - Published posts go in `_posts/YYYY-MM-DD-<slug>.md`. A post's front matter needs: title, meta_title, description, category (one of the 5 slugs in `_data/nav.yml`), tags, summary, and `faq: [{q, a}]`.
+- Empty blog categories: each page in `blog/category/` has `sitemap: false` in its front matter while it has no posts (noindex is automatic). When a category gets its first published post, delete that `sitemap: false` line from its category page so it rejoins the sitemap.
 - Drafts live in `_drafts/`, which is gitignored per ADR-0002. They never reach the public repo, the built site, the RSS feed or the sitemap. Use `--drafts` to see them locally.
 
 ## Preview vs live
