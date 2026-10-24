@@ -1,18 +1,18 @@
-# global.nav (brief section 2): Core features · How it works · Add-ons (dropdown) · Blog · About · Book a call
-main_before:
-  - { url: /features/, title: Core features }
-  - { url: /how-it-works/, title: How it works }
-addons:
-  - { url: /forecastai/, title: ForecastAI, desc: Automated forecasting }
+# global.nav (CMO decision 2026-10-24): Product (dropdown) · How it works · Blog · About · Book a call
+main_before: []
+product:
+  - { url: /features/, title: Features, desc: Core Alfie }
+  - { url: /forecastai/, title: ForecastAI, desc: Weekly leadership forecast }
   - { url: /enrichai/, title: EnrichAI, desc: "Contacts, accounts and ad audiences" }
   - { url: /services/, title: Services, desc: "Define, document and run your processes" }
 main_after:
+  - { url: /how-it-works/, title: How it works }
   - { url: /blog/, title: Blog }
   - { url: /about/, title: About }
 footer:
   - title: Product
     links:
-      - { url: /features/, title: Core features }
+      - { url: /features/, title: Features }
       - { url: /how-it-works/, title: How it works }
       - { url: /security/, title: Security }
       - { url: /forecastai/, title: ForecastAI }
@@ -29,8 +29,6 @@ footer:
   - title: Legal
     links:
       - { url: /privacy, title: Privacy }
-      # Terms: held back until Ben gives the legal entity name and governing-law state. Then add:
-      # - { url: /terms/, title: Terms }
 categories:
   - { slug: clean-data, name: Clean data }
   - { slug: routing-ownership, name: Routing and ownership }
