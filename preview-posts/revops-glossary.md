@@ -96,9 +96,6 @@ A defined slice of the market, usually by geography, assigned to a rep or team.
 **Segment.**
 A group of accounts sorted by a shared trait, such as company size, industry or plan, often used to decide who owns them.
 
-**Owner cap.**
-The most named accounts one rep is allowed to own at a time, so books stay workable and fair.
-
 **Round robin.**
 A way of assigning new records by rotating through a list of reps in turn.
 
