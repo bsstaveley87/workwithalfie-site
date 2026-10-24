@@ -14,7 +14,7 @@ email: ben@workwithalfie.com
 noindex_all: false
 
 # Cache-busting version for /assets/*.css and *.js. Bump when they change.
-asset_version: "20261024"
+asset_version: "20261024b"
 
 permalink: /blog/:slug/
 paginate: 10
@@ -60,3 +60,20 @@ exclude:
 book_call:
   url: /book/
   label: Book a call
+
+# Entity facts for structured data and llms.txt (SEO/AEO review v1). Only true, published facts.
+entity:
+  definition: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve."   # C1 (revised), used verbatim on Home, About, /faq, llms.txt
+  description: "Alfie (workwithalfie.com) is a HubSpot RevOps service for growing SaaS teams. Not affiliated with HubSpot."   # short form (CMO-approved for meta and JSON-LD)
+  disambiguation: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve."
+  llms_intro: "Alfie (workwithalfie.com) works with growing SaaS companies that run on HubSpot and use Slack. Core Alfie handles clean records, account ownership, record updates, and parent and child companies, on standard rules the customer approves. ForecastAI, EnrichAI and Services are optional extras for Alfie customers. Alfie is not affiliated with or endorsed by HubSpot or Slack."
+  audience: "Growing SaaS companies that run on HubSpot"
+  knows_about: ["HubSpot", "Revenue operations", "CRM data quality", "Duplicate records", "Lead routing", "Account ownership", "Rules of engagement", "Sales forecasting"]
+  x_handle: ""                # Ben to supply, e.g. the X handle. Empty = omitted.
+  same_as: []                 # Ben to supply, e.g. the LinkedIn company page URL. Never guess.
+  founder:
+    public: true              # Ben, Oct 24 (B2): "Founded by Ben Staveley" on About, no other bio claims
+    name: "Ben Staveley"
+    job_title: "Founder and CEO"
+    image: ""                 # e.g. /assets/ben-staveley.jpg once the photo is approved
+    same_as: ["https://www.linkedin.com/in/ben-staveley"]   # Ben's LinkedIn (CMO 2:49 PM). Empty = link hidden

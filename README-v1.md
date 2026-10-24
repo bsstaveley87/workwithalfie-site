@@ -43,7 +43,7 @@ Files with no front matter are copied through unchanged: CNAME, robots.txt, icon
 | /llms.txt | llms.txt |
 
 The FAQ text lives once, in `_data/faq.yml`. The visible answers and the FAQPage JSON-LD on each page are both built from it.
-The nav and footer are in `_data/nav.yml`, and the shared styles are in `assets/site.css`.
+The nav and footer are in `_data/nav.yml`, and the shared styles are in `assets/alfie.css` (media queries at 1080px and 640px).
 Restyling is done through the CSS variables in section 1 of that file.
 
 ## Swapping the "Book a call" target
@@ -81,7 +81,7 @@ So you can edit `book_call.url` and rebuild. For an emergency swap without a reb
 ## Motion (spec v1)
 
 - **Files.** `assets/motion.js` runs on every page (about 2.3 KB, no libraries): section reveals, nav-on-scroll, the How it works timeline fill, the ForecastAI count-up and the blog reading-progress bar. `assets/home.js` covers the hero work queue (with its pause/play control) and the flow strip.
-- **CSS.** Timing tokens are `--motion-fast`, `--motion-base`, `--motion-slow`, `--ease-out`, `--rise` and `--m` in section 2 of `site.css`. The motion rules are in section 17.
+- **CSS.** Timing tokens are `--motion-fast`, `--motion-base`, `--motion-slow`, `--ease-out`, `--rise` and `--m` in section 2 of `alfie.css`. The motion rules are in section 18.
 - **The static HTML and CSS are the final state.** Hidden-then-reveal states only apply under `html.motion`, which the scripts add when JS runs and reduced motion is off. They also only apply to elements below the fold at load.
 - **Reduced motion.** `prefers-reduced-motion: reduce` turns off every transition and animation and shows the end states.
 - **Rules.** Only `transform` and `opacity` animate. The pause control's space is reserved in CSS, so CLS stays 0.

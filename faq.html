@@ -1,17 +1,19 @@
 ---
 layout: default
 permalink: /faq/
-title: "FAQ · Alfie"
-description: "Answers on how Alfie works with HubSpot and Slack: rules, approvals, access, data, pricing structure and what happens on day one."
+title: "Alfie FAQ: HubSpot rules, approvals, data and pricing"
+description: "Straight answers on Alfie for HubSpot: what it does on day one, what needs approval, who owns the rules, what access it needs and how pricing works."
 schema: WebPage
 crumb: FAQ
-faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, how_q-day-one, faq_approval, faq_owns-rules, security_q-overwrite, faq_data, faq_where, security_q-slack, security_q-leave, faq_pricing]
+faq_ids: [faq_what, faq_revops-hire, faq_agency, faq_hubspot, faq_salesforce, faq_no-rules, faq_experience, how_q-day-one, faq_approval, faq_owns-rules, security_q-overwrite, faq_workflows, faq_duplicates, faq_routing, faq_data, faq_where, security_q-slack, security_q-leave, faq_pricing, faq_forecastai]
 groups:
-  - { title: Getting started, ids: [faq_hubspot, faq_salesforce, faq_no-rules, how_q-day-one] }
-  - { title: How changes work, ids: [faq_approval, faq_owns-rules, security_q-overwrite] }
+  - { title: Getting started, ids: [faq_what, faq_revops-hire, faq_agency, faq_hubspot, faq_salesforce, faq_no-rules, faq_experience, how_q-day-one] }
+  - { title: How changes work, ids: [faq_approval, faq_owns-rules, security_q-overwrite, faq_workflows, faq_duplicates, faq_routing] }
   - { title: Access and data, ids: [faq_data, faq_where, security_q-slack, security_q-leave] }
-  - { title: Pricing, ids: [faq_pricing] }
-# Copy: v1-copy/faq.md (v0.6.1). IDs: faqpage.*, faq.*. One FAQPage JSON-LD covers every question.
+  - { title: Pricing, ids: [faq_pricing, faq_forecastai] }
+# Copy: v1-copy/faq.md (v0.6.1) + SEO/AEO review C4 (CMO-approved Oct 24). One FAQPage JSON-LD covers every question.
+# faq_ids must list every id in groups, in the same order (the JSON-LD mirrors the visible FAQ).
+faq_schema: true
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">FAQ</p>
@@ -19,6 +21,15 @@ groups:
 </div></section>
 
 <section class="sec alt" id="questions" aria-label="Questions"><div class="wrap">
+  <nav class="faq-toc" aria-labelledby="h1">
+    {%- for g in page.groups %}
+    <div><p class="faq-toc-h">{{ g.title }}</p><ul>
+      {%- for id in g.ids %}
+      <li><a href="#q-{{ id }}">{{ site.data.faq[id].q }}</a></li>
+      {%- endfor %}
+    </ul></div>
+    {%- endfor %}
+  </nav>
   {%- for g in page.groups %}
   <div class="faq-group"><h2 id="g{{ forloop.index }}">{{ g.title }}</h2>{% include faq.html ids=g.ids prefix="q-" %}</div>
   {%- endfor %}

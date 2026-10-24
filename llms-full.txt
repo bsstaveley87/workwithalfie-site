@@ -1,0 +1,35 @@
+---
+layout: null
+sitemap: false
+---
+# Alfie: full reference for LLMs and answer engines
+
+> {{ site.entity.definition | default: site.entity.description | default: site.description }}
+
+Source: {{ site.url }}/ · Updated {{ site.time | date: "%Y-%m-%d" }} · Contact: {{ site.email }} · Book a call: {{ site.book_call.url | absolute_url }}
+{% if site.entity.llms_intro and site.entity.llms_intro != "" %}
+{{ site.entity.llms_intro }}
+{% endif %}
+## Pages
+{% for u in site.data.llms.product %}{% assign p = site.pages | where: "url", u | first %}
+### {{ p.meta_title | default: p.title | split: " · " | first }}
+URL: {{ site.url }}{{ u }}
+{{ p.description }}
+{% endfor %}{% for u in site.data.llms.company %}{% assign p = site.pages | where: "url", u | first %}
+### {{ p.meta_title | default: p.title | split: " · " | first }}
+URL: {{ site.url }}{{ u }}
+{{ p.description }}
+{% endfor %}
+## Questions and answers
+{% for item in site.data.faq %}{% assign q = item[1] %}
+### {{ q.q }}
+{{ q.a | strip_html }}
+{% endfor %}{% if site.posts.size > 0 %}
+## Blog posts
+{% for post in site.posts %}
+### {{ post.title }}
+URL: {{ post.url | absolute_url }}
+{{ post.summary | default: post.description }}
+
+{{ post.content | strip_html | strip }}
+{% endfor %}{% endif %}

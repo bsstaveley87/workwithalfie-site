@@ -1,11 +1,11 @@
 ---
 layout: default
 permalink: /about/
-title: "About · Alfie"
+title: "About Alfie: HubSpot RevOps for growing SaaS teams"
 description: "Why we built Alfie: to help growing SaaS teams keep their HubSpot setup running on clear rules they own, starting with the basics."
 schema: AboutPage
 crumb: About
-# Copy: v1-copy/about.md. IDs: about.hero, .story, .beliefs, .final. Not built (gated): about.founder (bio).
+# Copy: v1-copy/about.md. IDs: about.hero, .story, .beliefs, .final. Founder line only (B2): name, title, LinkedIn. Full bio still gated.
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">About</p>
@@ -15,7 +15,17 @@ crumb: About
 
 <section class="sec alt" id="story" aria-labelledby="as-title"><div class="wrap">
   <h2 id="as-title">Why we built Alfie.</h2>
-  <p class="intro-text">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business. The rules for who owned which account, and what a deal needed before it moved, lived in one person's head. We wrote them down one problem at a time, then built software to check every change against them before it reached HubSpot. Alfie brings that approach to other growing teams: written rules you own, checked on every change, with a person signing off where it matters.</p>
+  <p class="intro-text">{{ site.entity.definition }} We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business. The rules for who owned which account, and what a deal needed before it moved, lived in one person's head. We wrote them down one problem at a time, then built software to check changes against them before they reached HubSpot. Alfie brings that approach to other growing teams: written rules you own, checked before anything changes, with a person signing off where it matters.</p>
+  {%- if site.entity.founder.public %}
+  <div class="founder">
+    <p class="founder-name">Founded by {{ site.entity.founder.name }}</p>
+    <p class="founder-title">{{ site.entity.founder.job_title }}</p>
+    {%- assign li = site.entity.founder.same_as | first %}
+    {%- if li and li != "" %}
+    <a class="textlink" href="{{ li }}" rel="me noopener">Connect on LinkedIn</a>
+    {%- endif %}
+  </div>
+  {%- endif %}
 </div></section>
 
 <section class="sec" id="beliefs" aria-labelledby="ab-title"><div class="wrap">
@@ -28,4 +38,4 @@ crumb: About
   </div>
 </div></section>
 
-{% include final.html %}
+{% include final.html extra='<p class="cta-links">See <a href="/how-it-works/">how Alfie works</a>, <a href="/features/">what core Alfie does</a> and <a href="/security/">how we handle your data</a>.</p>' %}

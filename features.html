@@ -1,17 +1,18 @@
 ---
 layout: default
 permalink: /features/
-title: "Core features · Alfie"
-description: "What core Alfie does in HubSpot: clean records, account ownership, record updates, parent and child companies, and the rules behind every change."
+title: "HubSpot data cleanup, routing and ownership · Alfie"
+description: "Alfie merges HubSpot duplicates once your admin approves, flags missing deal fields, links parent and child companies, and keeps account ownership on your rules."
 schema: WebPage
 crumb: Core features
 faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, faq_approval, faq_owns-rules, faq_data, faq_where, faq_pricing]
 # Copy: v1-copy/features.md (v0.6.1). IDs: features.hero, .capabilities, .control, .how-we-work, .where-it-runs, .faq, .final
+service: { name: "Alfie", type: "HubSpot data cleanup, routing and account ownership" }
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Core Alfie</p>
   <h1 id="h1">Everyday HubSpot upkeep, run by your rules.</h1>
-  <p class="lede">Core Alfie handles the CRM work that keeps coming back. It starts on standard rules you approve, and they grow with your team. Alfie applies them to every change, and asks a person when the rules say so.</p>
+  <p class="lede">Core Alfie handles the CRM work that keeps coming back. It starts on standard rules you approve, and they grow with your team. Alfie checks your records against them, proposes fixes, and asks a person when the rules say so.</p>
   <div class="actions">{% include cta.html %}</div>
 </div></section>
 
@@ -19,12 +20,12 @@ faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, faq_approval, faq_owns-rule
   <h2 id="cap-title">Five jobs, one set of rules.</h2>
   <ol class="steps">
     <li><span class="n" aria-hidden="true">01</span><h3>Clean records</h3><p>Duplicates found by rule and merged once your admin approves, fields standardized, and deals flagged when they reach a stage without the details your team agreed. The kept value in a merge is chosen by rule, not by guesswork.</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Account ownership</h3><p>Assign accounts by territory, segment, and owner caps. Reassignments that break a rule go to the right person for approval.</p></li>
+    <li><span class="n" aria-hidden="true">02</span><h3>Account ownership</h3><p>Assign accounts by territory or segment, on rules you set. Reassignments that break a rule go to the right person for approval.</p></li>
     <li><span class="n" aria-hidden="true">03</span><h3>Record updates</h3><p>Ask in Slack for a change to a contact, company or deal, one record at a time or as a pasted list. Alfie checks it against your rules before it reaches HubSpot.</p></li>
-    <li><span class="n" aria-hidden="true">04</span><h3>Parent and child companies</h3><p>Link subsidiaries and regional entities to their parent, using your domain and hierarchy rules. Alfie uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Those suggestions go through the same rule checks as every other change.</p></li>
-    <li><span class="n" aria-hidden="true">05</span><h3>Rules and approvals</h3><p>Your rules decide what's allowed, what's blocked, and who approves, and Alfie applies them to every change. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. To change a rule, tell us; we update it and send you the new version.</p></li>
+    <li><span class="n" aria-hidden="true">04</span><h3>Parent and child companies</h3><p>Link subsidiaries and regional entities to their parent, using your domain and hierarchy rules. Alfie uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Those suggestions go through the same rule checks as every other change Alfie proposes.</p></li>
+    <li><span class="n" aria-hidden="true">05</span><h3>Rules and approvals</h3><p>Your rules decide what's allowed, what gets flagged, and who approves, and Alfie applies them to every change it proposes. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. To change a rule, tell us; we update it and send you the new version.</p></li>
   </ol>
-  <p class="note">Enrichment (adding company or contact data from outside sources) is part of <a href="/enrichai/">EnrichAI</a>, not core Alfie.</p>
+  <p class="note">Enrichment (adding company or contact data from outside sources) is part of <a href="/enrichai/">EnrichAI</a>, not core Alfie. The weekly leadership forecast is <a href="/forecastai/">ForecastAI</a>, also an add-on.</p>
 </div></section>
 
 <section class="sec" id="control" aria-labelledby="ctl-title"><div class="wrap">
@@ -51,7 +52,7 @@ faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, faq_approval, faq_owns-rule
     <li><span class="n" aria-hidden="true">03</span><h3>Add the next process when you're ready</h3><p>When you're ready, we choose the next process with you from a shared list, agree its scope and how we'll judge it done, build it, and review it together. Your rules document updates as each one ships. Typical second process: routing and account ownership.</p></li>
     <li><span class="n" aria-hidden="true">04</span><h3>Services, when you need them</h3><p>If your processes are custom or were never defined, <a href="/services/">Services</a> takes them on: we work out how each one really runs today, design the fix with you, document the rules, then Alfie runs it.</p></li>
   </ol>
-  <div class="actions" style="margin-top:28px">{% include cta.html %}<a class="btn btn-ghost" href="/how-it-works/">How it works, step by step</a></div>
+  <div class="actions after-list">{% include cta.html %}<a class="btn btn-ghost" href="/how-it-works/">How it works, step by step</a></div>
 </div></section>
 
 <section class="sec" id="where-it-runs" aria-labelledby="where-title"><div class="wrap">
