@@ -18,7 +18,7 @@ crumb: Blog
   {%- if list.size > 0 %}
   <ul class="post-list">{% for post in list %}{% include post-card.html post=post %}{% endfor %}</ul>
   {%- else %}
-  <p class="intro-text">Nothing here yet. New posts arrive about once a week.</p>
+  <p class="intro-text">New posts are on the way.</p>
   {%- endif %}
   {%- if paginator.next_page or paginator.previous_page %}
   <nav class="pager" aria-label="More posts">
