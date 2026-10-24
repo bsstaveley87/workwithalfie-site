@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{%- comment -%} blog.post template (v1-copy/blog-post-template.md). {%- endcomment -%}
+{%- include post-meta.html post=page -%}
+<article class="sec" aria-labelledby="h1"><div class="wrap prose">
+  <nav class="crumbs" aria-label="Breadcrumb"><ol>
+    <li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li><a href="/blog/category/{{ page.category }}/">{{ cat_name }}</a></li>
+  </ol></nav>
+  <p class="label">{{ cat_name }}</p>
+  <h1 id="h1">{{ page.title }}</h1>
+  <p class="byline">By {{ page.author | default: "The Alfie team" }} · Published {{ page.date | date: "%b %-d, %Y" }} · Updated {{ page.last_modified_at | default: page.date | date: "%b %-d, %Y" }} · {{ mins }} min read</p>
+  <p class="summary">{{ page.summary }}</p>
+  {{ content }}
+  {%- if page.faq %}
+  <h2 id="questions-people-ask">Questions people ask</h2>
+  <div class="faq">
+    {%- for f in page.faq %}
+    <details><summary>{{ f.q }}</summary><div class="a">{{ f.a | markdownify }}</div></details>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+  <div class="final post-cta"><div><p>Want help keeping your HubSpot setup in step with your team? Book a 20-minute call.</p></div><div>{% include cta.html %}</div></div>
+  {%- assign related = site.posts | where: "category", page.category | where_exp: "p", "p.url != page.url" %}
+  {%- if related.size > 0 %}
+  <h2 id="related">Related posts</h2>
+  <ul>{% for p in related limit: 3 %}<li><a href="{{ p.url }}">{{ p.title }}</a></li>{% endfor %}</ul>
+  {%- endif %}
+  <p><a class="textlink" href="/blog/">All posts</a></p>
+</div></article>
