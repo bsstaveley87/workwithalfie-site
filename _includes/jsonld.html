@@ -1,23 +1,77 @@
-{%- comment -%} Structured data, one script block per type (brief section 6). {%- endcomment -%}
+{%- comment -%}
+  Structured data (SEO/AEO review v1). One @graph per page:
+  Organization + WebSite on every page, then the page node, plus Service / FAQPage / BreadcrumbList / BlogPosting where relevant.
+  Facts come only from _config.yml (entity) and page front matter. No Product, Offer, price or rating markup.
+{%- endcomment -%}
+{%- if page.url != "/404.html" -%}
 {%- assign canon = page.url | absolute_url -%}
-{%- if page.schema == 'home' -%}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"{{ site.url }}/#organization","name":"Alfie","url":"{{ site.url }}/","logo":"{{ site.url }}/icons/icon-512.png","email":"{{ site.email }}"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"{{ site.url }}/#website","name":"Alfie","url":"{{ site.url }}/","publisher":{"@id":"{{ site.url }}/#organization"}}</script>
-{%- elsif page.schema -%}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":{{ page.schema | jsonify }},"name":{{ page.meta_title | default: page.title | jsonify }},"description":{{ page.description | jsonify }},"url":{{ canon | jsonify }}{% if page.schema == 'Blog' %},"publisher":{"@type":"Organization","name":"Alfie","logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png"}}{% endif %}}</script>
+{%- assign org_id = site.url | append: "/#organization" -%}
+{%- assign site_id = site.url | append: "/#website" -%}
+{%- assign page_id = canon | append: "#webpage" -%}
+{%- assign ptype = page.schema | default: "WebPage" -%}
+{%- if page.schema == "home" -%}{%- assign ptype = "WebPage" -%}{%- endif -%}
+{%- if page.schema == "Blog" -%}{%- assign ptype = "CollectionPage" -%}{%- endif -%}
+{%- if page.faq_schema -%}{%- assign ptype = "FAQPage" -%}{%- endif -%}
+{%- assign lastmod = page.last_modified_at | default: page.date | default: site.time -%}
+{%- assign ogimg = page.og_image | default: "/assets/og/inner.png" -%}{%- if page.layout == "post" -%}{%- assign ogimg = page.og_image | default: "/assets/og/blog.png" -%}{%- endif -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"{{ org_id }}","name":"Alfie","url":"{{ site.url }}/",
+ "logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png","width":512,"height":512},
+ "image":"{{ site.url }}/og-image.png",
+ "email":"{{ site.email }}",
+ "description":{{ site.entity.description | default: site.description | jsonify }},
+ {%- if site.entity.disambiguation and site.entity.disambiguation != "" %}"disambiguatingDescription":{{ site.entity.disambiguation | jsonify }},{% endif %}
+ {%- if site.entity.same_as and site.entity.same_as.size > 0 %}"sameAs":{{ site.entity.same_as | jsonify }},{% endif %}
+ {%- if site.entity.founder.public %}"founder":{"@type":"Person","@id":"{{ site.url }}/about/#founder","name":{{ site.entity.founder.name | jsonify }}{% if site.entity.founder.same_as and site.entity.founder.same_as.size > 0 %},"sameAs":{{ site.entity.founder.same_as | jsonify }}{% endif %}},{% endif %}
+ "knowsAbout":{{ site.entity.knows_about | jsonify }},
+ "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"{{ site.email }}","url":"{{ site.book_call.url | absolute_url }}","availableLanguage":"en"}},
+{"@type":"WebSite","@id":"{{ site_id }}","name":"Alfie","url":"{{ site.url }}/","inLanguage":"en-US","publisher":{"@id":"{{ org_id }}"}},
+{"@type":{{ ptype | jsonify }},"@id":"{{ page_id }}","url":{{ canon | jsonify }},
+ "name":{{ page.meta_title | default: page.title | jsonify }},
+ "description":{{ page.description | jsonify }},
+ "isPartOf":{"@id":"{{ site_id }}"},"about":{"@id":"{{ org_id }}"},"inLanguage":"en-US",
+ "dateModified":"{{ lastmod | date_to_xmlschema }}",
+ "primaryImageOfPage":{"@type":"ImageObject","url":"{{ site.url }}{{ ogimg }}","width":1200,"height":630}
+ {%- if page.service %},"mainEntity":{"@id":"{{ canon }}#service"}{% endif %}
+ {%- if page.schema == "Blog" %},"mainEntity":{"@id":"{{ site.url }}/blog/#blog"}{% endif %}
+ {%- if page.crumb or page.layout == "post" %},"breadcrumb":{"@id":"{{ canon }}#breadcrumb"}{% endif %}
+ {%- if page.faq_schema %},"mainEntity":[
+  {%- for id in page.faq_ids -%}{%- assign q = site.data.faq[id] -%}
+  {"@type":"Question","name":{{ q.q | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ q.a | strip_html | jsonify }}}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}]{% endif %}}
+{%- if page.service %},
+{"@type":"Service","@id":"{{ canon }}#service","name":{{ page.service.name | jsonify }},"serviceType":{{ page.service.type | jsonify }},
+ "description":{{ page.description | jsonify }},"url":{{ canon | jsonify }},"provider":{"@id":"{{ org_id }}"},
+ "audience":{"@type":"BusinessAudience","audienceType":{{ site.entity.audience | jsonify }}}
+ {%- if page.service.addon %},"isRelatedTo":{"@id":"{{ site.url }}/features/#service"}{% endif %}}
 {%- endif -%}
-{%- if page.layout == 'post' -%}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","dateModified":"{{ page.last_modified_at | default: page.date | date_to_xmlschema }}","author":{"@type":"Organization","name":"Alfie","url":"{{ site.url }}/"},"publisher":{"@type":"Organization","name":"Alfie","logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png"}},"mainEntityOfPage":{{ canon | jsonify }},"image":"{{ site.url }}/assets/og/blog.png"}</script>
+{%- if page.layout == "post" %}{%- assign cat_name = page.category -%}{%- for c in site.data.nav.categories -%}{%- if c.slug == page.category -%}{%- assign cat_name = c.name -%}{%- endif -%}{%- endfor -%},
+{"@type":"BlogPosting","@id":"{{ canon }}#article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},
+ "datePublished":"{{ page.date | date_to_xmlschema }}","dateModified":"{{ lastmod | date_to_xmlschema }}",
+ "mainEntityOfPage":{"@id":"{{ page_id }}"},"isPartOf":{"@id":"{{ site.url }}/blog/#blog"},
+ {%- assign kw = page.tags | join: ", " -%}{%- if page.primary_keyword -%}{%- assign kw = page.secondary_keywords | unshift: page.primary_keyword | join: ", " -%}{%- endif %}
+ "articleSection":{{ cat_name | jsonify }},"keywords":{{ kw | jsonify }},"inLanguage":"en-US",
+ "author":{% if page.author_person %}{"@id":"{{ site.url }}/about/#founder"}{% else %}{"@id":"{{ org_id }}"}{% endif %},
+ "publisher":{"@id":"{{ org_id }}"},"image":"{{ site.url }}{{ ogimg }}"}
+{%- comment -%} Post FAQs are shown on the page but not marked up: FAQPage is on /faq only (CMO 2:58 PM). {%- endcomment -%}
 {%- endif -%}
-{%- if page.faq_ids or page.faq -%}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{%- if page.faq -%}{%- for f in page.faq -%}{"@type":"Question","name":{{ f.q | strip_html | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ f.a | markdownify | strip_html | strip | jsonify }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}
-{%- else -%}{%- for id in page.faq_ids -%}{%- assign q = site.data.faq[id] -%}{"@type":"Question","name":{{ q.q | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ q.a | strip_html | jsonify }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}{%- endif -%}
-]}</script>
+{%- if page.schema == "Blog" %},
+{"@type":"Blog","@id":"{{ site.url }}/blog/#blog","name":"Alfie blog","url":"{{ site.url }}/blog/","publisher":{"@id":"{{ org_id }}"},"inLanguage":"en-US"}
 {%- endif -%}
-{%- if page.crumb -%}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"}
-{%- if page.layout == 'post' or page.crumb_blog -%},{"@type":"ListItem","position":2,"name":"Blog","item":"{{ site.url }}/blog/"},{"@type":"ListItem","position":3,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}
-{%- else -%},{"@type":"ListItem","position":2,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}{%- endif -%}
-]}</script>
+{%- if site.entity.founder.public and page.url == "/about/" %},
+{"@type":"Person","@id":"{{ site.url }}/about/#founder","name":{{ site.entity.founder.name | jsonify }},"jobTitle":{{ site.entity.founder.job_title | jsonify }},
+ "worksFor":{"@id":"{{ org_id }}"},"url":"{{ site.url }}/about/"
+ {%- if site.entity.founder.image and site.entity.founder.image != "" %},"image":"{{ site.url }}{{ site.entity.founder.image }}"{% endif %}
+ {%- if site.entity.founder.same_as and site.entity.founder.same_as.size > 0 %},"sameAs":{{ site.entity.founder.same_as | jsonify }}{% endif %}}
+{%- endif -%}
+{%- if page.layout == "post" %},
+{"@type":"BreadcrumbList","@id":"{{ canon }}#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"Blog","item":"{{ site.url }}/blog/"},{"@type":"ListItem","position":3,"name":{{ cat_name | jsonify }},"item":"{{ site.url }}/blog/category/{{ page.category }}/"},{"@type":"ListItem","position":4,"name":{{ page.title | jsonify }},"item":{{ canon | jsonify }}}]}
+{%- elsif page.crumb %},
+{"@type":"BreadcrumbList","@id":"{{ canon }}#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"}
+{%- if page.layout == "post" or page.crumb_blog -%},{"@type":"ListItem","position":2,"name":"Blog","item":"{{ site.url }}/blog/"},{"@type":"ListItem","position":3,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}
+{%- else -%},{"@type":"ListItem","position":2,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}{%- endif -%}]}
+{%- endif %}
+]}
+</script>
 {%- endif -%}

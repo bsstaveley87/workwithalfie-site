@@ -5,7 +5,7 @@
         <p class="foot-line">{{ site.description }}</p></div>
       <nav class="foot-cols" aria-label="Footer">
         {%- for col in site.data.nav.footer %}
-        <div><h2>{{ col.title }}</h2><ul>
+        <div><p class="foot-h">{{ col.title }}</p><ul>
           {%- for l in col.links %}
           <li>{% if l.cta %}<a href="{{ site.book_call.url }}" data-cta>{{ site.book_call.label }}</a>{% else %}<a href="{{ l.url }}">{{ l.title }}</a>{% endif %}</li>
           {%- endfor %}

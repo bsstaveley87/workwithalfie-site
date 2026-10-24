@@ -1,0 +1,7 @@
+{%- comment -%} Safe link to another post. Outputs <a> only if the target is built and either published
+(not preview_only) or the current page is itself preview-only; otherwise plain text. Params: url, text {%- endcomment -%}
+{%- assign pl_t = site.posts | where: "url", include.url | first -%}
+{%- unless pl_t -%}{%- assign pl_t = site.pages | where: "url", include.url | first -%}{%- endunless -%}
+{%- assign pl_ok = false -%}
+{%- if pl_t -%}{%- if pl_t.preview_only != true -%}{%- assign pl_ok = true -%}{%- elsif page.preview_only -%}{%- assign pl_ok = true -%}{%- endif -%}{%- endif -%}
+{%- if pl_ok -%}<a href="{{ include.url }}">{{ include.text }}</a>{%- else -%}{{ include.text }}{%- endif -%}

@@ -1,25 +1,43 @@
+{%- comment -%} Site header. Rendered on the server, so it works without JS:
+  - Product dropdown (desktop) is a <details>; site.js adds Escape, outside-click and focus-out closing.
+  - Mobile menu (≤1080px) is a second <details> with the same links; site.js adds Escape, outside click and scroll lock.
+  Only one of the two link lists is displayed at any width. {%- endcomment -%}
 {%- assign here = page.url -%}
-{%- capture chev -%}<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+{%- capture chev -%}<svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
 <header class="top">
-  <div class="wrap">
+  <div class="wrap nav">
     <a class="wordmark" href="/" aria-label="Alfie home">{% include wordmark.svg %}</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul class="nav-list">
-        {%- for l in site.data.nav.main_before %}
-        <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
-        {%- endfor %}
-        <li class="dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-product">Product {{ chev }}</button><span class="dd-label" aria-hidden="true">Product</span>
+        <li class="dd"><details class="dd-details"><summary class="dd-btn">Product {{ chev }}</summary>
           <ul class="dd-menu" id="dd-product" aria-label="Product">
             {%- for l in site.data.nav.product %}
             <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}><span class="dd-t">{{ l.title }}</span><span class="dd-d">{{ l.desc }}</span></a></li>
             {%- endfor %}
-          </ul></li>
+          </ul></details></li>
         {%- for l in site.data.nav.main_after %}
         <li><a href="{{ l.url }}"{% if here == l.url or l.url == '/blog/' and here contains '/blog/' %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
         {%- endfor %}
       </ul>
-      {% include cta.html class="btn btn-ghost nav-cta" %}
     </nav>
+    <div class="nav-right">
+      {% include cta.html class="btn btn-primary btn-sm nav-cta" %}
+      <details class="menu" id="menu">
+        <summary class="nav-toggle"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>Menu</summary>
+        <nav class="menu-panel" id="menu-panel" aria-label="Menu">
+          <details class="menu-group"><summary>Product {{ chev }}</summary>
+            <ul class="menu-sub">
+              {%- for l in site.data.nav.product %}
+              <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}><span class="dd-t">{{ l.title }}</span><span class="dd-d">{{ l.desc }}</span></a></li>
+              {%- endfor %}
+            </ul></details>
+          <ul class="menu-list">
+            {%- for l in site.data.nav.main_after %}
+            <li><a href="{{ l.url }}"{% if here == l.url or l.url == '/blog/' and here contains '/blog/' %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
+            {%- endfor %}
+          </ul>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>
