@@ -1,4 +1,4 @@
-/* Contact form: the live holding-page script, unchanged (endpoint, site key, field names, token, Turnstile lazy-load). */
+/* Contact form: the live holding-page script, unchanged (endpoint, site key, field names, token, lazy-loaded spam check). */
   const FORM_ENDPOINT = 'https://alfie-contact-form.workwithalfie.workers.dev';
   const TURNSTILE_SITE_KEY = '0x4AAAAAAFf_Ib3Xi9XIotm7';
 
@@ -48,7 +48,7 @@
     tsEl.setAttribute('data-timeout-callback', 'alfieTurnstileTimeout');
     tsEl.setAttribute('data-action', 'contact');
     if (tsEl.parentNode.clientWidth < 300) tsEl.setAttribute('data-size', 'compact');
-    // Load Turnstile only when the contact section nears the viewport, or on the
+    // Load the spam check only when the contact section nears the viewport, or on the
     // first interaction with the form, whichever comes first. No idle/timer fallback.
     var tsLoaded = false, tsIO = null;
     function loadTurnstile() {
