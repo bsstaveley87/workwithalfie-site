@@ -1,0 +1,25 @@
+{%- assign here = page.url -%}
+{%- capture chev -%}<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Alfie home">{% include wordmark.svg %}</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        {%- for l in site.data.nav.main_before %}
+        <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
+        {%- endfor %}
+        <li class="dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-addons">Add-ons {{ chev }}</button><span class="dd-label" aria-hidden="true">Add-ons</span>
+          <ul class="dd-menu" id="dd-addons" aria-label="Add-ons">
+            {%- for l in site.data.nav.addons %}
+            <li><a href="{{ l.url }}"{% if here == l.url %} aria-current="page"{% endif %}><span class="dd-t">{{ l.title }}</span><span class="dd-d">{{ l.desc }}</span></a></li>
+            {%- endfor %}
+          </ul></li>
+        {%- for l in site.data.nav.main_after %}
+        <li><a href="{{ l.url }}"{% if here == l.url or l.url == '/blog/' and here contains '/blog/' %} aria-current="page"{% endif %}>{{ l.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      {% include cta.html class="btn btn-ghost nav-cta" %}
+    </nav>
+  </div>
+</header>

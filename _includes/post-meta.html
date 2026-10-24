@@ -1,0 +1,6 @@
+{%- comment -%} Sets cat_name and mins for include.post {%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign cat_name = "" -%}
+{%- for c in site.data.nav.categories -%}{%- if c.slug == p.category -%}{%- assign cat_name = c.name -%}{%- endif -%}{%- endfor -%}
+{%- assign words = p.content | number_of_words -%}
+{%- assign mins = words | plus: 199 | divided_by: 200 -%}

@@ -1,0 +1,18 @@
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div><span class="wordmark" role="img" aria-label="Alfie">{% include wordmark.svg %}</span>
+        <p class="foot-line">{{ site.description }}</p></div>
+      <nav class="foot-cols" aria-label="Footer">
+        {%- for col in site.data.nav.footer %}
+        <div><h2>{{ col.title }}</h2><ul>
+          {%- for l in col.links %}
+          <li>{% if l.cta %}<a href="{{ site.book_call.url }}" data-cta>{{ site.book_call.label }}</a>{% else %}<a href="{{ l.url }}">{{ l.title }}</a>{% endif %}</li>
+          {%- endfor %}
+        </ul></div>
+        {%- endfor %}
+      </nav>
+    </div>
+    <p class="foot-small">&copy; 2026 Alfie. HubSpot and Slack are trademarks of their respective owners. Alfie is not affiliated with or endorsed by HubSpot or Slack.</p>
+  </div>
+</footer>

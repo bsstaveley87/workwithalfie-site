@@ -1,0 +1,7 @@
+{%- comment -%} Renders shared questions by id. Param: ids (array of _data/faq.yml keys), prefix (unique id prefix) {%- endcomment -%}
+<div class="faq">
+{%- for id in include.ids -%}
+{%- assign q = site.data.faq[id] -%}
+<details id="{{ include.prefix }}{{ id }}"><summary>{{ q.q }}</summary><div class="a"><p>{{ q.a }}</p></div></details>
+{%- endfor -%}
+</div>

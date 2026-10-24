@@ -1,0 +1,23 @@
+{%- comment -%} Structured data, one script block per type (brief section 6). {%- endcomment -%}
+{%- assign canon = page.url | absolute_url -%}
+{%- if page.schema == 'home' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"{{ site.url }}/#organization","name":"Alfie","url":"{{ site.url }}/","logo":"{{ site.url }}/icons/icon-512.png","email":"{{ site.email }}"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"{{ site.url }}/#website","name":"Alfie","url":"{{ site.url }}/","publisher":{"@id":"{{ site.url }}/#organization"}}</script>
+{%- elsif page.schema -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":{{ page.schema | jsonify }},"name":{{ page.meta_title | default: page.title | jsonify }},"description":{{ page.description | jsonify }},"url":{{ canon | jsonify }}{% if page.schema == 'Blog' %},"publisher":{"@type":"Organization","name":"Alfie","logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png"}}{% endif %}}</script>
+{%- endif -%}
+{%- if page.layout == 'post' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","dateModified":"{{ page.last_modified_at | default: page.date | date_to_xmlschema }}","author":{"@type":"Organization","name":"Alfie","url":"{{ site.url }}/"},"publisher":{"@type":"Organization","name":"Alfie","logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png"}},"mainEntityOfPage":{{ canon | jsonify }},"image":"{{ site.url }}/assets/og/blog.png"}</script>
+{%- endif -%}
+{%- if page.faq_ids or page.faq -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{%- if page.faq -%}{%- for f in page.faq -%}{"@type":"Question","name":{{ f.q | strip_html | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ f.a | markdownify | strip_html | strip | jsonify }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+{%- else -%}{%- for id in page.faq_ids -%}{%- assign q = site.data.faq[id] -%}{"@type":"Question","name":{{ q.q | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ q.a | strip_html | jsonify }}}}{% unless forloop.last %},{% endunless %}{%- endfor -%}{%- endif -%}
+]}</script>
+{%- endif -%}
+{%- if page.crumb -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"}
+{%- if page.layout == 'post' or page.crumb_blog -%},{"@type":"ListItem","position":2,"name":"Blog","item":"{{ site.url }}/blog/"},{"@type":"ListItem","position":3,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}
+{%- else -%},{"@type":"ListItem","position":2,"name":{{ page.crumb | jsonify }},"item":{{ canon | jsonify }}}{%- endif -%}
+]}</script>
+{%- endif -%}
