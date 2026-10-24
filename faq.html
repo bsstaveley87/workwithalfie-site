@@ -1,0 +1,27 @@
+---
+layout: default
+permalink: /faq/
+title: "FAQ · Alfie"
+description: "Answers on how Alfie works with HubSpot and Slack: rules, approvals, access, data, pricing structure and what happens on day one."
+schema: WebPage
+crumb: FAQ
+faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, how_q-day-one, faq_approval, faq_owns-rules, security_q-overwrite, faq_data, faq_where, security_q-slack, security_q-leave, faq_pricing]
+groups:
+  - { title: Getting started, ids: [faq_hubspot, faq_salesforce, faq_no-rules, how_q-day-one] }
+  - { title: How changes work, ids: [faq_approval, faq_owns-rules, security_q-overwrite] }
+  - { title: Access and data, ids: [faq_data, faq_where, security_q-slack, security_q-leave] }
+  - { title: Pricing, ids: [faq_pricing] }
+# Copy: v1-copy/faq.md (v0.6.1). IDs: faqpage.*, faq.*. One FAQPage JSON-LD covers every question.
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">FAQ</p>
+  <h1 id="h1">Questions, answered.</h1>
+</div></section>
+
+<section class="sec alt" id="questions" aria-label="Questions"><div class="wrap">
+  {%- for g in page.groups %}
+  <div class="faq-group"><h2 id="g{{ forloop.index }}">{{ g.title }}</h2>{% include faq.html ids=g.ids prefix="q-" %}</div>
+  {%- endfor %}
+</div></section>
+
+{% include final.html id="final" body='Didn&#39;t find your question? Book a 20-minute call, or email <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a>.' %}

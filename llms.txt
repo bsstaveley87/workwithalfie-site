@@ -1,0 +1,14 @@
+---
+layout: null
+sitemap: false
+---
+# Alfie
+
+> Alfie checks the HubSpot basics for growing SaaS teams against rules you approve, proposes the fixes, and you keep sign-off on what matters.
+
+- [Home]({{ site.url }}/)
+- [Core features]({{ site.url }}/features/)
+- [How it works]({{ site.url }}/how-it-works/)
+- [Security]({{ site.url }}/security/)
+- [FAQ]({{ site.url }}/faq/)
+- [Blog]({{ site.url }}/blog/)

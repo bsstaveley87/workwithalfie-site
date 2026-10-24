@@ -1,0 +1,78 @@
+---
+layout: default
+permalink: /book/
+title: "Book a call · Alfie"
+description: "Book a 20-minute call with Alfie. Tell us how you run HubSpot today, and we'll show you where Alfie would start."
+schema: ContactPage
+crumb: Book a call
+turnstile: true
+scripts: [contact.js]
+# Copy: v1-copy/contact.md. IDs: book.hero, book.expect, home.origin, book.form. Not built (gated): book.embed.
+# The form markup, field names, Turnstile container and /assets/contact.js are the live holding page's, unchanged
+# (Worker endpoint, site key and the token field live in contact.js). Only change: privacy link /privacy.html -> /privacy.
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">Book a call</p>
+  <h1 id="h1">Let's see where Alfie would start.</h1>
+  <p class="lede">A 20-minute video call, scheduled in US Eastern time (ET). No preparation needed. Send us a few lines below and we'll reply within a day to find a time.</p>
+</div></section>
+
+<section class="sec alt" id="expect" aria-label="What to expect"><div class="wrap">
+  <div class="cards">
+    <article class="card"><p><strong>You tell us</strong> how your team uses HubSpot today and what keeps going wrong.</p></article>
+    <article class="card"><p><strong>We ask</strong> about ownership, required fields, and who approves what.</p></article>
+    <article class="card"><p><strong>You leave with</strong> where Alfie would start, which standard rules fit your team, whether any custom process is one for Services later, and whether Alfie is a fit.</p></article>
+  </div>
+  <p class="note">Alfie is a good fit if you're a growing SaaS team on HubSpot and it's run by a founder, by a sales, marketing or ops lead who inherited it, or by an early RevOps hire who needs a second pair of hands. If Salesforce is your CRM, we're probably not the right fit.</p>
+</div></section>
+
+<section class="sec cta" id="contact" aria-labelledby="cta-title">
+  <div class="wrap">
+    <p class="origin">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business.</p>
+    <div class="form-box">
+      <div class="intro">
+        <h2 id="cta-title">Tell us what's breaking in your HubSpot setup.</h2>
+        <p>A few lines is plenty. We'll reply within a day.</p>
+        <p class="new">We're new, so we're working with a small first group of teams.</p>
+        <p class="alt-contact">Prefer email? Write to <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> and we'll find a time.</p>
+      </div>
+        <div class="form-card">
+          <form class="form" id="contact-form" method="post" novalidate aria-labelledby="cta-title" aria-describedby="privacy-line">
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jordan Lee" maxlength="200" required aria-describedby="e-name">
+              <p class="field-error" id="e-name"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="jordan@yourcompany.com" maxlength="254" required aria-describedby="e-email">
+              <p class="field-error" id="e-email"></p>
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Your company" maxlength="200" required aria-describedby="e-company">
+              <p class="field-error" id="e-company"></p>
+            </div>
+            <div class="field">
+              <label for="f-message">What's breaking in your HubSpot setup?</label>
+              <textarea id="f-message" name="message" rows="4" maxlength="3000" placeholder="For example: duplicate companies, deals with no owner, or a forecast no one uses. Who runs HubSpot today?" required aria-describedby="e-message"></textarea>
+              <p class="field-error" id="e-message"></p>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Website</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="ts-wrap">
+              <div class="cf-turnstile" id="turnstile"></div>
+              <p class="ts-error" id="e-turnstile" aria-live="polite"></p>
+            </div>
+            <noscript><p class="noscript-line">This form needs JavaScript. You can email <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> instead.</p></noscript>
+            <button class="btn btn-primary" type="submit" id="submit-btn">Send</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <p class="small" id="privacy-line">We only use your details to reply to you. <a href="/privacy">Privacy notice</a></p>
+          </form>
+          <p class="success" id="form-success" tabindex="-1" hidden>Thanks. We've got it and we'll reply within a day.</p>
+        </div>
+    </div>
+  </div>
+</section>

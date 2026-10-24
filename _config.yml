@@ -1,0 +1,61 @@
+# Alfie site (workwithalfie.com). Built by GitHub Pages' own Jekyll in production,
+# and by `bundle exec jekyll build` (output _site) on the Cloudflare Pages preview.
+title: Alfie
+description: Alfie checks the HubSpot basics for growing SaaS teams against rules you approve, proposes the fixes, and you keep sign-off on what matters.
+url: https://workwithalfie.com
+baseurl: ""
+lang: en
+theme: null  # no GitHub Pages default theme (stops the primer assets/css/style.css being added)
+email: ben@workwithalfie.com
+
+# Preview switch: true puts <meta name="robots" content="noindex"> on every page.
+# Set to false only when Ben says go live. /terms (draft) and 404 stay noindex regardless.
+noindex_all: true
+
+# Cache-busting version for /assets/*.css and *.js. Bump when they change.
+asset_version: "20261024"
+
+permalink: /blog/:slug/
+paginate: 10
+paginate_path: /blog/page:num/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+feed:
+  path: blog/feed.xml
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+defaults:
+  - scope: { path: "", type: pages }
+    values: { last_modified_at: 2026-10-24 }   # sitemap lastmod; bump per page when it changes
+  - scope: { path: "privacy.html" }
+    values: { last_modified_at: 2026-10-22 }
+  - scope: { path: "", type: posts }
+    values: { layout: post, author: "The Alfie team" }
+
+exclude:
+  - README.md
+  - README-v1.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - _src
+  - node_modules
+  - tests
+  - screens
+  - "*.log"
+
+# THE single "Book a call" setting. Every CTA's href and label is built from this,
+# and /assets/config.js (window.ALFIE) is generated from it too.
+book_call:
+  url: /book/
+  label: Book a call
