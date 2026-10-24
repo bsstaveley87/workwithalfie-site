@@ -25,7 +25,7 @@ scripts: [home.js]
       <div class="queue-head">WORK QUEUE <span>Example data</span></div>
       <ol>
         <li><span class="job">Clean new contacts</span><span class="detail">Names, fields and lifecycle stage checked</span><span class="status s-done">DONE</span></li>
-        <li><span class="job">Assign Acme to Sarah</span><span class="detail">Territory passes. Over owner cap.</span><span class="status s-approve">NEEDS APPROVAL</span></li>
+        <li><span class="job">Assign Acme to Sarah</span><span class="detail">Territory passes. Over owner cap. <span class="chip">Approved by Dana (admin)</span></span><span class="status s-done w14">VERIFIED</span></li>
         <li><span class="job">Link Acme EU to its parent</span><span class="detail">Domain and hierarchy rules running</span><span class="status s-check">CHECKING</span></li>
         <li><span class="job">Merge duplicate companies</span><span class="detail">3 pairs found by rule, merged once the admin approved</span><span class="status s-done">DONE</span></li>
       </ol>
@@ -40,8 +40,9 @@ scripts: [home.js]
       <li><span class="n" aria-hidden="true">01</span>Request</li>
       <li><span class="n" aria-hidden="true">02</span>Rule check</li>
       <li><span class="n" aria-hidden="true">03</span>Approval if needed</li>
-      <li><span class="n" aria-hidden="true">04</span>Verified in HubSpot</li>
+      <li><span class="n" aria-hidden="true">04</span>Verified in HubSpot<span class="chk" aria-hidden="true"><svg viewBox="0 0 14 14" width="14" height="14" focusable="false"><path d="M2.5 7.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
     </ol>
+    <span class="flow-line" aria-hidden="true"></span>
     <p class="flow-link"><a href="/how-it-works/">How it works, step by step</a></p>
   </div>
 </nav>
@@ -52,7 +53,7 @@ scripts: [home.js]
     <h2 id="offer-title">Start with Alfie. Add what you need.</h2>
     <p class="intro-text">Core Alfie gets the basics running quickly, on standard rules you approve. Services and the two add-ons are there when you need more. They're for Alfie customers and priced separately.</p>
     <div class="cards c4">
-      <article class="card core"><span class="tag">CORE</span><h3>Alfie</h3><p>Clean records and required fields, routing and account ownership, record updates, parent and child companies, rules and approvals. Starts on standard rules you approve. Includes your rules-of-engagement document and one new process a month.</p><a class="more" href="/features/">Core features</a></article>
+      <article class="card core"><span class="tag">CORE</span><h3>Alfie</h3><p>Clean records and required fields, routing and account ownership, record updates, parent and child companies, rules and approvals. Starts on standard rules you approve. Includes your rules-of-engagement document. Add the next process when you're ready.</p><a class="more" href="/features/">Core features</a></article>
       <article class="card"><span class="tag">ADD-ON</span><h3>Services</h3><p>For processes that are custom or were never defined. We work out how they really run, design and document the fix with you, then Alfie runs it.</p><a class="more" href="/services/">About Services</a></article>
       <article class="card"><span class="tag">ADD-ON</span><h3>ForecastAI</h3><p>A weekly leadership forecast built from the activity logged in HubSpot. Read-only, and never shown to reps.</p><a class="more" href="/forecastai/">About ForecastAI</a></article>
       <article class="card"><span class="tag">ADD-ON</span><h3>EnrichAI</h3><p>Contacts, emails and phone numbers for your target accounts, new companies that fit your ICP, and ad audience lists kept current in HubSpot, all checked against your rules before anything is written.</p><a class="more" href="/enrichai/">About EnrichAI</a></article>
@@ -64,6 +65,7 @@ scripts: [home.js]
   <div class="wrap">
     <p class="label">Who it's for</p>
     <h2 id="who-title">Who runs your HubSpot today?</h2>
+    <p class="intro-text">If the answer is you, and you're also running the company, you shouldn't still be your company's HubSpot admin.</p>
     <div class="cards">
       <article class="card"><h3>The founder</h3><p>You've run HubSpot since the first deal, and it's still on your desk. Alfie takes it off your plate without a full-time hire, and you keep sign-off on what matters.</p></article>
       <article class="card"><h3>The person who inherited it</h3><p>A sales, marketing or ops lead who picked up HubSpot along the way. Alfie gives you written rules and does the upkeep, without a full-time hire.</p></article>
@@ -93,7 +95,7 @@ scripts: [home.js]
       <p>Sarah would own 41 accounts. Cap is 40.</p>
       <p>Rule 1.1: going over cap needs the sales lead. @Dana</p>
       <div class="fake-btns" aria-hidden="true"><span>Approve</span><span>Decline</span></div>
-      <p class="after">Approved by Dana. Acme assigned to Sarah in HubSpot.</p>
+      <p class="after"><span>Approved by Dana. Acme assigned to Sarah in HubSpot.</span><span class="rec" aria-hidden="true"><span class="pill wait">WAITING</span><span class="pill ok">VERIFIED</span></span></p>
     </figure>
   </div>
 </section>
@@ -101,12 +103,12 @@ scripts: [home.js]
 <section class="sec alt" id="how-we-work" aria-labelledby="hww-title">
   <div class="wrap">
     <p class="label">How we work</p>
-    <h2 id="hww-title">Start on the basics. Add one process a month.</h2>
+    <h2 id="hww-title">Start on the basics. Add the next process when you're ready.</h2>
     <p class="intro-text">You don't need your CRM rules written down to get going. Most teams don't, and that's fine. Alfie starts from sensible standard rules, adjusted to your team.</p>
     <ol class="steps c2">
       <li><span class="n" aria-hidden="true">01</span><h3>Quick start</h3><p>We connect HubSpot and Slack and walk you through standard rules for the first process: clean data and required fields. We adjust them to how your team works, and you approve them. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. To change a rule, tell us; we update it and send you the new version.</p></li>
       <li><span class="n" aria-hidden="true">02</span><h3>Checking from day one</h3><p>From day one, Alfie checks your HubSpot against your rules and proposes fixes. Changes go live with your approval. Once you trust a rule, you can let it run on its own. Routing and account ownership usually follow in month two.</p></li>
-      <li><span class="n" aria-hidden="true">03</span><h3>One new process a month</h3><p>Each month we pick the next process together, agree what "done" looks like, build it, and update your rules.</p></li>
+      <li><span class="n" aria-hidden="true">03</span><h3>Add the next process when you're ready</h3><p>When you're ready, we pick the next process together, agree what "done" looks like, build it, and update your rules.</p></li>
       <li><span class="n" aria-hidden="true">04</span><h3>More complicated processes</h3><p>If a process is custom or was never defined, Services takes it on: we work out how it really runs, design the fix with you, document the rules, then Alfie runs it.</p></li>
     </ol>
     <div class="actions" style="margin-top:28px"><a class="btn btn-ghost" href="/how-it-works/">How it works, step by step</a></div>
@@ -140,7 +142,7 @@ scripts: [home.js]
 <section class="sec" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <p class="label">FAQ</p>
-    <h2 id="faq-title">Questions, answered.</h2>
+    <h2 id="faq-title">Common questions</h2>
     {% include faq.html ids=page.faq_ids prefix="h-" %}
     <a class="textlink" href="/faq/">All questions</a>
   </div>

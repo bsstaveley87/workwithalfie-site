@@ -1,6 +1,6 @@
 # workwithalfie.com, v1 (branch `site-v1`)
 
-Multi-page Jekyll site. The live site stays on GitHub Pages; the preview runs on Cloudflare Pages at
+Multi-page Jekyll site. The live site stays on GitHub Pages; the preview runs on the preview host at
 https://site-v1.alfie-site-preview.pages.dev. Nothing on this branch is pushed or merged yet.
 
 ## Build
@@ -19,10 +19,10 @@ bundle config set --local path vendor/bundle
 bundle install
 bundle exec jekyll build                           # production build into _site
 bundle exec jekyll serve                           # local server at http://127.0.0.1:4000
-bundle exec jekyll serve --drafts --unpublished    # also renders local blog drafts and /terms
+bundle exec jekyll serve --drafts                  # also renders local blog drafts
 ```
 
-Cloudflare Pages settings: build command `bundle exec jekyll build`, output directory `_site`, env `RUBY_VERSION=3.3.8`.
+Preview host build settings: build command `bundle exec jekyll build`, output directory `_site`, env `RUBY_VERSION=3.3.8`.
 GitHub Pages builds with its own Jekyll and ignores the Gemfile. That is fine, because the same gem versions are pinned here.
 
 Files with no front matter are copied through unchanged: CNAME, robots.txt, icons, fonts, favicons and og-image.png.
@@ -34,10 +34,9 @@ Files with no front matter are copied through unchanged: CNAME, robots.txt, icon
 |---|---|
 | / | index.html |
 | /how-it-works/, /features/, /forecastai/, /enrichai/, /services/, /who-its-for/, /security/, /faq/, /about/ | `<name>.html` |
-| /book/ | book.html: the form (live form script, Worker endpoint, Turnstile key and field names unchanged) |
+| /book/ | book.html: the form (live form script, form endpoint, spam-check site key and field names unchanged) |
 | /contact/ | contact.html: redirect stub to /book/ (noindex, not in the sitemap) |
 | /privacy | privacy.html: the live text, unchanged |
-| /terms/ | terms.html: `published: false`. It is not built, linked or in the sitemap until legal sign-off |
 | /blog/, /blog/category/<slug>/, /blog/<slug>/, /blog/feed.xml | blog/, _layouts/post.html, jekyll-feed |
 | 404 | 404.html |
 | /sitemap.xml | jekyll-sitemap. `sitemap: false` keeps a page out |
@@ -69,10 +68,19 @@ So you can edit `book_call.url` and rebuild. For an emergency swap without a reb
 
 ## Preview vs live
 
-- `noindex_all: true` in `_config.yml` adds `noindex` to every page on the preview.
+- `noindex_all` in `_config.yml` is committed as **false**. Production is indexable, so merging this branch to main can never deindex it.
+- The preview is kept out of search by the preview host itself: its branch preview deployments are served with an `X-Robots-Tag: noindex` header automatically. The site adds no noindex for the preview. Setting `noindex_all: true` would put `<meta name="robots" content="noindex">` on every page; never commit it as true.
+- 404 and the /contact/ redirect stub are noindex on every host.
 - **Go-live checklist:**
-  1. Set `noindex_all: false`.
-  2. Bump `last_modified_at` dates and `asset_version`.
-  3. Resubmit `/sitemap.xml` in Search Console. Privacy moved from /privacy.html to /privacy; GitHub Pages serves both.
-- **CTO action before the preview form can work:** add `https://site-v1.alfie-site-preview.pages.dev` to the Worker's allowed origins and its hostname to the Turnstile widget's hostname list. The preview form posts to the real Worker. All automated tests mock the endpoint.
+  1. Bump `last_modified_at` dates and `asset_version`.
+  2. Resubmit `/sitemap.xml` in Search Console. Privacy moved from /privacy.html to /privacy; GitHub Pages serves both.
+- **CTO action before the preview form can work:** add `https://site-v1.alfie-site-preview.pages.dev` to the form endpoint's allowed origins and its hostname to the spam check's hostname list. The preview form posts to the real form endpoint. All automated tests mock the endpoint.
 - Links and assets are root-relative. Absolute https://workwithalfie.com URLs appear only in canonical, og:*, JSON-LD, the sitemap and the feed.
+
+## Motion (spec v1)
+
+- **Files.** `assets/motion.js` runs on every page (about 2.3 KB, no libraries): section reveals, nav-on-scroll, the How it works timeline fill, the ForecastAI count-up and the blog reading-progress bar. `assets/home.js` covers the hero work queue (with its pause/play control) and the flow strip.
+- **CSS.** Timing tokens are `--motion-fast`, `--motion-base`, `--motion-slow`, `--ease-out`, `--rise` and `--m` in section 2 of `site.css`. The motion rules are in section 17.
+- **The static HTML and CSS are the final state.** Hidden-then-reveal states only apply under `html.motion`, which the scripts add when JS runs and reduced motion is off. They also only apply to elements below the fold at load.
+- **Reduced motion.** `prefers-reduced-motion: reduce` turns off every transition and animation and shows the end states.
+- **Rules.** Only `transform` and `opacity` animate. The pause control's space is reserved in CSS, so CLS stays 0.

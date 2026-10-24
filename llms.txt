@@ -2,13 +2,13 @@
 layout: null
 sitemap: false
 ---
+{%- assign home = site.pages | where: "url", "/" | first -%}
 # Alfie
 
-> Alfie checks the HubSpot basics for growing SaaS teams against rules you approve, proposes the fixes, and you keep sign-off on what matters.
+> {{ home.description }}
 
-- [Home]({{ site.url }}/)
-- [Core features]({{ site.url }}/features/)
-- [How it works]({{ site.url }}/how-it-works/)
-- [Security]({{ site.url }}/security/)
-- [FAQ]({{ site.url }}/faq/)
-- [Blog]({{ site.url }}/blog/)
+## Pages
+{% assign urls = "/,/features/,/how-it-works/,/forecastai/,/enrichai/,/services/,/who-its-for/,/security/,/faq/,/about/,/book/,/privacy,/blog/" | split: "," -%}
+{%- for u in urls %}{% assign p = site.pages | where: "url", u | first %}
+- [{% if u == "/" %}Home{% elsif u == "/book/" %}Book a call{% elsif u == "/blog/" %}Blog{% else %}{{ p.title | split: " · " | first }}{% endif %}]({{ site.url }}{{ u }}): {{ p.description }}
+{%- endfor %}

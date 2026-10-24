@@ -17,7 +17,7 @@ faq_ids: [how_q-day-one, faq_no-rules, faq_approval, faq_owns-rules, faq_hubspot
 
 <section class="sec alt" id="steps" aria-labelledby="st-title"><div class="wrap">
   <h2 id="st-title">Request. Rule check. Approval if needed. Verified.</h2>
-  <ol class="steps">
+  <ol class="steps tl">
     <li><span class="n" aria-hidden="true">01</span><h3>Request</h3><p>A change starts in one of two ways: someone asks in Slack ("Move Acme to Sarah"), one record or a pasted list, or Alfie spots something your rules cover, like a deal at Proposal with no close date. Alfie uses AI to read the request and your HubSpot data, and proposes one specific change.</p><p class="ex"><span class="ex-tag">Example</span>Request from Jordan: assign Acme Ltd to Sarah.</p></li>
     <li><span class="n" aria-hidden="true">02</span><h3>Rule check</h3><p>Fixed checks, written from your approved rules, decide whether the change is allowed. AI proposes; it doesn't get the final say. If the change fails a rule, nothing is written and Alfie says which rule it failed.</p><p class="ex"><span class="ex-tag">Example</span>Territory passes. Over owner cap (41 of 40).</p></li>
     <li><span class="n" aria-hidden="true">03</span><h3>Approval if needed</h3><p>Your rules say which changes need a person, and which person. Alfie asks them in Slack, with the reason, and waits. Nothing happens until they approve.</p><p class="ex"><span class="ex-tag">Example</span>Rule 1.1: going over cap needs the sales lead. @Dana [Approve] [Decline]</p></li>
@@ -29,7 +29,7 @@ faq_ids: [how_q-day-one, faq_no-rules, faq_approval, faq_owns-rules, faq_hubspot
 <section class="sec" id="rollout" aria-labelledby="ro-title"><div class="wrap">
   <p class="label">The rollout</p>
   <h2 id="ro-title">Alfie earns trust one rule at a time.</h2>
-  <ol class="steps">
+  <ol class="steps tl">
     <li><span class="n" aria-hidden="true">01</span><h3>Week one: read-only</h3><p>Alfie connects to HubSpot and reads. It runs your approved rules in the background without changing anything, and gives you a baseline: where your data stands against the rules today.</p></li>
     <li><span class="n" aria-hidden="true">02</span><h3>Next: every change approved</h3><p>Alfie starts proposing fixes. Every write waits for a person to approve it in Slack.</p></li>
     <li><span class="n" aria-hidden="true">03</span><h3>Then: rules you trust run on their own</h3><p>When your admin is happy with a rule, they sign it off, and that rule can run without asking. Sign-off is recorded against that version of the rule. If the rule changes, it's signed off again.</p></li>
@@ -45,7 +45,7 @@ faq_ids: [how_q-day-one, faq_no-rules, faq_approval, faq_owns-rules, faq_hubspot
   </div>
   <div id="first-month">
     <h2 id="fm-title">Clean data first. Ownership next.</h2>
-    <p class="intro-text">We start where most HubSpot setups need it most. Month one covers clean data and required fields: duplicates found by rule and merged once your admin approves, fields standardized, and deals flagged when they reach a stage without the details your team agreed. Alfie also uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Routing and account ownership usually follow in month two. After that, we add one new process a month.</p>
+    <p class="intro-text">We start where most HubSpot setups need it most. Month one covers clean data and required fields: duplicates found by rule and merged once your admin approves, fields standardized, and deals flagged when they reach a stage without the details your team agreed. Alfie also uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Routing and account ownership usually follow in month two. After that, add the next process when you're ready.</p>
     <h3>At the end of month one, you'll have:</h3>
     <ul class="list">
       <li>A written, approved set of rules for clean data and required fields</li>
@@ -58,7 +58,7 @@ faq_ids: [how_q-day-one, faq_no-rules, faq_approval, faq_owns-rules, faq_hubspot
 </section>
 
 <section class="sec" id="faq" aria-labelledby="hq-title"><div class="wrap">
-  <h2 id="hq-title">Questions, answered.</h2>
+  <h2 id="hq-title">Common questions</h2>
   {% include faq.html ids=page.faq_ids prefix="w-" %}
 </div></section>
 

@@ -8,8 +8,8 @@ crumb: Book a call
 turnstile: true
 scripts: [contact.js]
 # Copy: v1-copy/contact.md. IDs: book.hero, book.expect, home.origin, book.form. Not built (gated): book.embed.
-# The form markup, field names, Turnstile container and /assets/contact.js are the live holding page's, unchanged
-# (Worker endpoint, site key and the token field live in contact.js). Only change: privacy link /privacy.html -> /privacy.
+# The form markup, field names, spam-check container and /assets/contact.js are the live holding page's, unchanged
+# (form endpoint, site key and the token field live in contact.js). Only change: privacy link /privacy.html -> /privacy.
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Book a call</p>
@@ -33,7 +33,6 @@ scripts: [contact.js]
       <div class="intro">
         <h2 id="cta-title">Tell us what's breaking in your HubSpot setup.</h2>
         <p>A few lines is plenty. We'll reply within a day.</p>
-        <p class="new">We're new, so we're working with a small first group of teams.</p>
         <p class="alt-contact">Prefer email? Write to <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> and we'll find a time.</p>
       </div>
         <div class="form-card">

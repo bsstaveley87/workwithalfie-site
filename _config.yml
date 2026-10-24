@@ -1,5 +1,5 @@
 # Alfie site (workwithalfie.com). Built by GitHub Pages' own Jekyll in production,
-# and by `bundle exec jekyll build` (output _site) on the Cloudflare Pages preview.
+# and by `bundle exec jekyll build` (output _site) on the preview host.
 title: Alfie
 description: Alfie checks the HubSpot basics for growing SaaS teams against rules you approve, proposes the fixes, and you keep sign-off on what matters.
 url: https://workwithalfie.com
@@ -8,9 +8,10 @@ lang: en
 theme: null  # no GitHub Pages default theme (stops the primer assets/css/style.css being added)
 email: ben@workwithalfie.com
 
-# Preview switch: true puts <meta name="robots" content="noindex"> on every page.
-# Set to false only when Ben says go live. /terms (draft) and 404 stay noindex regardless.
-noindex_all: true
+# true puts <meta name="robots" content="noindex"> on every page. Keep false: production is
+# indexable, and the preview host adds its own X-Robots-Tag: noindex header.
+# 404 and the /contact/ redirect stay noindex regardless.
+noindex_all: false
 
 # Cache-busting version for /assets/*.css and *.js. Bump when they change.
 asset_version: "20261024"
