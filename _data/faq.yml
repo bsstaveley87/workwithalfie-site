@@ -14,7 +14,7 @@ how_q-day-one:
   a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them. See <a href=\"/how-it-works/\">how the first weeks work</a>."
 faq_approval:
   q: What needs approval?
-  a: "You decide. Your rules say which changes go straight through and which need a person, and which person. At the start, every change waits for approval. Later, a common setup: routine cleanup runs on its own once your admin has signed off on that rule, while ownership changes over a cap still wait for approval. Merges always need a fresh approval from your admin."
+  a: "You decide. Your rules say which changes go straight through and which need a person, and which person. At the start, every change waits for approval. Later, a common setup: routine cleanup runs on its own once your admin has signed off on that rule, while moving an account to a different rep still waits for the sales lead. Merges always need a fresh approval from your admin."
 faq_owns-rules:
   q: Who owns the rules?
   a: "You do. Alfie keeps your approved rules and gives you a written copy, your <a href=\"/#rules-doc\">rules of engagement</a>, that you can keep wherever you like, such as Notion or Google Docs. It's yours whether or not you keep using Alfie. Alfie applies the rules the same way every time. Changes go through us: to change a rule, tell us; we update it and send you the new version."
