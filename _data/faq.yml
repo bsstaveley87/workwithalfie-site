@@ -8,16 +8,16 @@ faq_salesforce:
   a: "No, and we don't have plans to right now. If Salesforce is your CRM, we're not the right fit."
 faq_no-rules:
   q: We don't have our rules written down. Is that a problem?
-  a: "No. That's where most teams start. Alfie begins with standard rules for the basics, and we adjust them to how your team works before you approve them. Nothing runs on rules you haven't approved. If a process is custom or was never defined, Services helps you work it out."
+  a: "No. That's where most teams start. Alfie begins with standard rules for the basics, and we adjust them to how your team works before you approve them. Nothing runs on rules you haven't approved. If a process is custom or was never defined, <a href=\"/services/\">Services</a> helps you work it out."
 how_q-day-one:
   q: What does Alfie do on day one?
-  a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them."
+  a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them. See <a href=\"/how-it-works/\">how the first weeks work</a>."
 faq_approval:
   q: What needs approval?
   a: "You decide. Your rules say which changes go straight through and which need a person, and which person. At the start, every change waits for approval. Later, a common setup: routine cleanup runs on its own once your admin has signed off on that rule, while ownership changes over a cap still wait for approval. Merges always need a fresh approval from your admin."
 faq_owns-rules:
   q: Who owns the rules?
-  a: "You do. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. It's yours whether or not you keep using Alfie. Alfie applies the rules the same way every time. Changes go through us: to change a rule, tell us; we update it and send you the new version."
+  a: "You do. Alfie keeps your approved rules and gives you a written copy, your <a href=\"/#rules-doc\">rules of engagement</a>, that you can keep wherever you like, such as Notion or Google Docs. It's yours whether or not you keep using Alfie. Alfie applies the rules the same way every time. Changes go through us: to change a rule, tell us; we update it and send you the new version."
 security_q-overwrite:
   q: Can Alfie overwrite what my team entered?
   a: "Only if your rules allow it or someone approves it. Otherwise the change is blocked and Alfie says which rule stopped it."
@@ -35,4 +35,28 @@ security_q-leave:
   a: "We export your data and change record for you, then delete it."
 faq_pricing:
   q: How much does it cost?
-  a: "There's a one-time setup fee, sized on our first calls, then a monthly fee for core Alfie, starting with the quick start. Add the next process when you're ready. ForecastAI, EnrichAI and custom Services are optional extras for Alfie customers. We'll share pricing once we know what you need."
+  a: "There's a one-time setup fee, sized on our first calls, then a monthly fee for core Alfie, starting with the quick start. Add the next process when you're ready. ForecastAI, EnrichAI and custom Services are optional extras for Alfie customers. We'll share pricing once we know what you need. <a href=\"/book/\">Book a call</a> to talk it through."
+faq_what:
+  q: What is Alfie?
+  a: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve. Core Alfie keeps the basics in order: clean records, account ownership, record updates, and parent and child companies. ForecastAI, EnrichAI and Services are optional extras."
+faq_revops-hire:
+  q: Is Alfie a replacement for a RevOps hire?
+  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
+faq_agency:
+  q: How is Alfie different from a HubSpot agency or a freelance admin?
+  a: "Alfie starts from written rules you approve, checks your records against them, asks the right person in Slack when a rule says so, and keeps a record of every change. You keep the rules document whether or not you keep using Alfie."
+faq_experience:
+  q: Do we need RevOps experience to use Alfie?
+  a: "No. You don't need the RevOps vocabulary. Alfie starts on standard rules for the basics, adjusted to your team, and you approve them."
+faq_workflows:
+  q: Does Alfie replace our HubSpot workflows?
+  a: "No. Alfie works in your HubSpot alongside your existing workflows. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
+faq_duplicates:
+  q: Can Alfie clean up duplicates already in HubSpot?
+  a: "Yes. Duplicates are found by rule and merged once your admin approves. The kept value in a merge is chosen by rule, not by guesswork."
+faq_forecastai:
+  q: Is ForecastAI included?
+  a: "No. ForecastAI is an optional add-on for Alfie customers, priced separately."
+faq_routing:
+  q: Does Alfie handle lead routing and account ownership?
+  a: "Yes. Alfie routes new contacts and companies to the right owner by account, territory or segment, and round robin, and your admin approves changes before they're made."
