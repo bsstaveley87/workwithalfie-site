@@ -1,0 +1,38 @@
+# Shared questions (v1-copy/faq.md, v0.6.1). Keys are the stable copy IDs with "." replaced by "_".
+# Answers are HTML. The FAQPage JSON-LD is generated from these same strings, so it always matches the page.
+faq_hubspot:
+  q: Does Alfie only work with HubSpot?
+  a: "Yes. Alfie is built for teams that use HubSpot as their CRM. It also needs Slack, because that's where requests and approvals happen."
+faq_salesforce:
+  q: Do you support Salesforce?
+  a: "No, and we don't have plans to right now. If Salesforce is your CRM, we're not the right fit."
+faq_no-rules:
+  q: We don't have our rules written down. Is that a problem?
+  a: "No. That's where most teams start. Alfie begins with standard rules for the basics, and we adjust them to how your team works before you approve them. Nothing runs on rules you haven't approved. If a process is custom or was never defined, Services helps you work it out."
+how_q-day-one:
+  q: What does Alfie do on day one?
+  a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them."
+faq_approval:
+  q: What needs approval?
+  a: "You decide. Your rules say which changes go straight through and which need a person, and which person. At the start, every change waits for approval. Later, a common setup: routine cleanup runs on its own once your admin has signed off on that rule, while ownership changes over a cap still wait for approval. Merges always need a fresh approval from your admin."
+faq_owns-rules:
+  q: Who owns the rules?
+  a: "You do. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. It's yours whether or not you keep using Alfie. Alfie applies the rules the same way every time. Changes go through us: to change a rule, tell us; we update it and send you the new version."
+security_q-overwrite:
+  q: Can Alfie overwrite what my team entered?
+  a: "Only if your rules allow it or someone approves it. Otherwise the change is blocked and Alfie says which rule stopped it."
+faq_data:
+  q: What access does Alfie need, and what happens to our data?
+  a: "Alfie asks only for the HubSpot permissions each process needs, and adds more only with your admin's approval. You can see and export a record of every change. Alfie uses AI from the start: it suggests parent and subsidiary company links, and nothing changes in HubSpot until you approve it. It also reads requests and proposes changes. We send the model only the fields a task needs, on terms where it isn't used to train models. How long any AI-processed data is kept is set per customer, in your configuration. Each customer's data is kept separate. More on our <a href=\"/security/\">Security page</a>."
+faq_where:
+  q: Where does Alfie run?
+  a: "Your team works with Alfie in Slack and HubSpot. Requests and approvals happen in Slack, and changes are made in HubSpot. There's no separate app to learn. Behind the scenes, Alfie is hosted on established cloud infrastructure, isolated per customer."
+security_q-slack:
+  q: Does Alfie need Slack?
+  a: "Yes. Requests and approvals happen in Slack. There are no email approvals."
+security_q-leave:
+  q: What happens to our data if we leave?
+  a: "We export your data and change record for you, then delete it."
+faq_pricing:
+  q: How much does it cost?
+  a: "There's a one-time setup fee, sized on our first calls, then a monthly fee for core Alfie, starting with the quick start and adding one new process a month. ForecastAI, EnrichAI and custom Services are optional extras for Alfie customers. We'll share pricing once we know what you need."
