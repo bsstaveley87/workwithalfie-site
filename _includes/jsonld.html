@@ -17,13 +17,14 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"Organization","@id":"{{ org_id }}","name":"Alfie","url":"{{ site.url }}/",
- "logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png","width":512,"height":512},
+ "logo":{"@type":"ImageObject","url":"{{ site.url }}/icons/icon-512.png","contentUrl":"{{ site.url }}/icons/icon-512.png","width":512,"height":512,"caption":"Alfie"},
  "image":"{{ site.url }}/og-image.png",
  "email":"{{ site.email }}",
  "description":{{ site.entity.description | default: site.description | jsonify }},
  {%- if site.entity.disambiguation and site.entity.disambiguation != "" %}"disambiguatingDescription":{{ site.entity.disambiguation | jsonify }},{% endif %}
  {%- if site.entity.same_as and site.entity.same_as.size > 0 %}"sameAs":{{ site.entity.same_as | jsonify }},{% endif %}
- {%- if site.entity.founder.public %}"founder":{"@type":"Person","@id":"{{ site.url }}/about/#founder","name":{{ site.entity.founder.name | jsonify }}{% if site.entity.founder.same_as and site.entity.founder.same_as.size > 0 %},"sameAs":{{ site.entity.founder.same_as | jsonify }}{% endif %}},{% endif %}
+ {%- if site.entity.country and site.entity.country != "" %}"address":{"@type":"PostalAddress","addressCountry":{{ site.entity.country | jsonify }}},{% endif %}
+ {%- if site.entity.founder.public %}"founder":{"@type":"Person","@id":"{{ site.url }}/about/#founder","name":{{ site.entity.founder.name | jsonify }},"jobTitle":{{ site.entity.founder.job_title | jsonify }},"url":"{{ site.url }}/about/"{% if site.entity.founder.same_as and site.entity.founder.same_as.size > 0 %},"sameAs":{{ site.entity.founder.same_as | jsonify }}{% endif %}},{% endif %}
  "knowsAbout":{{ site.entity.knows_about | jsonify }},
  "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"{{ site.email }}","url":"{{ site.book_call.url | absolute_url }}","availableLanguage":"en"}},
 {"@type":"WebSite","@id":"{{ site_id }}","name":"Alfie","url":"{{ site.url }}/","inLanguage":"en-US","publisher":{"@id":"{{ org_id }}"}},
