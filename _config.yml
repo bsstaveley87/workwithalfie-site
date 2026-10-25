@@ -17,6 +17,9 @@ noindex_all: false
 asset_version: "20261024d"
 
 permalink: /blog/:slug/
+# Keep false (the Jekyll and GitHub Pages default): future-dated posts are not built, so they are not
+# in site.posts and the post-link / post-live includes treat them as not live yet.
+future: false
 paginate: 10
 paginate_path: /blog/page:num/
 
@@ -54,6 +57,7 @@ exclude:
   - tests
   - screens
   - "*.log"
+  - scripts       # link checker and link-candidates helper, not site content
   - preview-posts   # preview-only posts stay off production (Ben go-live, Oct 24)
 
 # THE single "Book a call" setting. Every CTA's href and label is built from this,
