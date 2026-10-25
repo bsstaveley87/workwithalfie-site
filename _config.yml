@@ -14,7 +14,7 @@ email: ben@workwithalfie.com
 noindex_all: false
 
 # Cache-busting version for /assets/*.css and *.js. Bump when they change.
-asset_version: "20261025a"
+asset_version: "20261025b"
 
 permalink: /blog/:slug/
 # Keep false (the Jekyll and GitHub Pages default): future-dated posts are not built, so they are not
