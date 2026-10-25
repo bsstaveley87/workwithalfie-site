@@ -1,5 +1,6 @@
-/* Home motion (spec v1): hero work queue ticks QUEUED -> CHECKING -> final, one row needs approval and turns VERIFIED;
-   flow strip draws in. Static HTML is the final state (JS off, reduced motion). Pause/play control kept. */
+/* Home motion (spec v1, copy v0.8): hero work queue ticks QUEUED -> CHECKING -> final (DONE, FLAGGED or CHECKING);
+   the row with data-wait ("Reassign Priya's accounts") stops at WAITING ON ADMIN, the "Approved by Dana (admin)" chip appears,
+   then it turns DONE. The flow band's line draws in. Static HTML is the final state (JS off, reduced motion). Pause/play control kept. */
 (function(){
   'use strict';
   var d=document;
@@ -9,14 +10,14 @@
   if(fl)new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();fl.classList.add('play');}},{threshold:.5}).observe(fl);
   // Hero work queue
   var q=d.querySelector('.queue');if(!q)return;
-  var C={QUEUED:'s-queued',CHECKING:'s-check',DONE:'s-done','NEEDS APPROVAL':'s-approve',VERIFIED:'s-done'};
+  var C={QUEUED:'s-queued',CHECKING:'s-check',DONE:'s-done',FLAGGED:'s-flag','WAITING ON ADMIN':'s-approve'};
   var rows=[].slice.call(q.querySelectorAll('li')).map(function(li){
-    var o=li.querySelector('.status'),fin=o.textContent.trim(),chip=li.querySelector('.chip'),
-      seq=chip?['QUEUED','CHECKING','NEEDS APPROVAL','VERIFIED']:fin==='CHECKING'?['QUEUED','CHECKING']:['QUEUED','CHECKING',fin],
-      w=d.createElement('span'),p={};
+    var o=li.querySelector('.status'),fin=o.textContent.trim(),chip=li.querySelector('.chip'),wt=o.getAttribute('data-wait'),
+      seq=wt?['QUEUED','CHECKING',wt,fin]:fin==='CHECKING'?['QUEUED','CHECKING']:['QUEUED','CHECKING',fin],
+      w=d.createElement('span'),p={},wc=o.classList.contains('w16')?' w16':o.classList.contains('w14')?' w14':'';
     w.className='pills';w.setAttribute('aria-hidden','true');
-    seq.forEach(function(t){var s=d.createElement('span');s.className='status '+C[t]+(o.classList.contains('w14')?' w14':'');s.textContent=t;w.appendChild(s);p[t]=s;});
-    o.classList.add('sr-only');li.appendChild(w);return{li:li,p:p,seq:seq,chip:chip};});
+    seq.forEach(function(t){var s=d.createElement('span');s.className='status '+C[t]+wc;s.textContent=t;w.appendChild(s);p[t]=s;});
+    o.classList.add('sr-only');li.appendChild(w);return{li:li,p:p,seq:seq,chip:chip,wt:wt};});
   function pill(r,t){for(var k in r.p)r.p[k].classList.toggle('on',k===t);}
   function reset(r,t){r.li.classList.remove('scan');pill(r,t);if(r.chip)r.chip.classList.toggle('hide',t!==r.seq[r.seq.length-1]);}
   var T=[],running=false,userPaused=false,passes=0,MAX=2,vis=false,STEP=600;
@@ -31,7 +32,7 @@
     rows.forEach(function(r,i){var t0=250+i*500;
       r.seq.slice(1).forEach(function(s,k){
         at(t0+(k+1)*STEP,function(){pill(r,s);r.li.classList.toggle('scan',s==='CHECKING');
-          if(s==='NEEDS APPROVAL')at(STEP*.6,function(){r.chip.classList.remove('hide');});});});});
+          if(s===r.wt&&r.chip)at(STEP*.6,function(){r.chip.classList.remove('hide');});});});});
     at(4200,function(){if(passes<MAX){at(7800,function(){if(vis)pass();else stop();});}else stop(true);});}
   function start(){if(running)return;running=true;q.classList.remove('paused');label();pass();}
   function stop(done){T.forEach(clearTimeout);T=[];running=false;q.classList.add('paused');rows.forEach(function(r){reset(r,r.seq[r.seq.length-1]);});label();if(done)passes=MAX;}
