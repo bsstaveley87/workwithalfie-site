@@ -64,7 +64,7 @@ What to check: what happens when they're busy or move on, and whether the decisi
 
 Ongoing help fits when the work is steady and repeats: duplicates keep coming back, deals reach stages without the details your team agreed, and people keep asking for record changes. That work doesn't end, so a project doesn't fit it well, and it's the kind of work that's easy to get done slightly differently every time.
 
-This is where Alfie sits. Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve.
+This is where Alfie sits. Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes.
 
 The difference is the starting point. Alfie starts from written rules you approve, checks your records against them, asks the right person in Slack when a rule says so, and keeps a record of every change. You keep the rules document whether or not you keep using Alfie.
 

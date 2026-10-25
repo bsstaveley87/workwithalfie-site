@@ -33,7 +33,7 @@ sitemap: false
 permalink: /blog/revops-glossary/
 ---
 
-Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve. Where a term means something specific at Alfie, it's marked **At Alfie**.
+Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes. Where a term means something specific at Alfie, it's marked **At Alfie**.
 
 ## Rules and process
 

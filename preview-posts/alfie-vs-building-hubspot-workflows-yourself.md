@@ -54,7 +54,7 @@ None of this is a HubSpot problem. It's what happens to any setup that doesn't g
 
 ## What does Alfie do differently?
 
-Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve.
+Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes.
 
 It starts from the rules rather than the automation:
 

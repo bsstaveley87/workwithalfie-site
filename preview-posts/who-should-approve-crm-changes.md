@@ -103,7 +103,7 @@ A record you can export matters more than a nice screen. Terms like "change reco
 
 ## How does Alfie handle approvals in HubSpot?
 
-Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve.
+Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes.
 
 Your rules say which changes need a person, and which person. Alfie is designed so that:
 

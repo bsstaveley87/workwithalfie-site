@@ -48,7 +48,7 @@ The first two need judgment, context and time in meetings. The third is necessar
 
 ## What does Alfie cover?
 
-Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve.
+Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes.
 
 In practice, that means the upkeep layer, run on written rules:
 
