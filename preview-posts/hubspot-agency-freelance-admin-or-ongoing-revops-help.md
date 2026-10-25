@@ -99,4 +99,4 @@ If the setup itself needs a rethink before anything can run on rules, say so on 
 
 You don't need your rules written down. Most teams don't have them. Alfie starts on standard rules for the basics, adjusted to how your team works, and you approve them. From day one, Alfie checks your HubSpot against those rules and proposes fixes. In the first week it only reads. Changes go live once a person approves them, and merges always need a fresh approval from your admin. See [how it works, step by step](/how-it-works/) and [how we handle access and data](/security/).
 
-Related: {% include post-link.html url="/blog/alfie-vs-hiring-a-revops-person/" text="Alfie vs hiring a RevOps person" %}, {% include post-link.html url="/blog/alfie-vs-building-hubspot-workflows-yourself/" text="Alfie vs building HubSpot workflows yourself" %} and [what core Alfie does](/features/).
+Related: {% include post-link.html url="/blog/alfie-vs-hiring-a-revops-person/" text="Alfie vs hiring a RevOps person" %}, {% include post-link.html url="/blog/alfie-vs-building-hubspot-workflows-yourself/" text="Alfie vs building HubSpot workflows yourself" %} and [what Alfie does](/features/).
