@@ -80,7 +80,7 @@ scripts: [home.js]
     <div>
       <p class="label">You stay in control</p>
       <h2 id="work-title">Why it's safe to hand this over</h2>
-      <p class="intro-text">Automation with governance, in practice: Alfie works from rules you write down with us. AI drafts each change, then fixed checks decide whether it's allowed. Merges and anything else your rules reserve for a person wait for that person in Slack. After a write, Alfie reads the record back from HubSpot to confirm it stuck, and each change goes into a record you can export.</p>
+      <p class="intro-text">Automation with governance, in practice: Alfie works from rules you write down with us. AI drafts each change, then fixed checks decide whether it's allowed. Merges and anything else your rules reserve for a person wait for that person in Slack. After a write, Alfie is designed to read the record back from HubSpot to confirm it stuck, and to log each change in a record you can export.</p>
       <a class="textlink" href="/security/">How we handle access and data</a>
     </div>
     <figure class="slack" aria-label="Example Slack approval message. Names and numbers are illustrative.">
@@ -99,10 +99,10 @@ scripts: [home.js]
   <div class="wrap">
     <p class="label">How we start</p>
     <h2 id="hww-title">No written rules? That's normal.</h2>
-    <p class="intro-text">Most teams we talk to have never written their CRM rules down. We start from a standard set and adjust it on a call with you.</p>
+    <p class="intro-text">Most growing teams haven't written their CRM rules down. We start from a standard set and adjust it on a call with you.</p>
     <ol class="steps c2">
       <li><span class="n" aria-hidden="true">01</span><h3>Quick start</h3><p>We connect HubSpot and Slack and agree the first rules with you: clean data, required fields, and who new contacts and companies go to.</p></li>
-      <li><span class="n" aria-hidden="true">02</span><h3>Day one</h3><p>Alfie checks your records and proposes fixes, and starts working through the backlog as your admin OKs them. Rules your admin trusts can then run on their own.</p></li>
+      <li><span class="n" aria-hidden="true">02</span><h3>First week</h3><p>Alfie reads your records and shows you what it would fix, without changing anything. Then it works through the backlog as your admin OKs each change. Rules your admin trusts can then run on their own. Merges and moving a departing rep's records always need an OK.</p></li>
       <li><span class="n" aria-hidden="true">03</span><h3>The next process</h3><p>When you're ready, we pick what's next, agree what "done" looks like, and Alfie takes it on.</p></li>
       <li><span class="n" aria-hidden="true">04</span><h3>The messy ones</h3><p>Custom processes, or ones nobody ever defined, go to <a href="/services/">Services</a>.</p></li>
     </ol>
@@ -143,4 +143,4 @@ scripts: [home.js]
   </div>
 </section>
 
-{% include final.html h2="What's eating your team's week in HubSpot?" body="Tell us on a 20-minute call. We'll tell you which of those jobs Alfie would take first, and if we're not a fit, we'll say so." %}
+{% include final.html id="contact" h2="Tell us which HubSpot job eats your week." body="On a 20-minute call, we'll tell you which of those jobs Alfie would take first, and if we're not a fit, we'll say so." %}

@@ -82,7 +82,7 @@ Work slowly enough that you can catch a mistake.
 
 ## Who should approve merges?
 
-At least the account owners for any account that matters, and ideally one person who owns the rules. A merge changes who owns what and what the history shows, so it shouldn't happen quietly. A common rule: merges of customer accounts, or accounts with open deals, always need a named approver. More in {% include post-link.html url="/blog/who-should-approve-crm-changes/" text="who should approve CRM changes, and when" %}.
+At least the account owners for any account that matters, and ideally one person who owns the rules. A merge changes who owns what and what the history shows, so it shouldn't happen quietly. A common rule: merges of customer accounts, or accounts with open deals, always need a named approver.
 
 That's how Alfie handles it. Duplicates are found by rule and merged once your admin approves, with the kept values chosen by rule, not by guesswork. Alfie also uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Each change Alfie makes is checked against your rules and recorded. See [what core Alfie does](/features/) and [how we handle access and data](/security/).
 

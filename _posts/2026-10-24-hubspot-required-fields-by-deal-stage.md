@@ -85,10 +85,10 @@ So after you set them up, run a simple check: a list of open deals at each stage
 
 ## How do you keep them working as the team grows?
 
-Treat required fields as a rule you own, not a setting you forget. If you're weighing whether to automate the follow-up with workflows you build yourself, see {% include post-link.html url="/blog/alfie-vs-building-hubspot-workflows-yourself/" text="Alfie vs building HubSpot workflows yourself" %}. Three habits help:
+Treat required fields as a rule you own, not a setting you forget. Three habits help:
 
 - **Review the list when the process changes.** A new stage, a new product or a new region usually means new required fields.
 - **Fix the gaps at the source.** If the same field keeps coming in empty from an integration, fix the integration rather than chasing reps.
 - **Keep one owner.** One person decides what's required and approves changes. Otherwise fields get added and nobody removes them.
 
-This is the kind of upkeep that slips when HubSpot is a side job. Alfie starts here for most teams: clean data and required fields are the first process. You approve the rules, Alfie checks your HubSpot against them every day, flags deals when they reach a stage without the details your team agreed, and proposes fixes. A person approves where your rules say so. Alfie doesn't stop a deal from moving; HubSpot's own stage settings do that part. See [what core Alfie does](/features/) and [how the first month works](/how-it-works/).
+This is the kind of upkeep that slips when HubSpot is a side job. Alfie starts here for most teams: clean data and required fields are the first process. Alfie checks your deals against the rules you agree with us on the schedule you agree, flags deals that reach a stage without the details your team agreed, and drafts the fixes. The ones your rules reserve for a person wait for your admin in Slack. Alfie doesn't stop a deal from moving; HubSpot's own stage settings do that part. See [what core Alfie does](/features/) and [how the first month works](/how-it-works/).

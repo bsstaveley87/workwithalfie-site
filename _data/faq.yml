@@ -20,7 +20,7 @@ faq_where:
   a: "In Slack and HubSpot. There's no separate app to learn. Behind the scenes, Alfie is hosted on established cloud infrastructure, isolated per customer."
 faq_revops-hire:
   q: Is Alfie a replacement for a RevOps hire?
-  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
+  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. Hiring your first RevOps lead? Alfie can work through the backlog and get the rules written down while you hire, so their first month goes on the next process. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
 faq_agency:
   q: How is Alfie different from a HubSpot agency or a freelance admin?
   a: "An agency or freelancer usually fixes what you point them at. Alfie starts by writing down your rules with you, then does the repetitive upkeep against them week after week and keeps a record of each change it makes. The rules document is yours whether or not you keep using Alfie."
@@ -29,10 +29,10 @@ faq_experience:
   a: "No. You don't need the vocabulary. We start from standard rules for the basics and adjust them to your team on a call."
 faq_no-rules:
   q: We don't have our rules written down. Is that a problem?
-  a: "No. Most teams we talk to don't. We start from a standard set and adjust it to how your team works before Alfie uses it. If a process is custom or was never defined, <a href=\"/services/\">Services</a> can help you work it out."
+  a: "No. Few growing teams have. We start from a standard set and adjust it to how your team works before Alfie uses it. If a process is custom or was never defined, <a href=\"/services/\">Services</a> can help you work it out."
 how_q-day-one:
   q: What does Alfie do on day one?
-  a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them. See <a href=\"/how-it-works/\">how the first weeks work</a>."
+  a: "First week. Alfie reads your records and shows you what it would fix, without changing anything. Then it works through the backlog as your admin OKs each change. See <a href=\"/how-it-works/\">how the first weeks work</a>."
 faq_workflows:
   q: Does Alfie replace our HubSpot workflows?
   a: "No. Alfie works in your HubSpot alongside your existing workflows. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
@@ -44,7 +44,7 @@ faq_routing:
   a: "Yes. Alfie routes new contacts and companies to the right owner by account, territory or segment, and round robin, and your admin approves changes before they're made."
 faq_approval:
   q: What does Alfie do without asking?
-  a: "At first, nothing gets written without a yes in Slack. Once your admin trusts a rule, like standardizing country names, it runs on its own. Moving an account to a different rep can stay with the sales lead, and merges always wait for your admin."
+  a: "At first, nothing gets written without a yes in Slack. Once your admin trusts a rule, like standardizing country names, it runs on its own. Moving an account to a different rep can stay with the sales lead. Merges and moving a departing rep's records always need an OK."
 faq_owns-rules:
   q: Who owns the rules?
   a: "You do. Alfie keeps the rules and works from them, and you get a written copy of your <a href=\"/#rules-doc\">rules of engagement</a> as Markdown or PDF. To change a rule, tell us and we'll send you the new version. The document is yours even if you stop using Alfie."

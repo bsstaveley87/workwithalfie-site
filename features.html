@@ -21,12 +21,12 @@ service: { name: "Alfie", type: "HubSpot data cleanup, routing and account owner
   <h2 id="cap-title">What core Alfie does</h2>
   <ol class="steps">
     <li><span class="n" aria-hidden="true">01</span><h3>Merges duplicates</h3><p>Alfie finds duplicate contacts and companies using your matching rules, like the two Acme Incs, and drafts each merge with the surviving values chosen by rule. No more side-by-side comparing in two browser tabs. Merges go ahead once your admin OKs them.</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Fills and fixes required fields</h3><p>It standardizes messy values (country names, job titles) and catches deals that reach a stage without what your team agreed, like a close date at Proposal. Each owner gets a Slack digest of what's missing on their deals, and your admin gets the exceptions.</p></li>
+    <li><span class="n" aria-hidden="true">02</span><h3>Fills and fixes required fields</h3><p>It standardizes messy values (country names, job titles) and catches deals that reach a stage without what your team agreed, like a close date at Proposal. Each owner gets a Slack digest of what's missing on their deals, and your admin gets the exceptions. Pipeline numbers start with the basics: one meaning for each deal stage, close dates and amounts filled in.</p></li>
     <li><span class="n" aria-hidden="true">03</span><h3>Routes new contacts and companies</h3><p>Each new contact and company goes to the right owner by account, territory or segment, and round robin, with your admin approving. No more weekly "who's taking these?" thread.</p></li>
     <li><span class="n" aria-hidden="true">04</span><h3>Keeps account ownership straight</h3><p>Accounts are assigned by territory or segment on your rules. When a rep leaves, Alfie proposes who takes over each account, and nothing moves until your admin approves.</p></li>
     <li><span class="n" aria-hidden="true">05</span><h3>Tidies properties</h3><p>Standardizes emails, phone numbers, websites, countries and states, and clears placeholder values like 'test' or 'n/a'. Alfie proposes each fix and makes it once your admin approves. Lifecycle stage checks can follow once your stage definitions are agreed.</p></li>
     <li><span class="n" aria-hidden="true">06</span><h3>Links parents and subsidiaries</h3><p>AI suggests which companies belong together, like Acme EU under Acme, using your domain and hierarchy rules and the fields already in HubSpot, and you confirm before anything is linked.</p></li>
-    <li><span class="n" aria-hidden="true">07</span><h3>Takes record updates from Slack</h3><p>Ask for a change to a contact, company or deal in Slack, as one record or a pasted list, and Alfie makes it once it passes your rules.</p></li>
+    <li><span class="n" aria-hidden="true">07</span><h3>Takes record updates from Slack</h3><p>Ask for a change to a contact, company or deal in Slack, as one record or a pasted list, and Alfie makes it once it passes your rules. In the first weeks, your admin OKs each one in Slack. Merges and moving a departing rep's records always need an OK.</p></li>
   </ol>
   <p class="note">Adding outside data, like a contact's phone number or a company's headcount, is <a href="/enrichai/">EnrichAI</a>, not core Alfie.</p>
 </div></section>
@@ -34,7 +34,7 @@ service: { name: "Alfie", type: "HubSpot data cleanup, routing and account owner
 <section class="sec" id="control" aria-labelledby="ctl-title"><div class="wrap">
   <p class="label">You stay in control</p>
   <h2 id="ctl-title">Why it's safe to hand this over</h2>
-  <p class="intro-text">AI drafts each change. Fixed checks written from your rules decide whether it's allowed, and Alfie is designed never to write to HubSpot on the AI's word alone. Merges, and anything else your rules reserve for a person, wait for that person in Slack. After each write, Alfie reads the record back by ID, so a mismatch gets flagged instead of slipping by. You can export a record of each change Alfie makes.</p>
+  <p class="intro-text">AI drafts each change. Fixed checks written from your rules decide whether it's allowed, and Alfie is designed never to write to HubSpot on the AI's word alone. Merges, and anything else your rules reserve for a person, wait for that person in Slack. After each write, Alfie is designed to read the record back by ID and flag any mismatch. You can export a record of each change Alfie makes.</p>
   <p class="ex"><span class="ex-tag">Example</span>Didn't pass rule 2.3: close date is required at Proposal. Nothing was changed.</p>
   <a class="textlink" href="/security/">How we handle access and data</a>
 </div></section>
@@ -45,7 +45,7 @@ service: { name: "Alfie", type: "HubSpot data cleanup, routing and account owner
   <p class="intro-text">If the founder runs HubSpot today, or a sales, marketing or ops lead who picked it up along the way, Alfie does the upkeep without a full-time hire. If you already have a RevOps person, Alfie does the repetitive part and they set the direction.</p>
   <ol class="steps c2">
     <li><span class="n" aria-hidden="true">01</span><h3>Quick start</h3><p>We connect HubSpot and Slack and agree the first rules with you. Which fields are required at each stage? How are duplicates matched? Who gets new contacts?</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Day one</h3><p>Alfie checks your records, proposes fixes, and starts working through the backlog.</p></li>
+    <li><span class="n" aria-hidden="true">02</span><h3>First week</h3><p>Alfie reads your records and shows you what it would fix, without changing anything. Then it works through the backlog as your admin OKs each change.</p></li>
     <li><span class="n" aria-hidden="true">03</span><h3>The next process</h3><p>When you're ready, we pick it together and Alfie takes it on.</p></li>
     <li><span class="n" aria-hidden="true">04</span><h3>Services, if you need them</h3><p>For processes that are custom or were never defined. <a href="/services/">About Services</a></p></li>
   </ol>
