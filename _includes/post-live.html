@@ -1,0 +1,27 @@
+{%- comment -%}
+  Is a post live? Sets two variables for the calling page (Jekyll includes share the page's scope):
+    post_live      true when the target is built and published, else false
+    post_live_url  the target's URL when live, else ""
+  Params: slug="some-slug" (preferred) or url="/blog/some-slug/".
+  "Published" = in site.posts. GitHub Pages leaves out future-dated posts (future: false in
+  _config.yml), published: false posts and everything in preview-posts/ (excluded), so a post
+  only counts once it is really on the site. On the preview host, a preview_only post counts as
+  live only when the page linking to it is itself preview_only.
+  Use it to show or hide a whole sentence until the target goes live:
+    {%- include post-live.html slug="who-should-approve-crm-changes" -%}
+    {%- if post_live %} More in [who should approve CRM changes]({{ post_live_url }}).{% endif %}
+  Every publish rebuilds the whole site, so older posts' links switch on by themselves.
+{%- endcomment -%}
+{%- assign post_live = false -%}
+{%- assign post_live_url = "" -%}
+{%- assign pl_url = include.url -%}
+{%- if include.slug -%}{%- assign pl_url = include.slug | prepend: "/blog/" | append: "/" -%}{%- endif -%}
+{%- assign pl_t = nil -%}
+{%- if include.slug -%}{%- assign pl_t = site.posts | where: "slug", include.slug | first -%}{%- endif -%}
+{%- unless pl_t -%}{%- assign pl_t = site.posts | where: "url", pl_url | first -%}{%- endunless -%}
+{%- unless pl_t or include.slug -%}{%- assign pl_t = site.pages | where: "url", pl_url | first -%}{%- endunless -%}
+{%- if pl_t -%}
+  {%- if pl_t.preview_only != true or page.preview_only -%}
+    {%- if pl_t.url != page.url -%}{%- assign post_live = true -%}{%- assign post_live_url = pl_t.url -%}{%- endif -%}
+  {%- endif -%}
+{%- endif -%}
