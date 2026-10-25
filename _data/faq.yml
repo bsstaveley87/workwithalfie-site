@@ -9,6 +9,9 @@ faq_what:
 faq_weekly:
   q: What does Alfie actually do each week?
   a: "The repetitive HubSpot work: it finds and merges duplicates, fills and fixes required fields, routes new contacts and companies to the right owner, tidies properties like emails, phone numbers and countries, and reassigns accounts when someone leaves. On its own, Alfie checks records and prepares the fixes. Changes go through once your rules, or your admin, say yes."
+faq_software-or-service:
+  q: Is Alfie software or a service?
+  a: "A service, run on software. You're buying the HubSpot upkeep done: duplicates found and merges drafted, missing fields chased, new contacts and companies routed, all by rules we agree with you. We set it up and tune the rules, Alfie does the repeat work, and the changes that are hard to undo, like merges, wait for your admin."
 faq_hubspot:
   q: Does Alfie only work with HubSpot, and does it need Slack?
   a: "Yes to both. HubSpot is the only CRM Alfie works with, and Slack is where your team sends requests and OKs changes. There are no email approvals."
