@@ -32,7 +32,7 @@ faq_no-rules:
   a: "No. Few growing teams have. We start from a standard set and adjust it to how your team works before Alfie uses it. If a process is custom or was never defined, <a href=\"/services/\">Services</a> can help you work it out."
 how_q-day-one:
   q: What does Alfie do on day one?
-  a: "It reads your HubSpot, checks it against your rules and proposes fixes. In the first week it writes nothing. After that, changes go live once your admin OKs them. See <a href=\"/how-it-works/\">how the first weeks work</a>."
+  a: "First week. Alfie reads your records and shows you what it would fix, without changing anything. Then it works through the backlog as your admin OKs each change. See <a href=\"/how-it-works/\">how the first weeks work</a>."
 faq_workflows:
   q: Does Alfie replace our HubSpot workflows?
   a: "No. Alfie works in your HubSpot alongside your existing workflows. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
@@ -44,7 +44,7 @@ faq_routing:
   a: "Yes. Alfie routes new contacts and companies to the right owner by account, territory or segment, and round robin, and your admin approves changes before they're made."
 faq_approval:
   q: What does Alfie do without asking?
-  a: "At first, nothing gets written without a yes in Slack. Once your admin trusts a rule, like standardizing country names, it runs on its own. Moving an account to a different rep can stay with the sales lead, and merges always wait for your admin."
+  a: "At first, nothing gets written without a yes in Slack. Once your admin trusts a rule, like standardizing country names, it runs on its own. Moving an account to a different rep can stay with the sales lead. Merges and moving a departing rep's records always need an OK."
 faq_owns-rules:
   q: Who owns the rules?
   a: "You do. Alfie keeps the rules and works from them, and you get a written copy of your <a href=\"/#rules-doc\">rules of engagement</a> as Markdown or PDF. To change a rule, tell us and we'll send you the new version. The document is yours even if you stop using Alfie."
