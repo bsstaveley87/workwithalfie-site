@@ -41,7 +41,7 @@ defaults:
   - scope: { path: "", type: pages }
     values: { last_modified_at: 2026-10-24 }   # sitemap lastmod; bump per page when it changes
   - scope: { path: "privacy.html" }
-    values: { last_modified_at: 2026-10-22 }
+    values: { last_modified_at: 2026-10-25 }
   - scope: { path: "", type: posts }
     values: { layout: post, author: "The Alfie team" }
 
