@@ -1,3 +1,29 @@
+# workwithalfie.com robots.txt (SEO/AEO review v1)
+# Everything public is crawlable. AI search and answer engines are named explicitly so the intent is clear.
+
+# Search engines and AI search / answer engines: allowed
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: DuckAssistBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Model-training crawlers: allowed (Ben, 2026-10-24).
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
+# Everyone else
 User-agent: *
 Allow: /
 

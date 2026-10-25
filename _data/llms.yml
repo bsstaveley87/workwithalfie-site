@@ -1,0 +1,4 @@
+# Which pages and FAQ answers llms.txt lists. FAQ text comes from _data/faq.yml, so it always matches the site.
+product: [/features/, /how-it-works/, /security/, /forecastai/, /enrichai/, /services/]
+company: [/who-its-for/, /faq/, /about/, /blog/, /book/, /privacy]
+fact_ids: [faq_weekly, faq_hubspot, faq_salesforce, faq_no-rules, how_q-day-one, faq_approval, faq_owns-rules, faq_data, faq_where, security_q-leave, faq_pricing]

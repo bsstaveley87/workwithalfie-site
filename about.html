@@ -1,0 +1,43 @@
+---
+layout: default
+permalink: /about/
+title: "About Alfie: HubSpot RevOps for growing SaaS teams"
+description: "Why we built Alfie: to help growing SaaS teams keep their HubSpot setup running on clear rules they own, starting with the basics."
+schema: AboutPage
+crumb: About
+# Copy: copy-rewrite-v0.8/about.md (Ben-approved, CMO 8:00 PM). IDs: about.hero, .story, .founder, .beliefs, .final. Founder line only (B2): name, title, LinkedIn. Full bio still gated.
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">About</p>
+  <h1 id="h1">Most CRM rules live in someone's head</h1>
+  <p class="lede">{{ site.entity.definition }}</p>
+  <p class="lede">Ask a growing sales team who owns Acme and you'll get two answers. Ask which of the two Acme Inc records is the real one and you'll get a shrug. The rules exist. Nobody wrote them down, so they get settled one argument at a time.</p>
+</div></section>
+
+<section class="sec alt" id="story" aria-labelledby="as-title"><div class="wrap">
+  <h2 id="as-title">Why we built Alfie</h2>
+  <p class="intro-text">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business. Who owned which account, and what a deal needed before it could move to the next stage, lived in one person's head. When that person was busy, nobody knew. We wrote the rules down one problem at a time, then built software to check changes against them before they reached HubSpot. Alfie is that approach, offered to other growing teams.</p>
+  {%- if site.entity.founder.public %}
+  <div class="founder">
+    <p class="founder-name">Founded by {{ site.entity.founder.name }}</p>
+    <p class="founder-title">{{ site.entity.founder.job_title }}</p>
+    {%- assign li = site.entity.founder.same_as | first %}
+    {%- if li and li != "" %}
+    <a class="textlink" href="{{ li }}" rel="me noopener">Ben on LinkedIn</a>
+    {%- endif %}
+  </div>
+  {%- endif %}
+</div></section>
+
+<section class="sec" id="beliefs" aria-labelledby="ab-title"><div class="wrap">
+  <h2 id="ab-title">What we believe</h2>
+  <div class="cards">
+    <article class="card"><h3>Your team shouldn't spend its evenings on CRM chores</h3><p>Merging records and chasing missing fields is necessary work, and it's exactly the kind a machine should do.</p></article>
+    <article class="card"><h3>Write the rule down before you automate it</h3><p>Automating a process nobody agreed on just makes the mess faster.</p></article>
+    <article class="card"><h3>Automation needs governance to be worth trusting</h3><p>Alfie works from your written rules, checks before it writes, and leaves the calls that are hard to undo, like merges, to a named person.</p></article>
+    <article class="card"><h3>The rules are yours</h3><p>You get them in writing, and you keep them if you leave.</p></article>
+    <article class="card"><h3>Start small</h3><p>Clear the duplicates and the missing close dates before redesigning the whole funnel.</p></article>
+  </div>
+</div></section>
+
+{% include final.html extra='<p class="cta-links">See <a href="/how-it-works/">how Alfie works</a>, <a href="/features/">what core Alfie does</a>, <a href="/who-its-for/">who it&#39;s for</a> and <a href="/security/">how we handle your data</a>.</p>' %}

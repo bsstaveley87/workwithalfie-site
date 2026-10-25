@@ -1,0 +1,7 @@
+<nav aria-label="Blog categories"><ul class="cat-filter">
+  <li><a href="/blog/"{% if page.url == '/blog/' %} aria-current="page"{% endif %}>All</a></li>
+  {%- for c in site.data.nav.categories %}
+  {%- assign cu = '/blog/category/' | append: c.slug | append: '/' %}
+  <li><a href="{{ cu }}"{% if page.url == cu %} aria-current="page"{% endif %}>{{ c.name }}</a></li>
+  {%- endfor %}
+</ul></nav>

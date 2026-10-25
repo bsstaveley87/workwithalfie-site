@@ -1,0 +1,80 @@
+# Alfie site (workwithalfie.com). Built by GitHub Pages' own Jekyll in production,
+# and by `bundle exec jekyll build` (output _site) on the preview host.
+title: Alfie
+description: "HubSpot RevOps help and automation for growing SaaS teams. The repetitive work gets done, by your rules."   # footer line and blog feed subtitle (CMO 8:18 PM)
+url: https://workwithalfie.com
+baseurl: ""
+lang: en
+theme: null  # no GitHub Pages default theme (stops the primer assets/css/style.css being added)
+email: ben@workwithalfie.com
+
+# true puts <meta name="robots" content="noindex"> on every page. Keep false: production is
+# indexable, and the preview host adds its own X-Robots-Tag: noindex header.
+# 404 and the /contact/ redirect stay noindex regardless.
+noindex_all: false
+
+# Cache-busting version for /assets/*.css and *.js. Bump when they change.
+asset_version: "20261024c"
+
+permalink: /blog/:slug/
+paginate: 10
+paginate_path: /blog/page:num/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+feed:
+  path: blog/feed.xml
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+defaults:
+  - scope: { path: "", type: pages }
+    values: { last_modified_at: 2026-10-24 }   # sitemap lastmod; bump per page when it changes
+  - scope: { path: "privacy.html" }
+    values: { last_modified_at: 2026-10-22 }
+  - scope: { path: "", type: posts }
+    values: { layout: post, author: "The Alfie team" }
+
+exclude:
+  - README.md
+  - README-v1.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - _src
+  - node_modules
+  - tests
+  - screens
+  - "*.log"
+  - preview-posts   # preview-only posts stay off production (Ben go-live, Oct 24)
+
+# THE single "Book a call" setting. Every CTA's href and label is built from this,
+# and /assets/config.js (window.ALFIE) is generated from it too.
+book_call:
+  url: /book/
+  label: Book a call
+
+# Entity facts for structured data and llms.txt (SEO/AEO review v1). Only true, published facts.
+entity:
+  definition: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes."   # v0.8 definition (Ben-approved, CMO 8:00 PM), used verbatim on Home, About, /faq, llms.txt, llms-full.txt, Organization.disambiguatingDescription
+  description: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes. Not affiliated with HubSpot."   # Organization.description (CMO 8:18 PM)
+  disambiguation: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes."
+  llms_intro: "Alfie (workwithalfie.com) works with growing SaaS companies that run on HubSpot and use Slack. Core Alfie handles clean records, account ownership, record updates, and parent and child companies, on standard rules the customer approves. ForecastAI, EnrichAI and Services are optional extras for Alfie customers. Alfie is not affiliated with or endorsed by HubSpot or Slack."
+  audience: "Growing SaaS companies that run on HubSpot"
+  knows_about: ["HubSpot", "Revenue operations", "CRM data quality", "Duplicate records", "Lead routing", "Account ownership", "Rules of engagement", "Sales forecasting"]
+  x_handle: ""                # Ben to supply, e.g. the X handle. Empty = omitted.
+  same_as: []                 # Ben to supply, e.g. the LinkedIn company page URL. Never guess.
+  founder:
+    public: true              # Ben, Oct 24 (B2): "Founded by Ben Staveley" on About, no other bio claims
+    name: "Ben Staveley"
+    job_title: "Founder and CEO"
+    image: ""                 # e.g. /assets/ben-staveley.jpg once the photo is approved
+    same_as: ["https://www.linkedin.com/in/ben-staveley"]   # Ben's LinkedIn (CMO 2:49 PM). Empty = link hidden

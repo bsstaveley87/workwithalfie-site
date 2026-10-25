@@ -1,0 +1,7 @@
+{%- include post-meta.html post=include.post -%}
+<li class="post-card">
+  <p class="label">{{ cat_name }}</p>
+  <h2><a href="{{ include.post.url }}">{{ include.post.title }}</a></h2>
+  <p>{{ include.post.description }}</p>
+  <p class="meta">Published {{ include.post.date | date: "%b %-d, %Y" }} · {{ mins }} min read</p>
+</li>

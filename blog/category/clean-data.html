@@ -1,0 +1,26 @@
+---
+layout: default
+permalink: /blog/category/clean-data/
+title: "Clean data · Alfie blog"
+description: "Posts on clean data for growing SaaS teams on HubSpot, from the Alfie team."
+schema: CollectionPage
+crumb: "Clean data"
+crumb_blog: true
+category_slug: clean-data
+# Copy: v1-copy/blog-index.md (blog.category)
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">Blog</p>
+  <h1 id="h1">Clean data</h1>
+</div></section>
+
+<section class="sec alt" id="posts" aria-label="Posts"><div class="wrap">
+  {% include cat-filter.html %}
+  {%- assign list = site.posts | where: "category", page.category_slug %}
+  {%- if list.size > 0 %}
+  <ul class="post-list">{% for post in list %}{% include post-card.html post=post %}{% endfor %}</ul>
+  {%- else %}
+  <p class="intro-text">New posts are on the way.</p>
+  {%- endif %}
+  <p><a class="textlink" href="/blog/">All posts</a></p>
+</div></section>

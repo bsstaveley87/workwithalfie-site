@@ -1,0 +1,37 @@
+# global.nav (CMO decision 2026-10-24): Product (dropdown) · How it works · Blog · About · Book a call
+main_before: []
+product:
+  - { url: /features/, title: Features, desc: Core Alfie }
+  - { url: /forecastai/, title: ForecastAI, desc: Weekly leadership forecast }
+  - { url: /enrichai/, title: EnrichAI, desc: "Contacts, accounts and ad audiences" }
+  - { url: /services/, title: Services, desc: "Define, document and run your processes" }
+main_after:
+  - { url: /how-it-works/, title: How it works }
+  - { url: /blog/, title: Blog }
+  - { url: /about/, title: About }
+footer:
+  - title: Product
+    links:
+      - { url: /features/, title: Features }
+      - { url: /how-it-works/, title: How it works }
+      - { url: /security/, title: Security }
+      - { url: /forecastai/, title: ForecastAI }
+      - { url: /enrichai/, title: EnrichAI }
+      - { url: /services/, title: Services }
+  - title: Company
+    links:
+      - { url: /about/, title: About }
+      - { url: /who-its-for/, title: "Who it's for" }
+      - { url: /faq/, title: FAQ }
+      - { url: /blog/, title: Blog }
+      - { cta: true }
+      - { url: "mailto:ben@workwithalfie.com", title: ben@workwithalfie.com }
+  - title: Legal
+    links:
+      - { url: /privacy, title: Privacy }
+categories:
+  - { slug: clean-data, name: Clean data }
+  - { slug: routing-ownership, name: Routing and ownership }
+  - { slug: forecasting, name: Forecasting }
+  - { slug: rules-process, name: Rules and process }
+  - { slug: hiring-revops, name: Hiring and RevOps }

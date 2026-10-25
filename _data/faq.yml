@@ -1,0 +1,65 @@
+# Shared questions (copy-rewrite-v0.8/faq.md, Ben-approved, CMO 8:00 PM). Keys are the stable copy IDs with "." replaced by "_"
+# (old keys kept: how_q-day-one = faq.day-one, security_q-overwrite = faq.overwrite, security_q-leave = faq.leave,
+# faq_experience = faq.revops-experience, faq_forecastai = faq.forecastai-included). v0.8 merged faq.slack into faq.hubspot.
+# Answers are HTML. The FAQPage JSON-LD is generated from these same strings, so it always matches the page.
+# "fully automated" only ever describes ForecastAI (CMO 8:18 PM); faq_forecastai uses it as v0.8 wrote it.
+faq_what:
+  q: What is Alfie?
+  a: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes. ForecastAI, EnrichAI and Services are optional extras."
+faq_weekly:
+  q: What does Alfie actually do each week?
+  a: "The repetitive HubSpot work: it finds and merges duplicates, fills and fixes required fields, routes new contacts and companies to the right owner, tidies properties like emails, phone numbers and countries, and reassigns accounts when someone leaves. On its own, Alfie checks records and prepares the fixes. Changes go through once your rules, or your admin, say yes."
+faq_hubspot:
+  q: Does Alfie only work with HubSpot, and does it need Slack?
+  a: "Yes to both. HubSpot is the only CRM Alfie works with, and Slack is where your team sends requests and OKs changes. There are no email approvals."
+faq_salesforce:
+  q: Do you support Salesforce?
+  a: "No, and there are no plans to. If Salesforce is your CRM, we're the wrong fit, and we'd rather tell you now."
+faq_where:
+  q: Where does Alfie run?
+  a: "In Slack and HubSpot. There's no separate app to learn. Behind the scenes, Alfie is hosted on established cloud infrastructure, isolated per customer."
+faq_revops-hire:
+  q: Is Alfie a replacement for a RevOps hire?
+  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
+faq_agency:
+  q: How is Alfie different from a HubSpot agency or a freelance admin?
+  a: "An agency or freelancer usually fixes what you point them at. Alfie starts by writing down your rules with you, then does the repetitive upkeep against them week after week and keeps a record of each change it makes. The rules document is yours whether or not you keep using Alfie."
+faq_experience:
+  q: Do we need RevOps experience to use Alfie?
+  a: "No. You don't need the vocabulary. We start from standard rules for the basics and adjust them to your team on a call."
+faq_no-rules:
+  q: We don't have our rules written down. Is that a problem?
+  a: "No. Most teams we talk to don't. We start from a standard set and adjust it to how your team works before Alfie uses it. If a process is custom or was never defined, <a href=\"/services/\">Services</a> can help you work it out."
+how_q-day-one:
+  q: What does Alfie do on day one?
+  a: "It checks your HubSpot against the rules you approved and proposes fixes. In the first week it only reads. Changes go live once a person approves them. See <a href=\"/how-it-works/\">how the first weeks work</a>."
+faq_workflows:
+  q: Does Alfie replace our HubSpot workflows?
+  a: "No. Alfie works in your HubSpot alongside your existing workflows. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
+faq_duplicates:
+  q: Can Alfie clean up duplicates already in HubSpot?
+  a: "Yes, including the backlog. Alfie finds them using your matching rules and drafts each merge, with the surviving values chosen by rule, so nobody compares records in two tabs. Merges go through once your admin OKs them."
+faq_routing:
+  q: Does Alfie handle lead routing?
+  a: "Yes. Alfie routes new contacts and companies to the right owner by account, territory or segment, and round robin, and your admin approves changes before they're made."
+faq_approval:
+  q: What does Alfie do without asking?
+  a: "At first, nothing gets written without a yes in Slack. Once your admin trusts a rule, like standardizing country names, it runs on its own. Moving an account to a different rep can stay with the sales lead, and merges always wait for your admin."
+faq_owns-rules:
+  q: Who owns the rules?
+  a: "You do. Alfie keeps the rules and works from them, and you get a written copy of your <a href=\"/#rules-doc\">rules of engagement</a> as Markdown or PDF. To change a rule, tell us and we'll send you the new version. The document is yours even if you stop using Alfie."
+security_q-overwrite:
+  q: Can Alfie overwrite what my team entered?
+  a: "Only if your rules allow it or someone approves it. Otherwise the change isn't made, and Alfie tells you which rule stopped it."
+faq_data:
+  q: What access does Alfie need, and what happens to our data?
+  a: "Only the HubSpot permissions the processes you use need, and your admin decides on anything new. Alfie uses AI to read requests, draft changes and suggest parent and subsidiary company links from the fields already in HubSpot, and nothing changes in HubSpot on an AI suggestion alone. We send the model only the fields a task needs, on terms where it isn't used to train models. How long AI-processed data is kept is set per customer, in your configuration. Each customer's data is kept separate, and you can see and export a record of each change Alfie makes. More on our <a href=\"/security/\">Security page</a>."
+security_q-leave:
+  q: What happens to our data if we leave?
+  a: "We export your data and change record for you, then delete it."
+faq_forecastai:
+  q: Is ForecastAI included?
+  a: "No. ForecastAI is an optional add-on for Alfie customers, priced separately. It builds your leadership forecast from the activity logged in HubSpot, fully automated, so nobody has to chase reps for updates."
+faq_pricing:
+  q: How much does it cost?
+  a: "There's a one-time setup fee, sized on our first calls, then a monthly fee for core Alfie. ForecastAI, EnrichAI and Services are optional and priced separately. We'll give you a number once we know what you need. <a href=\"/book/\">Book a call</a> to talk it through."

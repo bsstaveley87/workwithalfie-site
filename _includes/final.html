@@ -1,0 +1,13 @@
+{%- comment -%} Final invitation band (full-width dark band). Params: id, h2, body (HTML), extra (HTML), origin (true) {%- endcomment -%}
+{%- assign fid = include.id | default: 'final' -%}
+<section class="final cta-band" id="{{ fid }}"{% if include.h2 %} aria-labelledby="{{ fid }}-title"{% else %} aria-label="{{ site.book_call.label }}"{% endif %}>
+  <div class="wrap">
+    <div class="cta-copy">
+      {%- if include.origin %}<p class="origin">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business.</p>{% endif -%}
+      {%- if include.h2 %}<h2 id="{{ fid }}-title">{{ include.h2 }}</h2>{% endif -%}
+      {%- if include.body %}<p>{{ include.body }}</p>{% endif -%}
+      {{ include.extra }}
+    </div>
+    <div class="cta-act">{% include cta.html %}</div>
+  </div>
+</section>

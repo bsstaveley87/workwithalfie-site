@@ -1,0 +1,39 @@
+---
+layout: default
+permalink: /faq/
+title: "Alfie FAQ: HubSpot rules, approvals, data and pricing"
+description: "Straight answers on Alfie for HubSpot: what it does on day one, what needs approval, who owns the rules, what access it needs and how pricing works."
+schema: WebPage
+crumb: FAQ
+faq_ids: [faq_what, faq_weekly, faq_hubspot, faq_salesforce, faq_where, faq_revops-hire, faq_agency, faq_experience, faq_no-rules, how_q-day-one, faq_workflows, faq_duplicates, faq_routing, faq_approval, faq_owns-rules, security_q-overwrite, faq_data, security_q-leave, faq_forecastai, faq_pricing]
+groups:
+  - { title: The basics, ids: [faq_what, faq_weekly, faq_hubspot, faq_salesforce, faq_where, faq_revops-hire, faq_agency, faq_experience] }
+  - { title: Getting started, ids: [faq_no-rules, how_q-day-one, faq_workflows, faq_duplicates, faq_routing] }
+  - { title: Staying in control, ids: [faq_approval, faq_owns-rules, security_q-overwrite] }
+  - { title: Access and data, ids: [faq_data, security_q-leave] }
+  - { title: Add-ons and pricing, ids: [faq_forecastai, faq_pricing] }
+# Copy: copy-rewrite-v0.8/faq.md (Ben-approved, CMO 8:00 PM). 20 questions. One FAQPage JSON-LD covers every question.
+# faq_ids must list every id in groups, in the same order (the JSON-LD mirrors the visible FAQ).
+faq_schema: true
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">FAQ</p>
+  <h1 id="h1">Common questions</h1>
+</div></section>
+
+<section class="sec alt" id="questions" aria-label="Questions"><div class="wrap">
+  <nav class="faq-toc" aria-labelledby="h1">
+    {%- for g in page.groups %}
+    <div><p class="faq-toc-h">{{ g.title }}</p><ul>
+      {%- for id in g.ids %}
+      <li><a href="#q-{{ id }}">{{ site.data.faq[id].q }}</a></li>
+      {%- endfor %}
+    </ul></div>
+    {%- endfor %}
+  </nav>
+  {%- for g in page.groups %}
+  <div class="faq-group"><h2 id="g{{ forloop.index }}">{{ g.title }}</h2>{% include faq.html ids=g.ids prefix="q-" %}</div>
+  {%- endfor %}
+</div></section>
+
+{% include final.html id="final" body='Didn&#39;t find your question? Book a 20-minute call, or email <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a>.' %}

@@ -1,0 +1,11 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+.bundle/
+# Unapproved blog drafts never go in the public repo (ADR-0002). Keep them local only.
+_drafts/
+node_modules/
+tests/
+screens/

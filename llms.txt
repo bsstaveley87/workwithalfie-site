@@ -1,0 +1,35 @@
+---
+layout: null
+sitemap: false
+---
+# Alfie
+
+> {{ site.entity.definition | default: site.entity.description | default: site.description }}
+
+{% if site.entity.llms_intro and site.entity.llms_intro != "" %}{{ site.entity.llms_intro }}{% endif %}
+
+## Key facts
+{% for id in site.data.llms.fact_ids %}{% assign q = site.data.faq[id] %}
+- {{ q.q }} {{ q.a | strip_html }}
+{%- endfor %}
+
+## Product
+{% for u in site.data.llms.product %}{% assign p = site.pages | where: "url", u | first %}
+- [{{ p.meta_title | default: p.title | split: " · " | first }}]({{ site.url }}{{ u }}): {{ p.description }}
+{%- endfor %}
+
+## Company
+{% for u in site.data.llms.company %}{% assign p = site.pages | where: "url", u | first %}
+- [{{ p.meta_title | default: p.title | split: " · " | first }}]({{ site.url }}{{ u }}): {{ p.description }}
+{%- endfor %}
+{% if site.posts.size > 0 %}
+## Blog
+{% for post in site.posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{%- endfor %}
+{% endif %}
+## Optional
+
+- [Full text for LLMs]({{ site.url }}/llms-full.txt): every public page's summary and every question and answer in one file.
+- [Blog feed]({{ site.url }}/blog/feed.xml)
+- [Sitemap]({{ site.url }}/sitemap.xml)

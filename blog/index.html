@@ -1,0 +1,31 @@
+---
+layout: default
+title: "HubSpot RevOps guides for growing SaaS teams · Alfie"
+description: "Plain answers on HubSpot data, required fields, routing, ownership and forecasting for founders and early RevOps hires at growing SaaS teams."
+schema: Blog
+crumb: Blog
+# Copy: v1-copy/blog-index.md. IDs: blog.index.hero, .filter, .list, .feed, .final. Paginated 10 per page (jekyll-paginate).
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">Blog</p>
+  <h1 id="h1">Plain answers for whoever runs your HubSpot.</h1>
+  <p class="lede">Short, practical posts on keeping a HubSpot setup in step with a growing team: clean data, required fields, routing, ownership and forecasting. Written for founders, the person who picked up HubSpot along the way, and early RevOps hires.</p>
+</div></section>
+
+<section class="sec alt" id="posts" aria-label="Posts"><div class="wrap">
+  {% include cat-filter.html %}
+  {%- assign list = paginator.posts | default: site.posts %}
+  {%- if list.size > 0 %}
+  <ul class="post-list">{% for post in list %}{% include post-card.html post=post %}{% endfor %}</ul>
+  {%- else %}
+  <p class="intro-text">New posts are on the way.</p>
+  {%- endif %}
+  {%- if paginator.next_page or paginator.previous_page %}
+  <nav class="pager" aria-label="More posts">
+    {%- if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Older posts</a>{% endif -%}
+    {%- if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Newer posts</a>{% endif -%}
+  </nav>
+  {%- endif %}
+  <p class="rss"><a class="textlink" href="/blog/feed.xml">Get new posts by RSS</a></p>
+  <div class="actions"><a class="btn btn-ghost" href="/how-it-works/">See how Alfie works</a></div>
+</div></section>

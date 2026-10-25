@@ -1,0 +1,28 @@
+---
+layout: default
+permalink: /blog/category/hiring-revops/
+title: "Hiring and RevOps · Alfie blog"
+description: "Posts on hiring and revops for growing SaaS teams on HubSpot, from the Alfie team."
+schema: CollectionPage
+crumb: "Hiring and RevOps"
+crumb_blog: true
+# Empty category: kept out of the sitemap until its first post is published. Delete this line then.
+sitemap: false
+category_slug: hiring-revops
+# Copy: v1-copy/blog-index.md (blog.category)
+---
+<section class="page-hero" aria-labelledby="h1"><div class="wrap">
+  <p class="label">Blog</p>
+  <h1 id="h1">Hiring and RevOps</h1>
+</div></section>
+
+<section class="sec alt" id="posts" aria-label="Posts"><div class="wrap">
+  {% include cat-filter.html %}
+  {%- assign list = site.posts | where: "category", page.category_slug %}
+  {%- if list.size > 0 %}
+  <ul class="post-list">{% for post in list %}{% include post-card.html post=post %}{% endfor %}</ul>
+  {%- else %}
+  <p class="intro-text">New posts are on the way.</p>
+  {%- endif %}
+  <p><a class="textlink" href="/blog/">All posts</a></p>
+</div></section>
