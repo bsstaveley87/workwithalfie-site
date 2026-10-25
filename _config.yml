@@ -54,6 +54,7 @@ exclude:
   - tests
   - screens
   - "*.log"
+  - preview-posts   # preview-only posts stay off production (Ben go-live, Oct 24)
 
 # THE single "Book a call" setting. Every CTA's href and label is built from this,
 # and /assets/config.js (window.ALFIE) is generated from it too.
