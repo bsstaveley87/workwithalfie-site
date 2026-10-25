@@ -88,7 +88,7 @@ The agreed rules for who can change what in the CRM, and how those changes are c
 
 **Account ownership.**
 The rule for which rep is responsible for a company record and the deals and contacts tied to it.
-*At Alfie:* account ownership is a later process, added after clean data and required fields are running. See [core features](/features/).
+*At Alfie:* account ownership is a later process, added after clean data and required fields are running. See [what Alfie does](/features/).
 
 **Territory.**
 A defined slice of the market, usually by geography, assigned to a rep or team.
@@ -140,7 +140,7 @@ A document that lists each property, what it means, who fills it in and which va
 
 **Enrichment.**
 Adding company or contact details to CRM records from outside sources.
-*At Alfie:* enrichment is part of [EnrichAI](/enrichai/), an optional add-on, not core Alfie.
+*At Alfie:* enrichment is part of [EnrichAI](/enrichai/), an optional add-on to Alfie.
 
 ## Changes and control
 

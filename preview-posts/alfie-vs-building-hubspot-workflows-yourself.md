@@ -103,4 +103,4 @@ No. Alfie works alongside the workflows you already have. During setup, we list 
 
 If a process is custom or was never defined, [Services](/services/) helps work out how it should run first, before anything is automated.
 
-Related: {% include post-link.html url="/blog/should-ai-be-allowed-to-change-your-crm/" text="should AI be allowed to change your CRM?" %}, {% include post-link.html url="/blog/alfie-vs-hiring-a-revops-person/" text="Alfie vs hiring a RevOps person" %} and [what core Alfie does](/features/).
+Related: {% include post-link.html url="/blog/should-ai-be-allowed-to-change-your-crm/" text="should AI be allowed to change your CRM?" %}, {% include post-link.html url="/blog/alfie-vs-hiring-a-revops-person/" text="Alfie vs hiring a RevOps person" %} and [what Alfie does](/features/).

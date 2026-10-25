@@ -1,7 +1,7 @@
 # global.nav (CMO decision 2026-10-24): Product (dropdown) · How it works · Blog · About · Book a call
 main_before: []
 product:
-  - { url: /features/, title: Features, desc: Core Alfie }
+  - { url: /features/, title: What Alfie does, desc: "Duplicates, fields and routing" }
   - { url: /forecastai/, title: ForecastAI, desc: Weekly leadership forecast }
   - { url: /enrichai/, title: EnrichAI, desc: "Contacts, accounts and ad audiences" }
   - { url: /services/, title: Services, desc: "Define, document and run your processes" }
@@ -12,7 +12,7 @@ main_after:
 footer:
   - title: Product
     links:
-      - { url: /features/, title: Features }
+      - { url: /features/, title: What Alfie does }
       - { url: /how-it-works/, title: How it works }
       - { url: /security/, title: Security }
       - { url: /forecastai/, title: ForecastAI }
