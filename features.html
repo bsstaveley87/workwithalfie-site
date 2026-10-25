@@ -5,60 +5,57 @@ title: "HubSpot data cleanup, routing and ownership · Alfie"
 description: "Alfie merges HubSpot duplicates once your admin approves, flags missing deal fields, links parent and child companies, and keeps account ownership on your rules."
 schema: WebPage
 crumb: Core features
-faq_ids: [faq_hubspot, faq_salesforce, faq_no-rules, faq_approval, faq_owns-rules, faq_data, faq_where, faq_pricing]
-# Copy: v1-copy/features.md (v0.6.1). IDs: features.hero, .capabilities, .control, .how-we-work, .where-it-runs, .faq, .final
+faq_ids: [faq_what, faq_weekly, faq_workflows, faq_agency, security_q-overwrite, faq_forecastai, faq_pricing]
+# Copy: copy-rewrite-v0.8/features.md (Ben-approved, CMO 8:00 PM). IDs: features.hero, .capabilities, .control, .how-we-work, .where-it-runs, .faq, .final
+# Item 5 is the CTO's wording, word for word. Item 4's leaver line is the CTO-cleared wording, verbatim.
 service: { name: "Alfie", type: "HubSpot data cleanup, routing and account ownership" }
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Core Alfie</p>
-  <h1 id="h1">Everyday HubSpot upkeep, run by your rules.</h1>
-  <p class="lede">Core Alfie handles the CRM work that keeps coming back. It starts on standard rules you approve, and they grow with your team. Alfie checks your records against them, proposes fixes, and asks a person when the rules say so.</p>
+  <h1 id="h1">The HubSpot upkeep nobody has time for</h1>
+  <p class="lede">Every growing team has the same list: duplicates to merge, fields to fix, new contacts with no owner, accounts stranded when someone leaves. It never gets shorter, because the work keeps coming back. Core Alfie takes it on, by rules we set up with you, so your team stops spending evenings on it.</p>
   <div class="actions">{% include cta.html %}</div>
 </div></section>
 
 <section class="sec alt" id="capabilities" aria-labelledby="cap-title"><div class="wrap">
-  <h2 id="cap-title">Five jobs, one set of rules.</h2>
+  <h2 id="cap-title">What core Alfie does</h2>
   <ol class="steps">
-    <li><span class="n" aria-hidden="true">01</span><h3>Clean records</h3><p>Duplicates found by rule and merged once your admin approves, fields standardized, and deals flagged when they reach a stage without the details your team agreed. The kept value in a merge is chosen by rule, not by guesswork.</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Account ownership</h3><p>Assign accounts by territory or segment, on rules you set. Reassignments that break a rule go to the right person for approval.</p></li>
-    <li><span class="n" aria-hidden="true">03</span><h3>Record updates</h3><p>Ask in Slack for a change to a contact, company or deal, one record at a time or as a pasted list. Alfie checks it against your rules before it reaches HubSpot.</p></li>
-    <li><span class="n" aria-hidden="true">04</span><h3>Parent and child companies</h3><p>Link subsidiaries and regional entities to their parent, using your domain and hierarchy rules. Alfie uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. Those suggestions go through the same rule checks as every other change Alfie proposes.</p></li>
-    <li><span class="n" aria-hidden="true">05</span><h3>Rules and approvals</h3><p>Your rules decide what's allowed, what gets flagged, and who approves, and Alfie applies them to every change it proposes. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. To change a rule, tell us; we update it and send you the new version.</p></li>
+    <li><span class="n" aria-hidden="true">01</span><h3>Merges duplicates</h3><p>Alfie finds duplicate contacts and companies using your matching rules, like the two Acme Incs, and drafts each merge with the surviving values chosen by rule. No more side-by-side comparing in two browser tabs. Merges go ahead once your admin OKs them.</p></li>
+    <li><span class="n" aria-hidden="true">02</span><h3>Fills and fixes required fields</h3><p>It standardizes messy values (country names, job titles) and catches deals that reach a stage without what your team agreed, like a close date at Proposal. Each owner gets a Slack digest of what's missing on their deals, and your admin gets the exceptions.</p></li>
+    <li><span class="n" aria-hidden="true">03</span><h3>Routes new contacts and companies</h3><p>Each new contact and company goes to the right owner by account, territory or segment, and round robin, with your admin approving. No more weekly "who's taking these?" thread.</p></li>
+    <li><span class="n" aria-hidden="true">04</span><h3>Keeps account ownership straight</h3><p>Accounts are assigned by territory or segment on your rules. When a rep leaves, Alfie proposes who takes over each account, and nothing moves until your admin approves.</p></li>
+    <li><span class="n" aria-hidden="true">05</span><h3>Tidies properties</h3><p>Standardizes emails, phone numbers, websites, countries and states, and clears placeholder values like 'test' or 'n/a'. Alfie proposes each fix and makes it once your admin approves. Lifecycle stage checks can follow once your stage definitions are agreed.</p></li>
+    <li><span class="n" aria-hidden="true">06</span><h3>Links parents and subsidiaries</h3><p>AI suggests which companies belong together, like Acme EU under Acme, using your domain and hierarchy rules and the fields already in HubSpot, and you confirm before anything is linked.</p></li>
+    <li><span class="n" aria-hidden="true">07</span><h3>Takes record updates from Slack</h3><p>Ask for a change to a contact, company or deal in Slack, as one record or a pasted list, and Alfie makes it once it passes your rules.</p></li>
   </ol>
-  <p class="note">Enrichment (adding company or contact data from outside sources) is part of <a href="/enrichai/">EnrichAI</a>, not core Alfie. The weekly leadership forecast is <a href="/forecastai/">ForecastAI</a>, also an add-on.</p>
+  <p class="note">Adding outside data, like a contact's phone number or a company's headcount, is <a href="/enrichai/">EnrichAI</a>, not core Alfie.</p>
 </div></section>
 
 <section class="sec" id="control" aria-labelledby="ctl-title"><div class="wrap">
-  <p class="label">Control</p>
-  <h2 id="ctl-title">Proposed, checked, approved, done.</h2>
-  <p class="intro-text">Alfie uses AI to understand a request and propose a change. It's designed never to write to HubSpot on that basis alone.</p>
-  <ol class="steps c2">
-    <li><span class="n" aria-hidden="true">01</span><h3>Proposed</h3><p>Alfie reads the request and your HubSpot data and proposes a specific change.</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Checked</h3><p>Fixed rule checks, written from your rules, decide whether the change is allowed. If it fails, nothing is written and Alfie says which rule it failed.</p></li>
-    <li><span class="n" aria-hidden="true">03</span><h3>Approved where needed</h3><p>If your rules say a person signs off, Alfie asks that person in Slack and waits.</p></li>
-    <li><span class="n" aria-hidden="true">04</span><h3>Verified</h3><p>The change is written to HubSpot, then read back by ID. Nothing counts as done until it matches, and a mismatch is flagged, not hidden. You can see and export a record of every change.</p></li>
-  </ol>
+  <p class="label">You stay in control</p>
+  <h2 id="ctl-title">Why it's safe to hand this over</h2>
+  <p class="intro-text">AI drafts each change. Fixed checks written from your rules decide whether it's allowed, and Alfie is designed never to write to HubSpot on the AI's word alone. Merges, and anything else your rules reserve for a person, wait for that person in Slack. After each write, Alfie reads the record back by ID, so a mismatch gets flagged instead of slipping by. You can export a record of each change Alfie makes.</p>
   <p class="ex"><span class="ex-tag">Example</span>Didn't pass rule 2.3: close date is required at Proposal. Nothing was changed.</p>
   <a class="textlink" href="/security/">How we handle access and data</a>
 </div></section>
 
 <section class="sec alt" id="how-we-work" aria-labelledby="fhww-title"><div class="wrap">
-  <p class="label">How we work</p>
-  <h2 id="fhww-title">Start on standard rules. Grow into your own.</h2>
-  <p class="intro-text">You don't need a RevOps team or written rules to start. Alfie begins with standard rules for the basics, adjusted to your team and approved by you, so from day one it's checking your HubSpot and proposing fixes. If the founder or a sales, marketing or ops lead runs HubSpot today, Alfie does the upkeep without a full-time hire. If you already have a RevOps person, Alfie works as their second pair of hands: they set the rules, Alfie runs them.</p>
+  <p class="label">Getting started</p>
+  <h2 id="fhww-title">You don't need a RevOps team to start</h2>
+  <p class="intro-text">If the founder runs HubSpot today, or a sales, marketing or ops lead who picked it up along the way, Alfie does the upkeep without a full-time hire. If you already have a RevOps person, Alfie does the repetitive part and they set the direction.</p>
   <ol class="steps c2">
-    <li><span class="n" aria-hidden="true">01</span><h3>Quick start</h3><p>We connect Alfie to your HubSpot and Slack and walk through standard rules for the first process: clean data and required fields. We adjust them to how your team works: which fields are required, how duplicates are handled, who approves exceptions. You approve them, and they become version one of your rules-of-engagement document.</p></li>
-    <li><span class="n" aria-hidden="true">02</span><h3>Checking from day one</h3><p>From day one, Alfie checks your HubSpot against your rules and proposes fixes. Changes go live with your approval. Once you trust a rule, you can let it run on its own.</p></li>
-    <li><span class="n" aria-hidden="true">03</span><h3>Add the next process when you're ready</h3><p>When you're ready, we choose the next process with you from a shared list, agree its scope and how we'll judge it done, build it, and review it together. Your rules document updates as each one ships. Typical second process: routing and account ownership.</p></li>
-    <li><span class="n" aria-hidden="true">04</span><h3>Services, when you need them</h3><p>If your processes are custom or were never defined, <a href="/services/">Services</a> takes them on: we work out how each one really runs today, design the fix with you, document the rules, then Alfie runs it.</p></li>
+    <li><span class="n" aria-hidden="true">01</span><h3>Quick start</h3><p>We connect HubSpot and Slack and agree the first rules with you. Which fields are required at each stage? How are duplicates matched? Who gets new contacts?</p></li>
+    <li><span class="n" aria-hidden="true">02</span><h3>Day one</h3><p>Alfie checks your records, proposes fixes, and starts working through the backlog.</p></li>
+    <li><span class="n" aria-hidden="true">03</span><h3>The next process</h3><p>When you're ready, we pick it together and Alfie takes it on.</p></li>
+    <li><span class="n" aria-hidden="true">04</span><h3>Services, if you need them</h3><p>For processes that are custom or were never defined. <a href="/services/">About Services</a></p></li>
   </ol>
   <div class="actions after-list">{% include cta.html %}<a class="btn btn-ghost" href="/how-it-works/">How it works, step by step</a></div>
 </div></section>
 
 <section class="sec" id="where-it-runs" aria-labelledby="where-title"><div class="wrap">
-  <h2 id="where-title">In Slack and HubSpot. Nothing new to log into.</h2>
-  <p class="intro-text">Your team asks for changes and approves them in Slack. Alfie makes the changes in HubSpot. Alfie keeps your approved rules and gives you a written copy, your rules of engagement, that you can keep wherever you like, such as Notion or Google Docs. To change a rule, tell us; we update it and send you the new version. Alfie needs Slack: requests and approvals happen there, not by email.</p>
-  <p class="note">Alfie works with HubSpot only. We don't support Salesforce.</p>
+  <h2 id="where-title">Where your team uses it</h2>
+  <p class="intro-text">In Slack and HubSpot. Your team asks for changes in Slack, and Alfie makes them in HubSpot. There's no new app to log into. Slack is required.</p>
+  <p class="note">HubSpot only. We don't support Salesforce.</p>
 </div></section>
 
 <section class="sec alt" id="faq" aria-labelledby="ffaq-title"><div class="wrap">
@@ -66,4 +63,4 @@ service: { name: "Alfie", type: "HubSpot data cleanup, routing and account owner
   {% include faq.html ids=page.faq_ids prefix="f-" %}
 </div></section>
 
-{% include final.html h2="Start with the basics." body="We'll look at how you run HubSpot today and show you where Alfie would start." %}
+{% include final.html h2="Which of these is eating the most of your week?" body="Tell us on a 20-minute call. We'll show you which job Alfie would take first." extra='<p class="cta-links">Also see <a href="/forecastai/">ForecastAI</a>, <a href="/enrichai/">EnrichAI</a> and <a href="/services/">Services</a>.</p>' %}

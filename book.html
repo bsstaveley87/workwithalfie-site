@@ -7,23 +7,19 @@ schema: ContactPage
 crumb: Book a call
 turnstile: true
 scripts: [contact.js]
-# Copy: v1-copy/contact.md. IDs: book.hero, book.expect, home.origin, book.form. Not built (gated): book.embed.
+# Copy: copy-rewrite-v0.8/contact.md (Ben-approved, CMO 8:00 PM); framing copy only, form strings unchanged; newness line left out. IDs: book.hero, book.expect, home.origin, book.form. Not built (gated): book.embed.
 # The form markup, field names, spam-check container and /assets/contact.js are the live holding page's, unchanged
 # (form endpoint, site key and the token field live in contact.js). Only change: privacy link /privacy.html -> /privacy.
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Book a call</p>
-  <h1 id="h1">Let's see where Alfie would start.</h1>
-  <p class="lede">A 20-minute video call, scheduled in US Eastern time (ET). No preparation needed. Send us a few lines below and we'll reply within a day to find a time.</p>
+  <h1 id="h1">Let's look at your HubSpot</h1>
+  <p class="lede">A 20-minute video call, scheduled in US Eastern time (ET). You don't need to prepare anything. Send a few lines below and we'll reply within a day to find a time.</p>
 </div></section>
 
-<section class="sec alt" id="expect" aria-label="What to expect"><div class="wrap">
-  <div class="cards">
-    <article class="card"><p><strong>You tell us</strong> how your team uses HubSpot today and what keeps going wrong.</p></article>
-    <article class="card"><p><strong>We ask</strong> about ownership, required fields, and who approves what.</p></article>
-    <article class="card"><p><strong>You leave with</strong> where Alfie would start, which standard rules fit your team, whether any custom process is one for Services later, and whether Alfie is a fit.</p></article>
-  </div>
-  <p class="note">Alfie is a good fit if you're a growing SaaS team on HubSpot and it's run by a founder, by a sales, marketing or ops lead who inherited it, or by an early RevOps hire who needs a second pair of hands. If Salesforce is your CRM, we're probably not the right fit.</p>
+<section class="sec alt" id="expect" aria-labelledby="ex-title"><div class="wrap">
+  <h2 id="ex-title" class="h-small">What happens on the call</h2>
+  <p class="intro-text">You tell us how your team uses HubSpot and what keeps breaking. We'll ask which HubSpot jobs eat the most time, who owns what, and which fields matter. By the end, you'll know which jobs Alfie would take first, which standard rules fit, whether anything is a job for Services later, and whether we're a fit at all. If you're on Salesforce, we'll save you the 20 minutes: Alfie is HubSpot only.</p>
 </div></section>
 
 <section class="sec cta" id="contact" aria-labelledby="cta-title">
@@ -31,7 +27,7 @@ scripts: [contact.js]
     <p class="origin">We built Alfie after watching a fast-growing SaaS team's HubSpot setup fall behind the business.</p>
     <div class="form-box">
       <div class="intro">
-        <h2 id="cta-title">Tell us what's breaking in your HubSpot setup.</h2>
+        <h2 id="cta-title">What's breaking in your HubSpot setup?</h2>
         <p>A few lines is plenty. We'll reply within a day.</p>
         <p class="alt-contact">Prefer email? Write to <a href="mailto:ben@workwithalfie.com">ben@workwithalfie.com</a> and we'll find a time.</p>
       </div>

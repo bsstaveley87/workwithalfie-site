@@ -14,7 +14,7 @@ email: ben@workwithalfie.com
 noindex_all: false
 
 # Cache-busting version for /assets/*.css and *.js. Bump when they change.
-asset_version: "20261024b"
+asset_version: "20261024c"
 
 permalink: /blog/:slug/
 paginate: 10
@@ -63,9 +63,9 @@ book_call:
 
 # Entity facts for structured data and llms.txt (SEO/AEO review v1). Only true, published facts.
 entity:
-  definition: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve."   # C1 (revised), used verbatim on Home, About, /faq, llms.txt
+  definition: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes."   # v0.8 definition (Ben-approved, CMO 8:00 PM), used verbatim on Home, About, /faq, llms.txt, llms-full.txt, Organization.disambiguatingDescription
   description: "Alfie (workwithalfie.com) is a HubSpot RevOps service for growing SaaS teams. Not affiliated with HubSpot."   # short form (CMO-approved for meta and JSON-LD)
-  disambiguation: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that checks your HubSpot records against rules you approve and proposes fixes for your admin to approve."
+  disambiguation: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes."
   llms_intro: "Alfie (workwithalfie.com) works with growing SaaS companies that run on HubSpot and use Slack. Core Alfie handles clean records, account ownership, record updates, and parent and child companies, on standard rules the customer approves. ForecastAI, EnrichAI and Services are optional extras for Alfie customers. Alfie is not affiliated with or endorsed by HubSpot or Slack."
   audience: "Growing SaaS companies that run on HubSpot"
   knows_about: ["HubSpot", "Revenue operations", "CRM data quality", "Duplicate records", "Lead routing", "Account ownership", "Rules of engagement", "Sales forecasting"]

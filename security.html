@@ -5,55 +5,55 @@ title: "Security: HubSpot access, approvals and AI data · Alfie"
 description: "What Alfie can access in HubSpot, how every change Alfie makes is checked and recorded, what goes to the AI model, and how your data is kept separate."
 schema: WebPage
 crumb: Security
-faq_ids: [security_q-slack, security_q-overwrite, security_q-leave, faq_data, faq_where]
-# Copy: v1-copy/security.md (v0.6.1). IDs: security.hero, .access, .changes, .approvals, .verified, .ai, .hosting, .not-claimed, .faq, .final
-# Hosting line "established cloud infrastructure" (decided by CMO, Oct 24).
+faq_ids: [faq_hubspot, security_q-overwrite, security_q-leave]
+# Copy: copy-rewrite-v0.8/security.md (Ben-approved, CMO 8:00 PM). IDs: security.hero, .access, .changes, .approvals, .verified, .ai, .hosting, .not-claimed, .faq, .final
+# Hosting line "established cloud infrastructure" (decided by CMO, Oct 24). Title and meta unchanged.
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Security</p>
-  <h1 id="h1">You decide what Alfie can touch.</h1>
-  <p class="lede">Alfie works inside your HubSpot, so you should know exactly what it can access, how it changes things, and where your data goes. Here's how it's designed.</p>
+  <h1 id="h1">You decide what Alfie can touch</h1>
+  <p class="lede">You're handing Alfie real work inside your HubSpot: merges, field fixes, routing. So you should know what it can access, how it makes changes, and where your data goes. This page describes how Alfie is designed. If you need it in questionnaire form, ask us.</p>
   <div class="actions">{% include cta.html %}<a class="btn btn-ghost" href="/how-it-works/">How it works</a></div>
 </div></section>
 
 <section class="sec alt" id="access" aria-labelledby="sa-title"><div class="wrap split">
   <div>
-    <h2 id="sa-title">Only the permissions each process needs.</h2>
-    <p class="intro-text">Alfie asks only for the HubSpot permissions each process needs, and adds more only with your admin's approval. When a new process ships, any new permission it needs is requested then, not up front. Your admin approves the install.</p>
+    <h2 id="sa-title">HubSpot permissions, one process at a time</h2>
+    <p class="intro-text">Alfie asks only for the HubSpot permissions the processes you use need, and your admin installs it. When you add a process that needs a new permission, Alfie asks for it then, and your admin decides then. Nothing is requested up front "just in case".</p>
   </div>
   <div id="changes">
-    <h2 id="sc-title">Every change checked. Every change recorded.</h2>
-    <p class="intro-text">AI can propose a change, but fixed checks written from your approved rules decide whether it's allowed. Alfie is designed to keep a record of every change that can't be edited after the fact: the request, what was proposed, which rule checked it and which version of the rule, who approved it, the value before and after, and the read-back from HubSpot. You can see and export a record of every change.</p>
+    <h2 id="sc-title">A record of each change Alfie makes</h2>
+    <p class="intro-text">AI can draft a change. Fixed checks written from your rules decide whether it's allowed. Alfie is designed to keep a record of each change it makes that can't be edited afterward. The record holds the request, what was proposed, which rule checked it (and which version of that rule), who approved it, the value before and after, and the read-back from HubSpot.</p>
     <h3>How you see it</h3>
-    <ul class="list"><li>A summary in Slack</li><li>A list of exceptions you can download</li><li>A full export whenever you ask, and when you leave</li></ul>
+    <ul class="list"><li>A summary in Slack</li><li>A downloadable list of exceptions</li><li>A full export whenever you ask, including when you leave</li></ul>
   </div>
 </div></section>
 
 <section class="sec" id="approvals" aria-labelledby="sp-title"><div class="wrap split">
   <div>
-    <h2 id="sp-title">A person decides where your rules say so.</h2>
-    <p class="intro-text">Your rules say which changes need a person, and which person. Alfie asks in Slack and waits. At the start, every change waits for approval. A rule runs on its own only after your admin signs it off, and that sign-off is recorded against that version of the rule. Merging records always needs a fresh approval from your admin.</p>
+    <h2 id="sp-title">What Alfie does on its own, and what waits for a person</h2>
+    <p class="intro-text">On its own, Alfie checks records, drafts fixes and prepares changes. Whether a change is written straight away is up to your rules. At the start, every change waits for a yes in Slack. A rule runs on its own only after your admin signs it off, and that sign-off is recorded against that version of the rule. Merges always wait for your admin, and so does anything else your rules reserve for a named person.</p>
   </div>
   <div id="verified">
-    <h2 id="sv-title">Done means confirmed.</h2>
-    <p class="intro-text">After each write, Alfie reads the record back from HubSpot by ID. Nothing counts as done until the value matches. If it doesn't, Alfie flags it instead of hiding it.</p>
+    <h2 id="sv-title">How Alfie confirms a change</h2>
+    <p class="intro-text">After each write, Alfie reads the record back from HubSpot by its ID. The change isn't marked done until the values match. If they don't, Alfie flags the mismatch.</p>
   </div>
 </div></section>
 
 <section class="sec alt" id="ai" aria-labelledby="sai-title"><div class="wrap">
-  <h2 id="sai-title">AI suggests. Your rules decide.</h2>
-  <p class="intro-text">Alfie uses AI from the start. In data cleanup, Alfie uses AI to suggest parent and subsidiary company links, and nothing changes in HubSpot until you approve it. It also reads requests and proposes changes. Every AI suggestion goes through the same rule checks as any other change, and a person approves where your rules say so. We send the model only the fields a task needs, on terms where it isn't used to train models. How long any AI-processed data is kept is set per customer, in your configuration.</p>
+  <h2 id="sai-title">Where AI is used, and where it stops</h2>
+  <p class="intro-text">Alfie uses AI in two places from the start: to read requests and draft changes, and to suggest which companies are parents and subsidiaries during cleanup. Every AI suggestion goes through the same rule checks as any other change. Nothing is linked or changed in HubSpot on an AI suggestion alone. We send the model only the fields a task needs, on terms where it isn't used to train models. How long AI-processed data is kept is set per customer, in your configuration.</p>
   <p class="note"><strong>ForecastAI (if added):</strong> reads the activity logged on your deals in HubSpot, including transcripts where available, and never changes anything. See <a href="/forecastai/">ForecastAI</a>.</p>
 </div></section>
 
 <section class="sec" id="hosting" aria-labelledby="sh-title"><div class="wrap">
-  <h2 id="sh-title">Kept separate, encrypted, and yours.</h2>
+  <h2 id="sh-title">Where your data lives</h2>
   <div class="cards">
-    <article class="card"><h3>Isolated per customer</h3><p>Hosted on established cloud infrastructure, isolated per customer. Each customer's data is kept in its own database.</p></article>
+    <article class="card"><h3>Isolated per customer</h3><p>Alfie is hosted on established cloud infrastructure. Each customer's data is kept in its own database.</p></article>
     <article class="card"><h3>Encrypted</h3><p>Data is encrypted in transit and at rest. The keys that connect Alfie to your HubSpot and Slack are encrypted with a key unique to your account.</p></article>
-    <article class="card"><h3>Yours when you leave</h3><p>If you stop using Alfie, we export your data and your change record for you, then delete it. Your rules document is yours either way.</p></article>
+    <article class="card"><h3>When you leave</h3><p>We export your data and your change record for you, then delete it. Your rules document is yours either way.</p></article>
   </div>
-  <p class="note" id="not-claimed">We're new, and we don't hold security certifications yet. If your team needs a security questionnaire answered, ask us on a call and we'll go through it with you.</p>
+  <p class="note" id="not-claimed">We're new, and we don't hold security certifications yet. If your team has a security questionnaire, send it over or bring it to a call and we'll go through it with you.</p>
 </div></section>
 
 <section class="sec alt" id="faq" aria-labelledby="sq-title"><div class="wrap">
@@ -61,4 +61,4 @@ faq_ids: [security_q-slack, security_q-overwrite, security_q-leave, faq_data, fa
   {% include faq.html ids=page.faq_ids prefix="s-" %}
 </div></section>
 
-{% include final.html h2="Questions we haven't answered?" body="Ask us on a 20-minute call. We'll walk through exactly what Alfie would access in your HubSpot." %}
+{% include final.html h2="Questions we haven't answered?" body="Ask us on a 20-minute call. We'll go through exactly what Alfie would access in your HubSpot." %}

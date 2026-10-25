@@ -2,48 +2,48 @@
 layout: default
 permalink: /forecastai/
 title: "ForecastAI · HubSpot sales forecast from deal activity"
-description: "ForecastAI is an optional add-on: a weekly leadership forecast built from the activity logged in HubSpot. Read-only, and never shown to reps."
+description: "ForecastAI builds your leadership forecast from the activity logged in HubSpot. Fully automated, in Slack on your schedule, with risky deals called out."
 schema: WebPage
 crumb: ForecastAI
-# Copy: v1-copy/forecastai.md (v0.6.1). IDs: forecastai.hero, .what, .hands-off, .data, .accuracy, .setup, .final
-# "Fully automated" appears only on this page (brand rule).
+# Copy: copy-rewrite-v0.8/forecastai.md (Ben-approved, CMO 8:00 PM). IDs: forecastai.hero, .what, .hands-off, .accuracy, .data, .setup, .final
+# Meta: the v0.8 suggested replacement. "Fully automated" appears only on this page (brand rule).
+# The cleared "read-only, never shown to reps" line appears once, in forecastai.data (moved out of the hero, per Ben 7:55 PM).
 service: { name: "ForecastAI", type: "HubSpot sales forecasting", addon: true }
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Add-on</p>
-  <h1 id="h1">A forecast that doesn't wait for rep updates.</h1>
-  <p class="lede">Optional add-on: a weekly leadership forecast built from the activity in HubSpot, read-only, never shown to reps. It reads the emails, meeting notes and call notes logged on your deals, and transcripts where available, and gives you a second view of the pipeline. Your pipeline, fields and process stay exactly as they are.</p>
-  <div class="actions">{% include cta.html %}<a class="btn btn-ghost" href="/features/">See core features</a></div>
+  <h1 id="h1">A forecast that runs itself</h1>
+  <p class="lede">ForecastAI builds your leadership forecast from what's actually in HubSpot, deal by deal, and posts it to Slack weekly by default, on the day and time you choose. It's fully automated. Nobody spends Friday chasing reps to update their deals, and nobody rebuilds the pipeline-review spreadsheet. Deals at risk are called out, with the activity behind each call.</p>
+  <div class="actions">{% include cta.html %}<a class="btn btn-ghost" href="/features/">See what core Alfie does</a></div>
 </div></section>
 
 <section class="sec alt" id="what" aria-labelledby="fw-title"><div class="wrap">
-  <h2 id="fw-title">A second view of every deal, built from what's logged.</h2>
+  <h2 id="fw-title">What lands in Slack</h2>
   <div class="cards c2">
-    <article class="card"><h3>Built from the activity logged in HubSpot</h3><p>Emails, meeting notes and call notes logged on each deal, plus transcripts where available.</p></article>
-    <article class="card"><h3>A view of each deal</h3><p>For each deal with enough activity, ForecastAI gives its own view of value, stage, likelihood and next step, and points to the activity it's based on. Where a deal has too little activity to go on, it says "insufficient evidence" rather than guess.</p></article>
-    <article class="card"><h3>Runs on its own</h3><p>Fully automated. No one updates, approves or prompts anything, and nothing changes for your reps. The forecast arrives in Slack for your leadership team, weekly by default, on your schedule. The leaders you name can also ask for it any time.</p></article>
-    <article class="card"><h3>Shows where the activity and the pipeline differ</h3><p>Alfie's forecast next to what reps entered and HubSpot's weighted pipeline, by period, plus deals at risk and deals that slipped or moved forward.</p></article>
+    <article class="card"><h3>A view of every deal, with the evidence</h3><p>For each deal, ForecastAI gives its view of value, stage, likelihood and next step, built from the emails, meeting notes and call notes logged on it, plus transcripts where available. Each view links to the activity it's based on. Deals with too little recent activity are listed separately as low coverage instead of being guessed.</p></article>
+    <article class="card"><h3>Its number next to yours</h3><p>ForecastAI's forecast sits beside what reps entered and HubSpot's weighted pipeline, by period. You see the gap before the meeting, not during it.</p></article>
+    <article class="card"><h3>What moved since last time</h3><p>Deals that slipped and deals that moved forward. Flags deals at risk, including ones that have gone quiet, and says why.</p></article>
+    <article class="card"><h3>On your schedule</h3><p>Weekly by default, on the day and time you set. Named leaders on the digest list can ask for an up-to-date version in Slack whenever they need one. Reps can't request it, and it's never sent to them.</p></article>
   </div>
-  <p class="ex digest"><span class="ex-tag">Example</span>Acme Ltd · Pipeline: this quarter, $<span data-count>40</span>k · ForecastAI: <span class="risk">at risk</span>, $<span data-count>32</span>k · Based on activity logged Oct 14</p>
+  <p class="ex digest"><span class="ex-tag">Example</span>Acme · Pipeline: this quarter, $<span data-count>40</span>k · ForecastAI: <span class="risk">at risk</span>, $<span data-count>32</span>k · Based on activity logged Oct 14</p>
 </div></section>
 
 <section class="sec" id="hands-off" aria-labelledby="ho-title"><div class="wrap split">
   <div>
-    <h2 id="ho-title">Nothing in your pipeline changes.</h2>
-    <p class="intro-text">ForecastAI is read-only. It never edits deals, fields or stages, and it adds nothing to your reps' day: no new fields, no prompts, no approvals. The forecast goes only to the leadership team members you name, and it sits alongside your pipeline, not inside it.</p>
-    <p class="note">Your forecast arrives as a Slack digest for the leadership team members you name, weekly by default, on your schedule.</p>
+    <h2 id="ho-title">See why the number moved</h2>
+    <p class="intro-text">Every forecast records the method and the activity it used, so you can see why a number moved from one week to the next. It's built from the activity logged in HubSpot and each deal's stage and fields, not from whoever updated their deals on Thursday. Your team keeps working the way it does now: same stages, same fields, no new tool to learn.</p>
   </div>
-  <div id="data">
-    <h2 id="fd-title">Read-only, and only for the people you name.</h2>
-    <p class="intro-text">ForecastAI reads the activity your team already logs in HubSpot: emails, meeting notes, call notes, and transcripts where available. It never changes anything in HubSpot. It's designed to keep only the short excerpts and summary signals it needs. How long any AI-processed data is kept is set per customer, in your configuration. Forecasts go only to the leadership team members you name. Your data isn't used to train AI models.</p>
-    <a class="textlink" href="/security/">How we handle access and data</a>
+  <div id="accuracy">
+    <h2 id="acc-title">Check it against what closes</h2>
+    <p class="intro-text">Each digest shows ForecastAI's view next to the reps' numbers and HubSpot's weighted pipeline. Note what it said at the start of the quarter and compare it with what actually closed. After a quarter or two, you'll know how much weight to give it.</p>
   </div>
 </div></section>
 
-<section class="sec alt" id="accuracy" aria-labelledby="acc-title"><div class="wrap">
-  <h2 id="acc-title">Easy to check against what actually closed.</h2>
-  <p class="intro-text">Judge ForecastAI the way you'd judge any forecast: compare the forecast at the start of the quarter with the revenue actually closed by quarter end. Each digest shows ForecastAI's view next to what reps entered and HubSpot's weighted pipeline, so you can see over time how much weight to give it.</p>
-  <p class="note" id="setup">ForecastAI is an add-on for Alfie customers, ready to add to your plan now. It connects to HubSpot with its own read-only permissions, approved by your admin, and uses the same Slack setup as core Alfie. Setup takes a few weeks after kickoff, while we connect it to your pipeline and agree who gets the digest and when.</p>
+<section class="sec alt" id="data" aria-labelledby="fd-title"><div class="wrap">
+  <h2 id="fd-title">What it reads, and who sees it</h2>
+  <p class="intro-text">Optional add-on: a weekly leadership forecast built from the activity logged in HubSpot, read-only, never shown to reps. It uses its own read-only permissions, set up with your admin, and changes nothing in HubSpot. It's designed to keep only the short excerpts and summary signals it needs. How long AI-processed data is kept is set per customer, in your configuration, and your data isn't used to train AI models.</p>
+  <a class="textlink" href="/security/">How we handle access and data</a>
+  <p class="note" id="setup">ForecastAI is ready to add to your plan now. It uses the same Slack setup as core Alfie. Setup takes a few weeks after kickoff, while we connect it to your pipeline and agree who gets the forecast and when.</p>
 </div></section>
 
-{% include final.html h2="Want a forecast you don't have to chase?" body="Tell us how you forecast today, and we'll show you what ForecastAI would add." %}
+{% include final.html h2="Who chases the forecast at your company?" body="Tell us on a call how the number gets built today, spreadsheet and all. We'll show you what ForecastAI would take over." %}

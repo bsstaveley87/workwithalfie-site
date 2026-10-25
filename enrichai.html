@@ -5,42 +5,38 @@ title: "EnrichAI · HubSpot data enrichment and ICP account lists"
 description: "EnrichAI finds contacts at your target accounts, adds companies that fit your ICP, and keeps ad audience lists current in HubSpot, all under your rules."
 schema: WebPage
 crumb: EnrichAI
-# Copy: v1-copy/enrichai.md. IDs: enrichai.hero, .what, .rules, .sources, .final
+# Copy: copy-rewrite-v0.8/enrichai.md (Ben-approved, CMO 8:00 PM). IDs: enrichai.hero, .what, .rules, .sources, .final
 service: { name: "EnrichAI", type: "HubSpot data enrichment", addon: true }
 ---
 <section class="page-hero" aria-labelledby="h1"><div class="wrap">
   <p class="label">Add-on</p>
-  <h1 id="h1">The right accounts, and the people in them, in HubSpot.</h1>
-  <p class="lede">EnrichAI is the optional add-on for all paid data work. It finds contacts, emails and phone numbers at your target accounts, adds new companies that fit your ICP, and keeps your ad audience lists up to date in HubSpot. Everything it writes goes through the same rule checks and approvals as the rest of Alfie.</p>
-  <div class="actions">{% include cta.html %}<a class="btn btn-ghost" href="/features/">See core features</a></div>
+  <h1 id="h1">Complete records, without the research</h1>
+  <p class="lede">EnrichAI fills in your company and contact records so nobody has to look things up or type them in. It finds the people in your buying roles at your target accounts, adds the missing company and contact details, brings in new companies that fit your ICP, and keeps ad audience lists current in HubSpot. With the fields filled in, routing and segments have something to work with.</p>
+  <div class="actions">{% include cta.html %}<a class="btn btn-ghost" href="/features/">See what core Alfie does</a></div>
 </div></section>
 
 <section class="sec alt" id="what" aria-labelledby="ew-title"><div class="wrap">
-  <h2 id="ew-title">Four jobs, one set of rules.</h2>
+  <h2 id="ew-title">What your team stops doing by hand</h2>
   <div class="cards c2">
-    <article class="card"><h3>Contacts at your target accounts</h3><p>Finds the people who match your buying roles at the accounts you're going after, then adds them to HubSpot with a work email and phone number where one can be found.</p></article>
-    <article class="card"><h3>New accounts that fit your ICP</h3><p>Finds companies that match your ideal customer profile and adds them to your target account list, so the list grows without anyone researching by hand.</p></article>
-    <article class="card"><h3>Audiences for ads</h3><p>Builds and maintains audience lists of contacts at your target accounts in HubSpot, with hashed (pseudonymized) emails for ad matching, ready for HubSpot's ads integration to sync to your ad platforms.</p></article>
-    <article class="card"><h3>Company and contact details</h3><p>Fills in firmographics and professional details on records you already have, one at a time or as a whole list.</p></article>
+    <article class="card"><h3>People at your target accounts</h3><p>Say Acme is on your list and all you have there is a billing contact. EnrichAI finds the people in your buying roles and adds them to HubSpot, with a work email and phone number where one can be found. Reps start with names, not a research task.</p></article>
+    <article class="card"><h3>Missing details on the records you have</h3><p>Firmographics like industry and headcount, plus professional details like job title, for one record or a whole list. With those fields filled in, new contacts and companies route to the right owner, you can build segments by industry or size, and fewer leads land with the wrong person.</p></article>
+    <article class="card"><h3>New accounts that fit your ICP</h3><p>EnrichAI finds companies that match your ideal customer profile and adds them to your target account list. Each new company goes through the same parent and subsidiary suggestions as the rest of Alfie, like Acme EU under Acme, and a person approves each link before anything changes in HubSpot.</p></article>
+    <article class="card"><h3>Ad audiences that keep up</h3><p>EnrichAI builds and maintains HubSpot lists of contacts at your target accounts, with hashed (pseudonymized) emails for ad matching, ready for HubSpot's ads integration to sync. Your ads reach the accounts sales is working, and nobody exports a CSV to get them there.</p></article>
   </div>
-  <p class="ex"><span class="ex-tag">Example</span>Find contacts at Acme Ltd · 3 contacts added with work email · DONE</p>
-  <p class="note">EnrichAI is an add-on for Alfie customers. Any data bought or sourced from outside your CRM is EnrichAI.</p>
+  <p class="ex"><span class="ex-tag">Example</span>Find contacts at Acme · 3 contacts added with work email · DONE</p>
+  <p class="note">EnrichAI is for Alfie customers. Any data bought or sourced from outside your CRM counts as EnrichAI.</p>
 </div></section>
 
 <section class="sec" id="rules" aria-labelledby="er-title"><div class="wrap">
-  <h2 id="er-title">Sourced, checked, then written.</h2>
-  <div class="cards c2">
-    <article class="card"><h3>Every value has a source</h3><p>Each new value records where it came from and when it was found.</p></article>
-    <article class="card"><h3>Your rules set the bar</h3><p>You decide which sources count for each field and how sure Alfie must be before it writes.</p></article>
-    <article class="card"><h3>Your team's entries stay put</h3><p>Alfie won't overwrite a value a person entered unless your rules allow it or someone approves.</p></article>
-    <article class="card"><h3>When sources disagree, nothing changes</h3><p>The existing value is kept, and the record is flagged for review.</p></article>
-  </div>
+  <p class="label">You stay in control</p>
+  <h2 id="er-title">Your team's data comes first</h2>
+  <p class="intro-text">A phone number a rep typed in stays put unless your rules allow an overwrite or someone OKs it. When sources disagree, the existing value wins and the record is flagged for review. Each new value records where it came from and when it was found, so anyone can see why a field says what it says. You choose which sources count for each field, and how sure Alfie has to be before it writes.</p>
   <a class="textlink" href="/how-it-works/">How every change is checked</a>
 </div></section>
 
 <section class="sec alt" id="sources" aria-labelledby="es-title"><div class="wrap">
-  <h2 id="es-title">The best source for each record, not one fixed vendor.</h2>
-  <p class="intro-text">EnrichAI checks several paid data providers in turn and uses the most cost-effective one that meets your rules for each field. If the first source can't find a value or doesn't clear your bar, it tries the next.</p>
+  <h2 id="es-title">Fewer blank fields</h2>
+  <p class="intro-text">EnrichAI checks several paid data providers in turn. If the first can't find a value, or the value doesn't meet your bar, it tries the next, so fewer fields are left empty. For each field, it uses the most cost-effective source that meets your rules. How long enrichment data is kept is agreed with each customer at setup.</p>
 </div></section>
 
-{% include final.html h2="Want a fuller target list without the manual research?" %}
+{% include final.html h2="Who's missing from your target accounts?" body="Bring the list to a call. We'll show you which records EnrichAI would fill in." %}
