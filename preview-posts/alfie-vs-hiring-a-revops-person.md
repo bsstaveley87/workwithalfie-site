@@ -68,7 +68,7 @@ From day one, Alfie checks your HubSpot against the rules you approved and propo
 | Best at | Strategy, cross-system design, leadership reporting | Keeping HubSpot in step with written rules |
 | Systems covered | Whatever your team runs | HubSpot, with requests and approvals in Slack |
 | Judgment calls | Makes them, with full business context | Follows your rules; asks the right person when a rule says so |
-| Upkeep work | Competes with strategy for their time | The core of what Alfie does |
+| Upkeep work | Competes with strategy for their time | The heart of what Alfie does |
 | Rules written down | Depends on the person | Always: a written copy you keep |
 | Record of changes | Depends on the setup they build | Designed to keep a record of every change Alfie makes, which you can see and export |
 | In your meetings | Yes | No; [Services](/services/) adds a set block of RevOps hours if you want them |
