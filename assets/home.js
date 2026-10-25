@@ -1,5 +1,5 @@
 /* Home motion (spec v1, copy v0.8): hero work queue ticks QUEUED -> CHECKING -> final (DONE, FLAGGED or CHECKING);
-   the row with data-wait ("Reassign Priya's accounts") stops at WAITING ON ADMIN, the "Approved by Dana (admin)" chip appears,
+   the row with data-wait ("Reassign Priya's accounts") stops at WAITING ON ADMIN, the "Approved by Sam (admin)" chip appears,
    then it turns DONE. The flow band's line draws in. Static HTML is the final state (JS off, reduced motion). Pause/play control kept. */
 (function(){
   'use strict';
