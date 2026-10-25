@@ -2,7 +2,7 @@
 # (old keys kept: how_q-day-one = faq.day-one, security_q-overwrite = faq.overwrite, security_q-leave = faq.leave,
 # faq_experience = faq.revops-experience, faq_forecastai = faq.forecastai-included). v0.8 merged faq.slack into faq.hubspot.
 # Answers are HTML. The FAQPage JSON-LD is generated from these same strings, so it always matches the page.
-# Brand rule kept: "fully automated" only on /forecastai/, so faq_forecastai omits it (v0.8 had ", fully automated,").
+# "fully automated" only ever describes ForecastAI (CMO 8:18 PM); faq_forecastai uses it as v0.8 wrote it.
 faq_what:
   q: What is Alfie?
   a: "Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes. ForecastAI, EnrichAI and Services are optional extras."
@@ -59,7 +59,7 @@ security_q-leave:
   a: "We export your data and change record for you, then delete it."
 faq_forecastai:
   q: Is ForecastAI included?
-  a: "No. ForecastAI is an optional add-on for Alfie customers, priced separately. It builds your leadership forecast from the activity logged in HubSpot, so nobody has to chase reps for updates."
+  a: "No. ForecastAI is an optional add-on for Alfie customers, priced separately. It builds your leadership forecast from the activity logged in HubSpot, fully automated, so nobody has to chase reps for updates."
 faq_pricing:
   q: How much does it cost?
   a: "There's a one-time setup fee, sized on our first calls, then a monthly fee for core Alfie. ForecastAI, EnrichAI and Services are optional and priced separately. We'll give you a number once we know what you need. <a href=\"/book/\">Book a call</a> to talk it through."
