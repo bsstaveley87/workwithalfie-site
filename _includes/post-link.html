@@ -1,7 +1,21 @@
-{%- comment -%} Safe link to another post. Outputs <a> only if the target is built and either published
-(not preview_only) or the current page is itself preview-only; otherwise plain text. Params: url, text {%- endcomment -%}
-{%- assign pl_t = site.posts | where: "url", include.url | first -%}
-{%- unless pl_t -%}{%- assign pl_t = site.pages | where: "url", include.url | first -%}{%- endunless -%}
-{%- assign pl_ok = false -%}
-{%- if pl_t -%}{%- if pl_t.preview_only != true -%}{%- assign pl_ok = true -%}{%- elsif page.preview_only -%}{%- assign pl_ok = true -%}{%- endif -%}{%- endif -%}
-{%- if pl_ok -%}<a href="{{ include.url }}">{{ include.text }}</a>{%- else -%}{{ include.text }}{%- endif -%}
+{%- comment -%}
+  Link to another post only once it is live (see post-live.html for what "live" means).
+    {% include post-link.html slug="some-slug" text="anchor text" %}
+  Params:
+    slug      target post's slug (preferred). url="/blog/some-slug/" still works for older calls.
+    text      anchor text.
+    before / after   optional words around the link, e.g. before=" (more in " after=")".
+    fallback  optional. What to print while the target isn't live, instead of text.
+              fallback="" prints nothing at all (before/after included), so a whole
+              "More in X." sentence stays hidden until X is published.
+  Without fallback, a target that isn't live prints before + text + after as plain text.
+  Never links a page to itself.
+{%- endcomment -%}
+{%- include post-live.html slug=include.slug url=include.url -%}
+{%- if post_live -%}
+{{ include.before }}<a href="{{ post_live_url }}">{{ include.text }}</a>{{ include.after }}
+{%- elsif include.fallback != nil -%}
+{{ include.fallback }}
+{%- else -%}
+{{ include.before }}{{ include.text }}{{ include.after }}
+{%- endif -%}

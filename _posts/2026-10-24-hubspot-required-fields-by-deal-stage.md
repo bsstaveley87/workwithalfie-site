@@ -85,7 +85,7 @@ So after you set them up, run a simple check: a list of open deals at each stage
 
 ## How do you keep them working as the team grows?
 
-Treat required fields as a rule you own, not a setting you forget. Three habits help:
+Treat required fields as a rule you own, not a setting you forget.{% include post-link.html slug="alfie-vs-building-hubspot-workflows-yourself" before=" If you're weighing whether to automate the follow-up with workflows you build yourself, see " text="Alfie vs building HubSpot workflows yourself" after="." fallback="" %} Three habits help:
 
 - **Review the list when the process changes.** A new stage, a new product or a new region usually means new required fields.
 - **Fix the gaps at the source.** If the same field keeps coming in empty from an integration, fix the integration rather than chasing reps.

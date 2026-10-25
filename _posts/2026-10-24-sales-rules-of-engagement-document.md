@@ -91,7 +91,7 @@ How you keep one record per real-world thing.
 Who signs off on what.
 
 - Which changes need a person to approve: moving an account to a different rep, merging important accounts, changing a closed deal
-- Who that person is for each
+- Who that person is for each{% include post-link.html slug="who-should-approve-crm-changes" before=" (more in " text="who should approve CRM changes" after=")" fallback="" %}
 - Who can change the rules themselves, and how changes are announced
 
 ## How long should it be?
