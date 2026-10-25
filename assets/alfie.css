@@ -234,6 +234,8 @@ html.menu-open{overflow:hidden}
 .card.core h3{color:var(--ground)}
 .card.core p{color:var(--on-dark-body)}
 .card.core .tag{color:var(--action-on-dark)}
+/* Untagged core card: an invisible spacer with the tag's metrics (and the flex gap) so its h3 lines up with tagged cards side by side; stacked phones skip it */
+@media (min-width:641px){.cards > .card.core:not(:has(> .tag))::before{content:"\00a0"/"";display:block;margin:0 0 var(--s-1);font-family:var(--font-mono);font-size:var(--fs-label);font-weight:500;letter-spacing:var(--track-label);visibility:hidden}}
 .card.core .more{color:var(--ground)}
 .card.core .more:hover{color:var(--action-on-dark)}
 .points{list-style:none;margin:var(--s-6) 0 var(--s-2);padding:0;display:grid;gap:var(--s-4)}
