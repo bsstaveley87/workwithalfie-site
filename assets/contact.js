@@ -169,6 +169,7 @@
           form.hidden = true;
           successEl.hidden = false;
           successEl.focus();
+          window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'contact_form_submit', form_id: 'contact' });
           return;
         }
         var code = (data && data.error) || '';
