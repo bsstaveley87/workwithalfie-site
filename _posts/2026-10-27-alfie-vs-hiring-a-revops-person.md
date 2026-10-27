@@ -46,11 +46,11 @@ The first two need judgment, context and time in meetings. The third never stops
 
 Alfie does the third kind of work, the repetitive HubSpot upkeep, so nobody on your team has to.
 
-Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing required fields and routing new contacts and companies, by rules you set and with your admin in control of what changes.
+Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-on RevOps help plus automation that does the repetitive HubSpot upkeep, like merging duplicates, fixing {% include post-link.html slug="hubspot-required-fields-by-deal-stage" text="required fields" %} and routing new contacts and companies, by rules you set and with your admin in control of what changes.
 
 In practice, these are the jobs it takes on:
 
-- **Merges duplicates.** Alfie finds duplicate contacts and companies by your matching rules, like the two Acme Incs, and drafts each merge with the surviving values chosen by rule.
+- **Merges duplicates.** Alfie finds {% include post-link.html slug="merge-duplicate-companies-hubspot" text="duplicate contacts and companies" %} by your matching rules, like the two Acme Incs, and drafts each merge with the surviving values chosen by rule.
 - **Fills and fixes required fields.** It catches deals that reach a stage without what your team agreed, like a close date at Proposal, and sends each owner a Slack digest of what's missing.
 - **Routes new contacts and companies.** Alfie routes new contacts and companies to the right owner by account, territory or segment, and round robin, with your admin approving.
 - **Moves a leaver's accounts.** When a rep leaves, Alfie proposes who takes over each account, and nothing moves until your admin approves.
