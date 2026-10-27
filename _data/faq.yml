@@ -23,7 +23,7 @@ faq_where:
   a: "In Slack and HubSpot. There's no separate app to learn. Behind the scenes, Alfie is hosted on established cloud infrastructure, isolated per customer."
 faq_revops-hire:
   q: Is Alfie a replacement for a RevOps hire?
-  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. Hiring your first RevOps lead? Alfie can work through the backlog and get the rules written down while you hire, so their first month goes on the next process. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
+  a: "For many growing teams, it can mean you don't need one yet. Alfie takes HubSpot upkeep off the founder's or team lead's plate without a full-time hire. <a href=\"/blog/alfie-vs-hiring-a-revops-person/\">Hiring your first RevOps lead</a>? Alfie can work through the backlog and get the rules written down while you hire, so their first month goes on the next process. If you already have an early RevOps hire, Alfie is their second pair of hands: they set the rules and Alfie runs them."
 faq_agency:
   q: How is Alfie different from a HubSpot agency or a freelance admin?
   a: "An agency or freelancer usually fixes what you point them at. Alfie starts by writing down your rules with you, then does the repetitive upkeep against them week after week and keeps a record of each change it makes. The rules document is yours whether or not you keep using Alfie."
