@@ -38,7 +38,7 @@ how_q-day-one:
   a: "First week. Alfie reads your records and shows you what it would fix, without changing anything. Then it works through the backlog as your admin OKs each change. See <a href=\"/how-it-works/\">how the first weeks work</a>."
 faq_workflows:
   q: Does Alfie replace our HubSpot workflows?
-  a: "No. Alfie works in your HubSpot alongside your existing workflows. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
+  a: "No. Alfie works in your HubSpot alongside your <a href=\"/blog/alfie-vs-building-hubspot-workflows-yourself/\">existing workflows</a>. It checks your records against the rules you've approved and proposes fixes for your admin to approve. During setup we list any workflows that touch the same fields, such as owner rotation, so the two don't clash."
 faq_duplicates:
   q: Can Alfie clean up duplicates already in HubSpot?
   a: "Yes, including the backlog. Alfie finds them using your matching rules and drafts each merge, with the surviving values chosen by rule, so nobody compares records in two tabs. Merges go through once your admin OKs them."
