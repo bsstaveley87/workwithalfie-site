@@ -56,7 +56,7 @@ Alfie is a RevOps service for growing SaaS companies that run on HubSpot: hands-
 Here's how that works:
 
 1. **It starts from written rules.** You start on standard rules for the basics, adjusted to your team. Alfie keeps them and gives you a written copy, as Markdown or PDF, to keep wherever you like. To change a rule, you tell us, and we update it and send you the new version.
-2. **It does the jobs.** Alfie finds duplicate contacts and companies and drafts each merge with the surviving values chosen by rule. It sends each owner a Slack digest of the deals missing what your team agreed, and tidies emails, phone numbers, websites and countries. It routes new contacts and companies to the right owner by account, territory or segment, and round robin, with your admin approving.
+2. **It does the jobs.** Alfie finds {% include post-link.html slug="merge-duplicate-companies-hubspot" text="duplicate contacts and companies" %} and drafts each merge with the surviving values chosen by rule. It sends each owner a Slack digest of the deals missing what your team agreed, and tidies emails, phone numbers, websites and countries. It routes new contacts and companies to the right owner by account, territory or segment, and round robin, with your admin approving.
 3. **It checks its own work.** After each write, Alfie is designed to read the record back from HubSpot and count nothing as done until it matches. You can see and export a record of each change Alfie makes.
 
 Deals that reach a stage without the details your team agreed are flagged, not blocked.
@@ -96,7 +96,7 @@ Alfie tends to fit when:
 - **The rules live in someone's head.** Nobody can say which workflow enforces which rule, or why.
 - **The person who built the workflows has moved on.** Or HubSpot sits with a founder who doesn't have time to maintain them.
 - **Some changes need a person first.** Merges and moving a leaver's accounts shouldn't happen silently.
-- **You want a record you can hand to someone.** A written rules document and a record of each change make the setup easier to explain, audit and hand over.
+- **You want a record you can hand to someone.** A written {% include post-link.html slug="sales-rules-of-engagement-document" text="rules document" %} and a record of each change make the setup easier to explain, audit and hand over.
 
 ## Do you have to choose?
 
