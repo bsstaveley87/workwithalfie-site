@@ -6,8 +6,8 @@ description: "HubSpot agency or freelance admin? Agencies suit defined projects,
 slug: hubspot-agency-freelance-admin-or-ongoing-revops-help
 primary_keyword: "HubSpot agency or freelance admin"
 secondary_keywords: ["when a HubSpot agency is the right call", "when a freelance admin is the right call", "ongoing RevOps help"]
-date: 2026-10-24 # draft date; set to the real publish date when it goes live
-last_modified_at: 2026-10-24
+date: 2026-11-03
+last_modified_at: 2026-11-03
 category: hiring-revops
 tags: [outsourced-revops, comparison]
 author: "The Alfie team"
@@ -27,10 +27,6 @@ faq:
     a: "No. Alfie works with HubSpot only."
 related_pages: [/services, /features, /who-its-for, /security]
 related_posts: [/blog/alfie-vs-hiring-a-revops-person/, /blog/alfie-vs-building-hubspot-workflows-yourself/]
-# PREVIEW ONLY. Not for launch: remove before merging unless Ben approves it.
-preview_only: true
-noindex: true
-sitemap: false
 permalink: /blog/hubspot-agency-freelance-admin-or-ongoing-revops-help/
 ---
 
